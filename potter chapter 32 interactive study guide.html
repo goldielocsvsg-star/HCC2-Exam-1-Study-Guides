@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 32: Complementary & Integrative Therapies | Interactive Study Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5A4A;
+            --primary-light: #3D7A6A;
+            --secondary: #D4A76A;
+            --accent: #8B5A5A;
+            --bg-cream: #F9F7F4;
+            --bg-sage: #E8EDE8;
+            --text-dark: #2D3A35;
+            --text-muted: #5A6B65;
+            --success: #4A8B6A;
+            --error: #9B5A5A;
+            --warning: #D4A76A;
+            --card-shadow: 0 8px 32px rgba(45, 90, 74, 0.12);
+            --hover-shadow: 0 12px 48px rgba(45, 90, 74, 0.18);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #4A9A7A 100%);
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 4px;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .progress-bar {
+            background: var(--secondary);
+            height: 8px;
+            border-radius: 50px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            padding: 2rem;
+            background: var(--bg-sage);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-tab {
+            padding: 0.75rem 1.25rem;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab:hover, .nav-tab.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(45, 90, 74, 0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(45, 90, 74, 0.08);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .card ul li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .card ul li::before {
+            content: '🌿';
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+        }
+
+        /* Comparison Box */
+        .vs-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            align-items: stretch;
+            margin: 2rem 0;
+        }
+
+        .vs-box {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .vs-box h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .vs-box.allopathic {
+            border-top: 4px solid var(--accent);
+        }
+
+        .vs-box.integrative {
+            border-top: 4px solid var(--success);
+        }
+
+        .vs-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        /* Category Cards */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateX(5px);
+        }
+
+        .category-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Flashcards */
+        .flashcard-container {
+            perspective: 1000px;
+            margin: 2rem auto;
+            max-width: 520px;
+        }
+
+        .flashcard {
+            position: relative;
+            width: 100%;
+            height: 340px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+
+        .flashcard-front h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+        }
+
+        .flashcard-front p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .flashcard-back {
+            background: white;
+            transform: rotateY(180deg);
+            border: 3px solid var(--secondary);
+        }
+
+        .flashcard-back p {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .flashcard-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .flashcard-btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .flashcard-btn.prev, .flashcard-btn.next {
+            background: var(--primary);
+            color: white;
+        }
+
+        .flashcard-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(45, 90, 74, 0.3);
+        }
+
+        .flashcard-counter {
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .tap-hint {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 1rem;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .quiz-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quiz-option {
+            padding: 1rem 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .quiz-option:hover:not(.selected):not(.correct):not(.incorrect) {
+            border-color: var(--primary);
+            background: rgba(45, 90, 74, 0.05);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary);
+            background: rgba(45, 90, 74, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: var(--success);
+            background: rgba(74, 139, 106, 0.15);
+            color: var(--success);
+        }
+
+        .quiz-option.incorrect {
+            border-color: var(--error);
+            background: rgba(155, 90, 90, 0.15);
+            color: var(--error);
+        }
+
+        .quiz-feedback {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .quiz-feedback.correct {
+            background: rgba(74, 139, 106, 0.15);
+            color: var(--success);
+            display: block;
+        }
+
+        .quiz-feedback.incorrect {
+            background: rgba(155, 90, 90, 0.15);
+            color: var(--error);
+            display: block;
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .quiz-progress {
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* Score Display */
+        .score-display {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 24px;
+            color: white;
+        }
+
+        .score-display h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .score-number {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .score-message {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .restart-btn {
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background: var(--secondary);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .restart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(212, 167, 106, 0.4);
+        }
+
+        /* Accordion */
+        .accordion {
+            margin-bottom: 1rem;
+        }
+
+        .accordion-header {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(45, 90, 74, 0.08);
+        }
+
+        .accordion-header:hover {
+            background: rgba(45, 90, 74, 0.03);
+        }
+
+        .accordion-header h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.15rem;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion.open .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            background: white;
+            border-radius: 0 0 16px 16px;
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            margin-top: -8px;
+        }
+
+        .accordion.open .accordion-content {
+            max-height: 2500px;
+            padding: 1.5rem;
+        }
+
+        .accordion-content p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .accordion-content ul {
+            list-style: none;
+        }
+
+        .accordion-content li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .accordion-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Key Terms */
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .term-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .term-card:hover {
+            transform: translateX(5px);
+        }
+
+        .term-card h4 {
+            color: var(--primary);
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .term-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Matching Game */
+        .matching-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .matching-column h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .matching-item {
+            padding: 1rem 1.5rem;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .matching-item:hover:not(.matched) {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+
+        .matching-item.selected {
+            border-color: var(--secondary);
+            background: rgba(212, 167, 106, 0.1);
+        }
+
+        .matching-item.matched {
+            background: rgba(74, 139, 106, 0.15);
+            border-color: var(--success);
+            cursor: default;
+        }
+
+        .matching-item.wrong {
+            animation: shake 0.5s ease;
+            border-color: var(--error);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .matching-score {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Tip Boxes */
+        .tip-box {
+            background: linear-gradient(135deg, rgba(212, 167, 106, 0.15), rgba(212, 167, 106, 0.05));
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .tip-box h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tip-box p {
+            color: var(--text-dark);
+        }
+
+        .nursing-box {
+            background: linear-gradient(135deg, rgba(74, 139, 106, 0.15), rgba(74, 139, 106, 0.05));
+            border-left: 4px solid var(--success);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .nursing-box h4 {
+            color: var(--success);
+            margin-bottom: 0.5rem;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(155, 90, 90, 0.1), rgba(155, 90, 90, 0.05));
+            border-left: 4px solid var(--error);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            color: var(--error);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Response Comparison */
+        .response-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .response-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .response-card h4 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .response-card.stress h4 {
+            color: var(--error);
+        }
+
+        .response-card.relaxation h4 {
+            color: var(--success);
+        }
+
+        .response-card ul {
+            list-style: none;
+        }
+
+        .response-card li {
+            padding: 0.3rem 0;
+            color: var(--text-muted);
+        }
+
+        /* Five Phases */
+        .phases-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .phase-step {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 120px;
+            font-weight: 600;
+        }
+
+        .phase-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-tabs {
+                padding: 1rem;
+            }
+            
+            .nav-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .matching-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .flashcard {
+                height: 400px;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vs-container {
+                grid-template-columns: 1fr;
+            }
+
+            .vs-divider {
+                transform: rotate(90deg);
+                padding: 1rem 0;
+            }
+
+            .response-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .phases-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">🌿</div>
+            <h1>Chapter 32 Study Guide</h1>
+            <p>Complementary, Integrative & Alternative Therapies</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p class="progress-text">Track your progress as you learn!</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+        <button class="nav-tab active" onclick="showSection('overview')">📚 Overview</button>
+        <button class="nav-tab" onclick="showSection('therapies')">🧘 Therapies</button>
+        <button class="nav-tab" onclick="showSection('tcm')">☯️ TCM & More</button>
+        <button class="nav-tab" onclick="showSection('flashcards')">🎴 Flashcards</button>
+        <button class="nav-tab" onclick="showSection('keyterms')">📖 Key Terms</button>
+        <button class="nav-tab" onclick="showSection('matching')">🎯 Matching</button>
+        <button class="nav-tab" onclick="showSection('quiz')">✅ Quiz</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Overview Section -->
+        <section id="overview" class="section active">
+            <div class="section-header">
+                <h2>Understanding CAM & Integrative Care</h2>
+                <p>Two philosophical models of healthcare</p>
+            </div>
+
+            <!-- Allopathic vs Integrative -->
+            <div class="vs-container">
+                <div class="vs-box allopathic">
+                    <h3>🏥 Allopathic (Biomedicine)</h3>
+                    <p><strong>Focuses on:</strong></p>
+                    <ul style="list-style: none; margin-top: 0.5rem;">
+                        <li>• Disease & pathology</li>
+                        <li>• Diagnosis</li>
+                        <li>• Pharmacologic treatment</li>
+                        <li>• Surgical intervention</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Strengths:</strong> Acute illness, structural problems</p>
+                    <p><strong>Weaknesses:</strong> Chronic disease, stress-related illness, emotional & spiritual care</p>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="vs-box integrative">
+                    <h3>🌱 Complementary & Integrative</h3>
+                    <p><strong>Focuses on:</strong></p>
+                    <ul style="list-style: none; margin-top: 0.5rem;">
+                        <li>• Whole person</li>
+                        <li>• Prevention</li>
+                        <li>• Mind-body-spirit</li>
+                        <li>• Self-healing capacity</li>
+                        <li>• Quality of life</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Emerged because <strong>patients demanded more than symptom control</strong>.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>💡 Key Terminology (HIGH-YIELD!)</h4>
+                <p><strong>Complementary</strong> = Used WITH conventional medicine<br>
+                <strong>Alternative</strong> = Used INSTEAD OF conventional medicine<br>
+                <strong>Integrative</strong> = Evidence-based combination of BOTH</p>
+            </div>
+
+            <!-- Why Patients Choose CAM -->
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🤔</div>
+                    <h3>Why Patients Choose CAM</h3>
+                    <ul>
+                        <li>Reduces side effects of conventional treatment</li>
+                        <li>Improves quality of life</li>
+                        <li>Addresses emotional & spiritual needs</li>
+                        <li>Restores sense of control</li>
+                        <li>Honors cultural beliefs</li>
+                        <li>Social influence & trust in natural therapies</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🩺</div>
+                    <h3>Integrative Health Care</h3>
+                    <ul>
+                        <li>Focuses on WHOLE person</li>
+                        <li>Patient & provider are PARTNERS</li>
+                        <li>Combines best of all therapies</li>
+                        <li>Evidence-informed</li>
+                        <li>Team approach using both systems</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Classification of Therapies -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>📋 Six Categories of Complementary Therapies</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="category-grid">
+                        <div class="category-card">
+                            <h4>🌿 1. Biologically Based</h4>
+                            <p>Herbs, supplements, probiotics, special diets, vitamins, minerals</p>
+                        </div>
+                        <div class="category-card">
+                            <h4>⚡ 2. Energy Therapies</h4>
+                            <p>Acupuncture, Reiki, Healing Touch, Therapeutic Touch, magnet therapy</p>
+                        </div>
+                        <div class="category-card">
+                            <h4>💆 3. Manipulative/Body-Based</h4>
+                            <p>Chiropractic, massage, acupressure, simple touch</p>
+                        </div>
+                        <div class="category-card">
+                            <h4>🧠 4. Mind-Body Interventions</h4>
+                            <p>Meditation, imagery, biofeedback, yoga, tai chi, music/art therapy</p>
+                        </div>
+                        <div class="category-card">
+                            <h4>💃 5. Movement Therapies</h4>
+                            <p>Dance therapy, Feldenkrais, Pilates</p>
+                        </div>
+                        <div class="category-card">
+                            <h4>🌍 6. Whole Medical Systems</h4>
+                            <p>TCM, Ayurveda, Homeopathy, Naturopathy, Indigenous healing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integrative Nursing -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>👩‍⚕️ Integrative Nursing Principles</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Integrative Nursing Definition:</strong> "A way of being-knowing-doing that advances the health and well-being of persons, families, and communities through caring-healing relationships."</p>
+                    <p style="margin-top: 1rem;"><strong>Core Principles:</strong></p>
+                    <ul>
+                        <li>Person-centered care</li>
+                        <li>Relationship-based practice</li>
+                        <li>Evidence-supported interventions</li>
+                        <li>Supports self-healing capacity</li>
+                        <li>Applies to individuals, families & communities</li>
+                        <li>Uses traditional and emerging interventions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nursing-box">
+                <h4>🩺 Nursing-Accessible Therapies (YOU Can Apply!)</h4>
+                <p>These are tools you can integrate directly into practice: <strong>Relaxation therapy, Meditation & breathing, Guided imagery, Creative visualization, Simple touch, Music therapy, Basic massage, Movement & breathwork</strong></p>
+            </div>
+        </section>
+
+        <!-- Therapies Section -->
+        <section id="therapies" class="section">
+            <div class="section-header">
+                <h2>Relaxation & Mind-Body Therapies</h2>
+                <p>Nursing-accessible interventions you can apply</p>
+            </div>
+
+            <!-- Stress vs Relaxation Response -->
+            <div class="response-grid">
+                <div class="response-card stress">
+                    <h4>😰 Stress Response</h4>
+                    <ul>
+                        <li>↑ Heart rate & blood pressure</li>
+                        <li>↑ Blood glucose</li>
+                        <li>↑ Muscle tension</li>
+                        <li>Anxiety, fear, irritability</li>
+                        <li>↑ Metabolic rate</li>
+                        <li>Long-term → DISEASE</li>
+                    </ul>
+                </div>
+                <div class="response-card relaxation">
+                    <h4>😌 Relaxation Response</h4>
+                    <ul>
+                        <li>↓ Heart rate & blood pressure</li>
+                        <li>↓ Oxygen consumption</li>
+                        <li>↑ Peripheral skin temperature</li>
+                        <li>Calm, focus, emotional regulation</li>
+                        <li>↑ Brain activity (specific areas)</li>
+                        <li>Promotes healing & recovery</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Relaxation Therapy -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🧘 Relaxation Therapy</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="card-grid">
+                        <div class="card">
+                            <h3>Progressive Relaxation</h3>
+                            <p>Sequential tightening & releasing of muscle groups. Teaches awareness of tension vs relaxation.</p>
+                            <p style="margin-top: 0.5rem;"><strong>Best for:</strong> Physically healthy patients with adequate energy</p>
+                        </div>
+                        <div class="card">
+                            <h3>Passive Relaxation</h3>
+                            <p>Breathing + imagery WITHOUT muscle contraction. Still the mind and body intentionally.</p>
+                            <p style="margin-top: 0.5rem;"><strong>Best for:</strong> Frail, severely ill, or low-energy patients</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>Clinical Effects of Relaxation:</strong></p>
+                    <ul>
+                        <li>↓ Pain and anxiety</li>
+                        <li>↓ Blood pressure and muscle tension</li>
+                        <li>↓ Opioid use</li>
+                        <li>↑ Sense of control</li>
+                        <li>↑ Well-being and positive psychological state</li>
+                    </ul>
+                    <div class="warning-box">
+                        <h4>⚠️ Limitations</h4>
+                        <p>Progressive relaxation is inappropriate for patients with advanced disease or decreased energy reserves. Use passive relaxation or guided imagery for these individuals.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meditation -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🧘‍♀️ Meditation & Breathing</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Purpose:</strong> Develop MINDFULNESS, not just relaxation. Become more aware of self.</p>
+                    <p style="margin-top: 1rem;"><strong>Five Elements of Meditation:</strong></p>
+                    <ul>
+                        <li>1. Quiet environment</li>
+                        <li>2. Comfortable position</li>
+                        <li>3. Receptive attitude</li>
+                        <li>4. Focus of attention</li>
+                        <li>5. Relaxed breathing</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Clinical Benefits:</strong></p>
+                    <ul>
+                        <li>Improves sleep quality</li>
+                        <li>Reduces depression & anxiety</li>
+                        <li>Enhances coping</li>
+                        <li>Improves quality of life</li>
+                        <li>Improves mood & sense of identity</li>
+                    </ul>
+                    <div class="warning-box">
+                        <h4>⚠️ Limitations</h4>
+                        <p>Not ideal for patients with fear of losing control. Some patients become hypertensive during meditation. May reduce need for antihypertensive, thyroid, or psychotropic medications—monitor closely!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagery -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🖼️ Imagery & Creative Visualization</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Imagery:</strong> Uses conscious mind to create mental images that stimulate physical changes, improve well-being, and enhance self-awareness.</p>
+                    <p><strong>Creative Visualization:</strong> Goal-directed imagery for personal growth & healing—visualize a future that aids personal development.</p>
+                    <p style="margin-top: 1rem;"><strong>Clinical Applications:</strong></p>
+                    <ul>
+                        <li>Pain control and management</li>
+                        <li>Sleep improvement</li>
+                        <li>Anxiety reduction</li>
+                        <li>Chronic conditions: asthma, cancer, migraines</li>
+                        <li>GI disorders (IBS, ulcerative colitis)</li>
+                        <li>Autoimmune disorders</li>
+                        <li>Menstrual syndromes</li>
+                    </ul>
+                    <div class="tip-box">
+                        <h4>💡 Teaching Point</h4>
+                        <p>Individualize imagery scenarios for each patient. Ensure images don't evoke negative memories. Use ALL senses: visual, auditory, proprioceptive, gustatory, and olfactory.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Training-Specific -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>📜 Training-Specific Therapies (Require Certification)</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>These require additional education, certification, or licensure beyond RN:</p>
+                    <ul>
+                        <li><strong>Biofeedback</strong> — Instruments teach voluntary control over HR, BP, muscle tension, brain waves</li>
+                        <li><strong>Acupuncture</strong> — Needle insertion at acupoints along meridians</li>
+                        <li><strong>Therapeutic Massage</strong> — Manipulating soft tissue</li>
+                        <li><strong>Acupressure</strong> — Digital pressure on designated points</li>
+                        <li><strong>Chiropractic</strong> — Spinal manipulation</li>
+                        <li><strong>Pilates</strong> — Exercise system for strength, flexibility, balance</li>
+                        <li><strong>Homeopathy</strong> — Highly diluted substances</li>
+                        <li><strong>Naturopathy</strong> — Natural therapeutics focused on self-healing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Biofeedback -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>📊 Biofeedback</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Definition:</strong> Mind-body technique using instruments to teach self-regulation and voluntary control over physiological responses.</p>
+                    <p style="margin-top: 1rem;"><strong>Teaches Control Over:</strong></p>
+                    <ul>
+                        <li>Heart rate</li>
+                        <li>Blood pressure</li>
+                        <li>Muscle tension</li>
+                        <li>Brain waves</li>
+                        <li>Autonomic nervous system activity</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Effective For:</strong></p>
+                    <ul>
+                        <li>Chronic pain management</li>
+                        <li>Urinary incontinence (adjunctive)</li>
+                        <li>Cardiac arrhythmias</li>
+                        <li>Stroke recovery</li>
+                        <li>Fecal incontinence</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TCM Section -->
+        <section id="tcm" class="section">
+            <div class="section-header">
+                <h2>TCM, Acupuncture & Touch Therapies</h2>
+                <p>Whole medical systems and energy-based therapies</p>
+            </div>
+
+            <!-- TCM -->
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">☯️</div>
+                    <h3>Traditional Chinese Medicine (TCM)</h3>
+                    <p><strong>Core Philosophy:</strong> Health = Balance. Disease = Imbalance of YIN & YANG. Imbalance disrupts QI (vital energy).</p>
+                    <p style="margin-top: 1rem;"><strong>Assessment Methods:</strong></p>
+                    <ul>
+                        <li>Observe (tongue, complexion)</li>
+                        <li>Hear/smell</li>
+                        <li>Interview/ask</li>
+                        <li>Palpate (pulse)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌀</div>
+                    <h3>TCM Therapeutic Modalities</h3>
+                    <ul>
+                        <li><strong>Acupuncture</strong> — Needles at acupoints</li>
+                        <li><strong>Chinese herbs</strong> — Plant-based remedies</li>
+                        <li><strong>Cupping</strong> — Heated cups on skin</li>
+                        <li><strong>Moxibustion</strong> — Burning herbs on/near skin</li>
+                        <li><strong>Qi gong</strong> — Movement to balance qi</li>
+                        <li><strong>Tai chi</strong> — Moving meditation</li>
+                        <li><strong>Tui na massage</strong></li>
+                        <li><strong>Diet & lifestyle changes</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>🔑 Key TCM Concepts</h4>
+                <p><strong>Qi</strong> = Vital life energy that flows through meridians<br>
+                <strong>Yin & Yang</strong> = Opposing forces that must stay balanced (cold/hot, dark/light, inner/outer)<br>
+                <strong>Meridians</strong> = Channels through which qi flows (12 primary, 8 secondary)</p>
+            </div>
+
+            <!-- Acupuncture -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>📍 Acupuncture</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Mechanism:</strong> Restores flow of QI through MERIDIANS via ACUPOINTS. Thin needles inserted to realign vital energy.</p>
+                    <p style="margin-top: 1rem;"><strong>Effective For:</strong></p>
+                    <ul>
+                        <li>Low back pain & myofascial pain</li>
+                        <li>Chemotherapy-induced nausea/vomiting</li>
+                        <li>Tension headaches & migraine prevention</li>
+                        <li>Fibromyalgia</li>
+                        <li>Anxiety & depression</li>
+                        <li>Hot flashes & menopausal symptoms</li>
+                        <li>Fatigue</li>
+                        <li>Postoperative pain</li>
+                    </ul>
+                    <div class="warning-box">
+                        <h4>⚠️ Precautions & Contraindications</h4>
+                        <p>Use caution with: pregnant patients, history of seizures, hepatitis carriers, HIV-positive patients. Contraindicated: bleeding disorders, skin infections, valvular heart disease (semipermanent needles). Electroacupuncture contraindicated with pacemakers, arrhythmias, epilepsy, pregnancy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Therapeutic Touch -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>✋ Therapeutic Touch (TT)</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Definition:</strong> Energy-based nursing intervention that affects energy fields surrounding the human body with conscious intent to help or heal.</p>
+                    <p style="margin-top: 1rem;"><strong>Five Phases of Therapeutic Touch:</strong></p>
+                    <div class="phases-container">
+                        <div class="phase-step"><span class="phase-number">1</span>Centering</div>
+                        <div class="phase-step"><span class="phase-number">2</span>Assessing</div>
+                        <div class="phase-step"><span class="phase-number">3</span>Unruffling</div>
+                        <div class="phase-step"><span class="phase-number">4</span>Treating</div>
+                        <div class="phase-step"><span class="phase-number">5</span>Evaluating</div>
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>Effective For:</strong></p>
+                    <ul>
+                        <li>Pain management</li>
+                        <li>Anxiety reduction</li>
+                        <li>Cancer symptom control</li>
+                        <li>Emotional support</li>
+                    </ul>
+                    <div class="warning-box">
+                        <h4>⚠️ Precautions</h4>
+                        <p>Use caution with: patients sensitive to touch (abuse survivors, psychiatric disorders), pregnant patients, neonates, cardiovascular/neurological instabilities, dying patients. Sessions should be time-limited and gentle. Consider cultural appropriateness.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pilates -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🏋️ Pilates</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Six Basic Principles:</strong> Centering, Concentration, Control, Precision, Flow of movement, Breathing</p>
+                    <p style="margin-top: 1rem;"><strong>Benefits:</strong></p>
+                    <ul>
+                        <li>Improves muscle strength & flexibility</li>
+                        <li>Improves coordination & balance</li>
+                        <li>Improves posture</li>
+                        <li>Improves functional status</li>
+                        <li>Reduces fall risk (especially older adults)</li>
+                        <li>Helps chronic back/neck pain</li>
+                        <li>Supports healthy aging</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Low impact—may encourage exercise in reluctant patients!</p>
+                </div>
+            </div>
+
+            <!-- Herbal Therapy -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🌿 Natural Products & Herbal Therapy</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Used by ~18% of U.S. population. Oldest form of medicine!</p>
+                    <p style="margin-top: 1rem;"><strong>Includes:</strong> Herbal medicines, dietary supplements, vitamins, minerals, probiotics, essential oils (aromatherapy)</p>
+                    <p style="margin-top: 1rem;"><strong>Common Therapeutic Uses:</strong></p>
+                    <ul>
+                        <li>Pain management</li>
+                        <li>Menopausal symptoms</li>
+                        <li>Diabetes management</li>
+                        <li>Immune support</li>
+                        <li>Anxiety & sleep</li>
+                        <li>Digestive disorders</li>
+                    </ul>
+                    <div class="warning-box">
+                        <h4>⚠️ Major Safety Issue: DRUG INTERACTIONS</h4>
+                        <p>Herbal medicines are NOT regulated by FDA! Always ask patients about ALL herbs, teas, supplements. Many interact with conventional medications (anticoagulants, cardiac drugs, HIV medications). Some patients don't consider these as "medications."</p>
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>Common Herb Interactions to Know:</strong></p>
+                    <ul>
+                        <li><strong>Garlic</strong> — Interacts with warfarin & blood thinners</li>
+                        <li><strong>Ginkgo</strong> — Interacts with anticoagulants, NSAIDs</li>
+                        <li><strong>Ginger</strong> — Interacts with warfarin, anticoagulants</li>
+                        <li><strong>Valerian</strong> — Interacts with barbiturates, alcohol</li>
+                        <li><strong>Echinacea</strong> — Interacts with immunosuppressants</li>
+                        <li><strong>Licorice</strong> — Interacts with digoxin, antihypertensives</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nursing-box">
+                <h4>🩺 Nursing Clinical Judgment Framework</h4>
+                <p>When recommending therapies, evaluate: (1) Evidence of benefit & risk, (2) Patient condition & energy level, (3) Cultural beliefs, (4) Patient preferences, (5) Interaction with medications, (6) Need for specialized referral</p>
+            </div>
+
+            <div class="tip-box">
+                <h4>📌 Core Exam Truth</h4>
+                <p><strong>"Healing is not only what medicine does to the body, but what the person learns to do for themselves."</strong></p>
+            </div>
+        </section>
+
+        <!-- Flashcards Section -->
+        <section id="flashcards" class="section">
+            <div class="section-header">
+                <h2>Flashcards</h2>
+                <p>Tap to flip and test your knowledge!</p>
+            </div>
+
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-face flashcard-front">
+                        <h3 id="flashcard-term">Complementary Therapy</h3>
+                        <p id="flashcard-hint">Definition</p>
+                        <p class="tap-hint">👆 Tap to reveal answer</p>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <p id="flashcard-answer">Therapies used TOGETHER WITH conventional medical treatment. They COMPLEMENT biomedical care.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard-controls">
+                <button class="flashcard-btn prev" onclick="prevCard()">← Previous</button>
+                <button class="flashcard-btn next" onclick="nextCard()">Next →</button>
+            </div>
+            <p class="flashcard-counter"><span id="currentCard">1</span> of <span id="totalCards">24</span></p>
+        </section>
+
+        <!-- Key Terms Section -->
+        <section id="keyterms" class="section">
+            <div class="section-header">
+                <h2>Key Terms</h2>
+                <p>Master these essential CAM vocabulary words</p>
+            </div>
+
+            <div class="terms-grid">
+                <div class="term-card">
+                    <h4>Allopathic/Biomedicine</h4>
+                    <p>Conventional Western medicine focusing on disease, pathology, and pharmacologic/surgical treatment.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Complementary Therapy</h4>
+                    <p>Therapies used TOGETHER WITH conventional treatment recommended by health care provider.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Alternative Therapy</h4>
+                    <p>Therapies used INSTEAD OF conventional medical treatment; become primary treatment.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Integrative Therapy</h4>
+                    <p>Evidence-based combination of conventional and complementary therapies to achieve optimal health.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Integrative Health Care</h4>
+                    <p>System where patients are treated by a team using both biomedical and complementary approaches.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Integrative Nursing</h4>
+                    <p>Whole-person care grounded in evidence, using traditional and emerging interventions through caring relationships.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Whole Medical Systems</h4>
+                    <p>Complete systems of theory and practice that evolved independently from biomedicine (TCM, Ayurveda, etc.).</p>
+                </div>
+                <div class="term-card">
+                    <h4>Traditional Chinese Medicine</h4>
+                    <p>Ancient healing system focused on balancing yin/yang energies; includes acupuncture, herbs, qi gong, tai chi.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Qi (Vital Energy)</h4>
+                    <p>Life force or vital energy in TCM that flows through meridians; imbalance causes disease.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Yin and Yang</h4>
+                    <p>Opposing yet complementary forces in TCM that must stay balanced for health (cold/hot, dark/light).</p>
+                </div>
+                <div class="term-card">
+                    <h4>Acupoints</h4>
+                    <p>Specific points along meridians where acupuncture needles are inserted to influence qi flow.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Acupuncture</h4>
+                    <p>Inserting thin needles at acupoints along meridians to regulate qi and produce therapeutic effects.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Moxibustion</h4>
+                    <p>Burning moxa (dried herbs) on or near the skin to apply heat and promote healing.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Cupping</h4>
+                    <p>Placing heated cups on the skin to create slight suction for therapeutic effect.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Tai Chi</h4>
+                    <p>Moving meditation incorporating breath, movement, and meditation to balance qi; improves balance.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Qi Gong</h4>
+                    <p>Choreographed movements designed to promote and manipulate the flow of qi within the body.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Relaxation Response</h4>
+                    <p>Physiological state characterized by ↓HR, ↓BP, ↓O2 consumption, promoting healing and calm.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Progressive Relaxation</h4>
+                    <p>Sequentially tightening and releasing muscle groups to learn difference between tension and relaxation.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Passive Relaxation</h4>
+                    <p>Stilling mind and body through breathing and imagery WITHOUT muscle contraction; for low-energy patients.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Meditation</h4>
+                    <p>Activity that limits stimulus input by directing attention to single focus to develop mindfulness.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Imagery/Visualization</h4>
+                    <p>Using conscious mind to create mental images that stimulate physical changes and improve well-being.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Creative Visualization</h4>
+                    <p>Goal-directed imagery to visualize a future that aids personal development and desired change.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Biofeedback</h4>
+                    <p>Using instruments to provide feedback about physiological functions; teaches voluntary self-control.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Therapeutic Touch (TT)</h4>
+                    <p>Energy-based therapy using practitioner's hands on or near body to influence patient's energy field.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Pilates</h4>
+                    <p>Exercise system focusing on centering, control, precision, and breathing to improve strength and balance.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Matching Game Section -->
+        <section id="matching" class="section">
+            <div class="section-header">
+                <h2>Matching Game</h2>
+                <p>Match the term with its definition!</p>
+            </div>
+
+            <div class="matching-container">
+                <div class="matching-column">
+                    <h4>Terms</h4>
+                    <div id="terms-column"></div>
+                </div>
+                <div class="matching-column">
+                    <h4>Definitions</h4>
+                    <div id="definitions-column"></div>
+                </div>
+            </div>
+
+            <div class="matching-score" id="matching-score">Matched: 0 / 8</div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <button class="flashcard-btn next" onclick="resetMatching()">🔄 Reset Game</button>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="section-header">
+                <h2>Knowledge Check Quiz</h2>
+                <p>Test what you've learned!</p>
+            </div>
+
+            <div class="quiz-container" id="quiz-container">
+                <!-- Quiz will be populated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>🌿 Potter Chapter 32: Complementary & Integrative Therapies | Good luck on your exam! 🌟</p>
+    </footer>
+
+    <script>
+        // Flashcard Data
+        const flashcards = [
+            { term: "Complementary Therapy", hint: "Definition", answer: "Therapies used TOGETHER WITH conventional medical treatment. They COMPLEMENT biomedical care. Examples: guided imagery, relaxation, massage." },
+            { term: "Alternative Therapy", hint: "Definition", answer: "Therapies used INSTEAD OF conventional medical treatment. They become the PRIMARY treatment, replacing biomedical care." },
+            { term: "Integrative Therapy", hint: "Definition", answer: "Evidence-based combination of BOTH conventional and complementary therapies to achieve optimal health and healing." },
+            { term: "Allopathic Medicine", hint: "Western Medicine", answer: "Conventional Western medicine (biomedicine). Focuses on disease, pathology, diagnosis, and pharmacologic/surgical treatment." },
+            { term: "Qi (Chi)", hint: "TCM Concept", answer: "Vital life energy in Traditional Chinese Medicine. Flows through meridians. Imbalance or blockage causes disease." },
+            { term: "Yin and Yang", hint: "TCM Concept", answer: "Opposing yet complementary forces that must stay balanced for health. Examples: cold/hot, dark/light, inner/outer." },
+            { term: "Relaxation Response", hint: "Physiological State", answer: "↓Heart rate, ↓BP, ↓O2 consumption, ↑peripheral skin temperature, calm state. Opposite of stress response. Promotes healing." },
+            { term: "Stress Response", hint: "Physiological State", answer: "↑Heart rate, ↑BP, ↑glucose, muscle tension, anxiety. Long-term activation leads to disease risk." },
+            { term: "Progressive Relaxation", hint: "Relaxation Type", answer: "Sequential tightening and releasing of muscle groups. Teaches awareness of tension vs relaxation. Best for physically healthy patients." },
+            { term: "Passive Relaxation", hint: "Relaxation Type", answer: "Breathing + imagery WITHOUT muscle contraction. Best for frail, severely ill, or low-energy patients." },
+            { term: "Meditation", hint: "Mind-Body Therapy", answer: "Limiting stimulus input by directing attention to single focus to develop MINDFULNESS. Five elements: quiet space, comfort, receptive attitude, focus, relaxed breathing." },
+            { term: "Imagery", hint: "Mind-Body Therapy", answer: "Using conscious mind to create mental images that stimulate physical changes, improve well-being, and enhance self-awareness." },
+            { term: "Creative Visualization", hint: "Type of Imagery", answer: "Goal-directed imagery to visualize a positive future that aids personal development and brings about desired change." },
+            { term: "Biofeedback", hint: "Training-Specific Therapy", answer: "Using instruments to teach voluntary self-control over physiological responses: HR, BP, muscle tension, brain waves." },
+            { term: "Acupuncture", hint: "TCM Therapy", answer: "Inserting thin needles at ACUPOINTS along MERIDIANS to regulate QI flow. Effective for pain, nausea, migraines, anxiety." },
+            { term: "Acupoints", hint: "TCM Term", answer: "Specific points along meridians where acupuncture needles are inserted to influence qi flow and balance." },
+            { term: "Therapeutic Touch (TT)", hint: "Energy Therapy", answer: "Energy-based nursing intervention using practitioner's hands on or near body to influence patient's energy field. Five phases: Centering, Assessing, Unruffling, Treating, Evaluating." },
+            { term: "Tai Chi", hint: "Movement Therapy", answer: "Moving meditation incorporating breath, movement, and awareness. Improves balance, reduces falls, balances qi. Originally a martial art." },
+            { term: "Qi Gong", hint: "Movement Therapy", answer: "Choreographed movements designed to promote and manipulate the flow of qi within the body." },
+            { term: "Moxibustion", hint: "TCM Therapy", answer: "Burning moxa (dried herbs with healing properties) on or near the skin to apply heat and promote healing." },
+            { term: "Cupping", hint: "TCM Therapy", answer: "Placing heated cups on the skin to create slight suction for therapeutic effect." },
+            { term: "Pilates", hint: "Movement Therapy", answer: "Exercise system based on six principles: Centering, Concentration, Control, Precision, Flow, Breathing. Improves strength, flexibility, balance." },
+            { term: "Whole Medical Systems", hint: "Category of CAM", answer: "Complete systems of theory and practice evolved independently from biomedicine: TCM, Ayurveda, Homeopathy, Naturopathy, Indigenous healing." },
+            { term: "Herbal Therapy Safety", hint: "Clinical Concern", answer: "Major issue: DRUG INTERACTIONS! Not FDA regulated. Always ask about ALL herbs, supplements, teas. Many interact with anticoagulants, cardiac meds." }
+        ];
+
+        let currentFlashcard = 0;
+
+        // Quiz Data
+        const quizQuestions = [
+            {
+                question: "A patient uses yoga for chronic pain management while also taking prescribed NSAIDs. This is an example of:",
+                options: ["Alternative therapy", "Complementary therapy", "Allopathic therapy", "Whole medical system"],
+                correct: 1,
+                explanation: "Complementary = used WITH conventional medicine. Alternative = used INSTEAD OF conventional medicine."
+            },
+            {
+                question: "Which therapy category includes acupuncture, Reiki, and Therapeutic Touch?",
+                options: ["Biologically based therapies", "Energy therapies", "Mind-body interventions", "Manipulative therapies"],
+                correct: 1,
+                explanation: "Energy therapies use or manipulate energy fields. They include acupuncture, Reiki, Healing Touch, Therapeutic Touch, and magnet therapy."
+            },
+            {
+                question: "The relaxation response is characterized by all of the following EXCEPT:",
+                options: ["Decreased heart rate", "Decreased blood pressure", "Increased muscle tension", "Decreased oxygen consumption"],
+                correct: 2,
+                explanation: "The relaxation response DECREASES muscle tension. Increased muscle tension is part of the stress response."
+            },
+            {
+                question: "Which type of relaxation is most appropriate for a patient with advanced cancer who has limited energy?",
+                options: ["Progressive relaxation", "Active muscle contraction", "Passive relaxation", "Vigorous exercise"],
+                correct: 2,
+                explanation: "Passive relaxation (breathing + imagery without muscle contraction) is best for frail, severely ill, or low-energy patients."
+            },
+            {
+                question: "The five elements of meditation include all EXCEPT:",
+                options: ["Quiet environment", "Muscle contraction", "Receptive attitude", "Focus of attention"],
+                correct: 1,
+                explanation: "Five elements: Quiet space, Comfortable position, Receptive attitude, Focus of attention, Relaxed breathing. Muscle contraction is for progressive relaxation."
+            },
+            {
+                question: "In TCM, what is Qi?",
+                options: ["A type of herbal medicine", "Vital life energy", "A breathing technique", "A massage modality"],
+                correct: 1,
+                explanation: "Qi (chi) is the vital life energy that flows through meridians. Imbalance or blockage of qi causes disease."
+            },
+            {
+                question: "Which is the correct order of Therapeutic Touch phases?",
+                options: ["Assessing, Centering, Treating, Evaluating, Unruffling", "Centering, Assessing, Unruffling, Treating, Evaluating", "Treating, Assessing, Centering, Unruffling, Evaluating", "Evaluating, Centering, Assessing, Treating, Unruffling"],
+                correct: 1,
+                explanation: "TT phases in order: (1) Centering, (2) Assessing, (3) Unruffling, (4) Treating, (5) Evaluating."
+            },
+            {
+                question: "A major safety concern with herbal therapies is:",
+                options: ["They are too expensive", "Drug interactions", "They require a prescription", "They are FDA regulated"],
+                correct: 1,
+                explanation: "Major concern: DRUG INTERACTIONS! Herbal medicines are NOT FDA regulated. Many interact with anticoagulants, cardiac medications, and immunosuppressants."
+            },
+            {
+                question: "Which herb interacts with warfarin and other anticoagulants?",
+                options: ["Chamomile", "Echinacea", "Garlic", "Valerian"],
+                correct: 2,
+                explanation: "Garlic inhibits platelet aggregation and interacts with warfarin, blood thinners, and anti-HIV drugs. Ginger and Ginkgo also interact with anticoagulants."
+            },
+            {
+                question: "Acupuncture works by:",
+                options: ["Blocking nerve impulses", "Restoring flow of qi through meridians", "Stimulating muscle contraction", "Releasing endogenous opioids only"],
+                correct: 1,
+                explanation: "Acupuncture restores flow of QI through MERIDIANS via needle insertion at ACUPOINTS. It also modifies how pain is processed centrally."
+            },
+            {
+                question: "Biofeedback teaches patients voluntary control over:",
+                options: ["Only blood pressure", "Only heart rate", "Physiological responses including HR, BP, muscle tension, brain waves", "Only respiratory rate"],
+                correct: 2,
+                explanation: "Biofeedback uses instruments to teach control over multiple physiological responses: HR, BP, muscle tension, brain waves, and autonomic activity."
+            },
+            {
+                question: "Which patient would be INAPPROPRIATE for progressive relaxation?",
+                options: ["Patient with hypertension", "Patient with anxiety", "Patient with advanced AIDS and fatigue", "Patient preparing for surgery"],
+                correct: 2,
+                explanation: "Progressive relaxation requires moderate energy expenditure. It's inappropriate for patients with advanced disease or decreased energy reserves."
+            },
+            {
+                question: "Tai chi is effective for:",
+                options: ["Only young athletes", "Improving balance and reducing falls in older adults", "Replacing all conventional medications", "Only treating acute illness"],
+                correct: 1,
+                explanation: "Tai chi is effective for improving balance, reducing falls, and controlling pain in older adults. It's a moving meditation."
+            },
+            {
+                question: "Which is a contraindication for acupuncture?",
+                options: ["Chronic pain", "Nausea", "Bleeding disorders", "Migraines"],
+                correct: 2,
+                explanation: "Acupuncture is contraindicated in persons with bleeding disorders and skin infections. Use caution with pregnancy, seizures, hepatitis, HIV."
+            },
+            {
+                question: "The six basic principles of Pilates include all EXCEPT:",
+                options: ["Centering", "Control", "Rapid movement", "Breathing"],
+                correct: 2,
+                explanation: "Six Pilates principles: Centering, Concentration, Control, Precision, Flow of movement (not rapid!), and Breathing."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        // Matching Game Data
+        const matchingPairs = [
+            { term: "Complementary", definition: "Used WITH conventional" },
+            { term: "Alternative", definition: "Used INSTEAD OF" },
+            { term: "Qi", definition: "Vital life energy" },
+            { term: "Yin & Yang", definition: "Opposing balanced forces" },
+            { term: "Acupoints", definition: "Needle insertion sites" },
+            { term: "Biofeedback", definition: "Instrument-based control" },
+            { term: "Passive Relaxation", definition: "For low-energy patients" },
+            { term: "Therapeutic Touch", definition: "5 phases of energy work" }
+        ];
+
+        let selectedTerm = null;
+        let matchedCount = 0;
+
+        // Track progress
+        let sectionsVisited = new Set(['overview']);
+
+        function updateProgress() {
+            const totalSections = 7;
+            const progress = (sectionsVisited.size / totalSections) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+            
+            sectionsVisited.add(sectionId);
+            updateProgress();
+
+            if (sectionId === 'quiz' && !document.querySelector('.quiz-card')) {
+                loadQuiz();
+            }
+            if (sectionId === 'matching' && !document.querySelector('.matching-item')) {
+                initMatching();
+            }
+        }
+
+        // Accordion
+        function toggleAccordion(el) {
+            el.classList.toggle('open');
+        }
+
+        // Flashcards
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        function updateFlashcard() {
+            const card = document.querySelector('.flashcard');
+            card.classList.remove('flipped');
+            
+            document.getElementById('flashcard-term').textContent = flashcards[currentFlashcard].term;
+            document.getElementById('flashcard-hint').textContent = flashcards[currentFlashcard].hint;
+            document.getElementById('flashcard-answer').textContent = flashcards[currentFlashcard].answer;
+            document.getElementById('currentCard').textContent = currentFlashcard + 1;
+            document.getElementById('totalCards').textContent = flashcards.length;
+        }
+
+        function nextCard() {
+            currentFlashcard = (currentFlashcard + 1) % flashcards.length;
+            updateFlashcard();
+        }
+
+        function prevCard() {
+            currentFlashcard = (currentFlashcard - 1 + flashcards.length) % flashcards.length;
+            updateFlashcard();
+        }
+
+        // Quiz
+        function loadQuiz() {
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const container = document.getElementById('quiz-container');
+            
+            if (currentQuestion >= quizQuestions.length) {
+                showScore();
+                return;
+            }
+
+            const q = quizQuestions[currentQuestion];
+            answered = false;
+
+            container.innerHTML = `
+                <div class="quiz-card">
+                    <div class="quiz-question">${currentQuestion + 1}. ${q.question}</div>
+                    <div class="quiz-options">
+                        ${q.options.map((opt, i) => `
+                            <div class="quiz-option" onclick="selectAnswer(${i})">${opt}</div>
+                        `).join('')}
+                    </div>
+                    <div class="quiz-feedback" id="feedback"></div>
+                    <div class="quiz-nav">
+                        <span class="quiz-progress">Question ${currentQuestion + 1} of ${quizQuestions.length}</span>
+                        <button class="flashcard-btn next" onclick="nextQuestion()" id="next-btn" style="display: none;">Next →</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectAnswer(index) {
+            if (answered) return;
+            answered = true;
+
+            const q = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('feedback');
+
+            options.forEach((opt, i) => {
+                if (i === q.correct) {
+                    opt.classList.add('correct');
+                } else if (i === index && i !== q.correct) {
+                    opt.classList.add('incorrect');
+                }
+            });
+
+            if (index === q.correct) {
+                score++;
+                feedback.textContent = '✅ Correct! ' + q.explanation;
+                feedback.classList.add('correct');
+            } else {
+                feedback.textContent = '❌ ' + q.explanation;
+                feedback.classList.add('incorrect');
+            }
+
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            renderQuestion();
+        }
+
+        function showScore() {
+            const container = document.getElementById('quiz-container');
+            const percentage = Math.round((score / quizQuestions.length) * 100);
+            let message = '';
+            
+            if (percentage === 100) message = '🌿 Perfect! You\'ve mastered CAM therapies!';
+            else if (percentage >= 80) message = '🎉 Great job! Review TCM concepts!';
+            else if (percentage >= 60) message = '👍 Good effort! Focus on terminology differences.';
+            else message = '📚 Keep studying! Focus on complementary vs alternative!';
+
+            container.innerHTML = `
+                <div class="score-display">
+                    <h3>Quiz Complete!</h3>
+                    <div class="score-number">${percentage}%</div>
+                    <p>You got ${score} out of ${quizQuestions.length} correct</p>
+                    <p class="score-message">${message}</p>
+                    <button class="restart-btn" onclick="restartQuiz()">Try Again</button>
+                </div>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            renderQuestion();
+        }
+
+        // Matching Game
+        function initMatching() {
+            const termsCol = document.getElementById('terms-column');
+            const defsCol = document.getElementById('definitions-column');
+            
+            // Shuffle arrays
+            const shuffledTerms = [...matchingPairs].sort(() => Math.random() - 0.5);
+            const shuffledDefs = [...matchingPairs].sort(() => Math.random() - 0.5);
+
+            termsCol.innerHTML = shuffledTerms.map((p, i) => `
+                <div class="matching-item term" data-pair="${p.term}" onclick="selectTerm(this)">${p.term}</div>
+            `).join('');
+
+            defsCol.innerHTML = shuffledDefs.map((p, i) => `
+                <div class="matching-item definition" data-pair="${p.term}" onclick="selectDefinition(this)">${p.definition}</div>
+            `).join('');
+
+            matchedCount = 0;
+            updateMatchingScore();
+        }
+
+        function selectTerm(el) {
+            if (el.classList.contains('matched')) return;
+            
+            document.querySelectorAll('.term').forEach(t => t.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedTerm = el.dataset.pair;
+        }
+
+        function selectDefinition(el) {
+            if (!selectedTerm || el.classList.contains('matched')) return;
+
+            if (el.dataset.pair === selectedTerm) {
+                // Correct match
+                el.classList.add('matched');
+                document.querySelector(`.term[data-pair="${selectedTerm}"]`).classList.add('matched');
+                document.querySelector(`.term[data-pair="${selectedTerm}"]`).classList.remove('selected');
+                matchedCount++;
+                updateMatchingScore();
+            } else {
+                // Wrong match
+                el.classList.add('wrong');
+                setTimeout(() => el.classList.remove('wrong'), 500);
+            }
+            
+            selectedTerm = null;
+        }
+
+        function updateMatchingScore() {
+            document.getElementById('matching-score').textContent = `Matched: ${matchedCount} / ${matchingPairs.length}`;
+            
+            if (matchedCount === matchingPairs.length) {
+                document.getElementById('matching-score').textContent = '🎉 All matched! Great job!';
+            }
+        }
+
+        function resetMatching() {
+            selectedTerm = null;
+            matchedCount = 0;
+            initMatching();
+        }
+
+        // Initialize
+        updateFlashcard();
+        updateProgress();
+    </script>
+</body>
+</html>
