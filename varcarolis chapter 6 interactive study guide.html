@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6: Ethical & Legal Issues in Psychiatric Nursing | Interactive Study Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4A3B6B;
+            --primary-light: #6B5B8B;
+            --secondary: #D4A574;
+            --accent: #8B6B5B;
+            --bg-cream: #FBF9F7;
+            --bg-lavender: #F0EBF4;
+            --text-dark: #2D2A3E;
+            --text-muted: #5D5A6B;
+            --success: #5B8B6B;
+            --error: #9B5B5B;
+            --card-shadow: 0 8px 32px rgba(74, 59, 107, 0.12);
+            --hover-shadow: 0 12px 48px rgba(74, 59, 107, 0.18);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #7B6B9B 100%);
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 4px;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .progress-bar {
+            background: var(--secondary);
+            height: 8px;
+            border-radius: 50px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            padding: 2rem;
+            background: var(--bg-lavender);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-tab {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab:hover, .nav-tab.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74, 59, 107, 0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(74, 59, 107, 0.08);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .card ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .card ul li::before {
+            content: '⚖️';
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+        }
+
+        /* Principles Table */
+        .principles-table {
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin: 2rem 0;
+        }
+
+        .principles-table thead {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+
+        .principles-table th {
+            padding: 1.25rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .principles-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid rgba(74, 59, 107, 0.1);
+        }
+
+        .principles-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .principles-table tr:hover {
+            background: rgba(74, 59, 107, 0.03);
+        }
+
+        .principle-badge {
+            display: inline-block;
+            background: var(--bg-lavender);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Flashcards */
+        .flashcard-container {
+            perspective: 1000px;
+            margin: 2rem auto;
+            max-width: 500px;
+        }
+
+        .flashcard {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+
+        .flashcard-front h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .flashcard-front p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .flashcard-back {
+            background: white;
+            transform: rotateY(180deg);
+            border: 3px solid var(--secondary);
+        }
+
+        .flashcard-back p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .flashcard-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .flashcard-btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .flashcard-btn.prev, .flashcard-btn.next {
+            background: var(--primary);
+            color: white;
+        }
+
+        .flashcard-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(74, 59, 107, 0.3);
+        }
+
+        .flashcard-counter {
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .tap-hint {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 1rem;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .quiz-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quiz-option {
+            padding: 1rem 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .quiz-option:hover:not(.selected):not(.correct):not(.incorrect) {
+            border-color: var(--primary);
+            background: rgba(74, 59, 107, 0.05);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary);
+            background: rgba(74, 59, 107, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: var(--success);
+            background: rgba(91, 139, 107, 0.15);
+            color: var(--success);
+        }
+
+        .quiz-option.incorrect {
+            border-color: var(--error);
+            background: rgba(155, 91, 91, 0.15);
+            color: var(--error);
+        }
+
+        .quiz-feedback {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .quiz-feedback.correct {
+            background: rgba(91, 139, 107, 0.15);
+            color: var(--success);
+            display: block;
+        }
+
+        .quiz-feedback.incorrect {
+            background: rgba(155, 91, 91, 0.15);
+            color: var(--error);
+            display: block;
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .quiz-progress {
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* Score Display */
+        .score-display {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 24px;
+            color: white;
+        }
+
+        .score-display h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .score-number {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .score-message {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .restart-btn {
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background: var(--secondary);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .restart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        /* Accordion */
+        .accordion {
+            margin-bottom: 1rem;
+        }
+
+        .accordion-header {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(74, 59, 107, 0.08);
+        }
+
+        .accordion-header:hover {
+            background: rgba(74, 59, 107, 0.03);
+        }
+
+        .accordion-header h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion.open .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            background: white;
+            border-radius: 0 0 16px 16px;
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            margin-top: -8px;
+        }
+
+        .accordion.open .accordion-content {
+            max-height: 2000px;
+            padding: 1.5rem;
+        }
+
+        .accordion-content p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .accordion-content ul {
+            list-style: none;
+        }
+
+        .accordion-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .accordion-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Key Terms */
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .term-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .term-card:hover {
+            transform: translateX(5px);
+        }
+
+        .term-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .term-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Matching Game */
+        .matching-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .matching-column h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .matching-item {
+            padding: 1rem 1.5rem;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .matching-item:hover:not(.matched) {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+
+        .matching-item.selected {
+            border-color: var(--secondary);
+            background: rgba(212, 165, 116, 0.1);
+        }
+
+        .matching-item.matched {
+            background: rgba(91, 139, 107, 0.15);
+            border-color: var(--success);
+            cursor: default;
+        }
+
+        .matching-item.wrong {
+            animation: shake 0.5s ease;
+            border-color: var(--error);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .matching-score {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Scenario Cards */
+        .scenario-card {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(212, 165, 116, 0.05));
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .scenario-card h4 {
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .scenario-card p {
+            color: var(--text-dark);
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(212, 165, 116, 0.05));
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .tip-box h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tip-box p {
+            color: var(--text-dark);
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, rgba(155, 91, 91, 0.1), rgba(155, 91, 91, 0.05));
+            border-left: 4px solid var(--error);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            color: var(--error);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Comparison Tables */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+
+        .comparison-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--bg-lavender);
+        }
+
+        .comparison-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-tabs {
+                padding: 1rem;
+            }
+            
+            .nav-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .matching-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .flashcard {
+                height: 380px;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .principles-table {
+                font-size: 0.9rem;
+            }
+
+            .principles-table th, .principles-table td {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">⚖️</div>
+            <h1>Chapter 6 Study Guide</h1>
+            <p>Ethical & Legal Issues in Psychiatric Nursing</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p class="progress-text">Track your progress as you learn!</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+        <button class="nav-tab active" onclick="showSection('overview')">📚 Overview</button>
+        <button class="nav-tab" onclick="showSection('principles')">⚖️ 6 Principles</button>
+        <button class="nav-tab" onclick="showSection('flashcards')">🎴 Flashcards</button>
+        <button class="nav-tab" onclick="showSection('keyterms')">📖 Key Terms</button>
+        <button class="nav-tab" onclick="showSection('matching')">🎯 Matching</button>
+        <button class="nav-tab" onclick="showSection('quiz')">✅ Quiz</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Overview Section -->
+        <section id="overview" class="section active">
+            <div class="section-header">
+                <h2>Core Concepts</h2>
+                <p>Understanding ethics and law in psychiatric nursing</p>
+            </div>
+
+            <!-- Ethics vs Bioethics -->
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🧭</div>
+                    <h3>Morals vs Ethics vs Bioethics</h3>
+                    <ul>
+                        <li><strong>Morals:</strong> Personal beliefs about right/wrong</li>
+                        <li><strong>Ethics:</strong> Professional/social standards; "What SHOULD be done?"</li>
+                        <li><strong>Bioethics:</strong> Ethics applied specifically to healthcare</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔐</div>
+                    <h3>Why This Matters in Psychiatry</h3>
+                    <p>Psychiatric patients may have impaired:</p>
+                    <ul>
+                        <li>Thinking & judgment</li>
+                        <li>Mood regulation</li>
+                        <li>Decision-making capacity</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Therefore, ethical & legal safeguards are <strong>critical</strong> for protection.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>⚠️ High-Yield Test Content!</h4>
+                <p>The <strong>Six Ethical Principles</strong> and <strong>Patient Rights</strong> sections are heavily tested. Make sure to memorize the principles and their examples!</p>
+            </div>
+
+            <!-- Hospitalization -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🏥 Hospitalization & Admission Types</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Hospitalization is appropriate when:</strong></p>
+                    <ul>
+                        <li>Mental illness is present</li>
+                        <li>Crisis exists</li>
+                        <li>Less restrictive care is inadequate</li>
+                        <li>Treatment is expected to help</li>
+                    </ul>
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Voluntary</h4>
+                            <p>Patient agrees to admission; can request release</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Involuntary</h4>
+                            <p>Court-ordered; patient meets commitment criteria</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Emergency</h4>
+                            <p>Temporary (24-96 hrs) for immediate crisis</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>Criteria for Involuntary Commitment:</strong></p>
+                    <ul>
+                        <li>Diagnosed with mental illness</li>
+                        <li>Danger to self or others</li>
+                        <li>Gravely disabled (can't meet basic needs)</li>
+                        <li>Illness prevents voluntary help-seeking</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🚪 Discharge Types</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Unconditional</h4>
+                            <p>Full discharge; no requirements</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Conditional</h4>
+                            <p>Must follow outpatient treatment plan</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Assisted Outpatient</h4>
+                            <p>Court-ordered outpatient care</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>AMA</h4>
+                            <p>Against Medical Advice; patient signs form</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>📋 Patient Rights (HIGH-YIELD!)</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Right to Treatment includes:</strong></p>
+                    <ul>
+                        <li>Safe environment</li>
+                        <li>Privacy & dignity</li>
+                        <li>Least restrictive care</li>
+                        <li>Freedom from unnecessary medications</li>
+                        <li>Informed consent</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Right to Refuse Treatment:</strong></p>
+                    <p>Patient may refuse ANY treatment UNLESS:</p>
+                    <ul>
+                        <li>Emergency situation</li>
+                        <li>Patient lacks capacity</li>
+                        <li>Court order exists</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>✍️ Informed Consent</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Patient must be informed of:</strong></p>
+                    <ul>
+                        <li>Diagnosis (nature of problem)</li>
+                        <li>Purpose of treatment</li>
+                        <li>Risks & benefits</li>
+                        <li>Alternative options</li>
+                        <li>Probability of success</li>
+                        <li>Risks of refusing treatment</li>
+                    </ul>
+                    <div class="comparison-grid" style="margin-top: 1rem;">
+                        <div class="comparison-card">
+                            <h4>Capacity</h4>
+                            <p><strong>Clinical</strong> judgment of ability to understand and decide</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Competency</h4>
+                            <p><strong>Legal</strong> determination by a court</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>Implied Consent:</strong> Consent shown by patient's behavior (e.g., extending arm for injection)</p>
+                </div>
+            </div>
+
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🔒 Restraint & Seclusion</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Restraint:</strong> Any method that restricts movement (physical, mechanical, or chemical)</p>
+                    <p><strong>Seclusion:</strong> Isolating patient in a room for safety</p>
+                    <div class="warning-box">
+                        <h4>⚠️ Legal Rules:</h4>
+                        <p>Only for safety • Least restrictive method • Shortest time possible • NEVER as punishment</p>
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>Try These Alternatives FIRST:</strong></p>
+                    <ul>
+                        <li>Verbal de-escalation</li>
+                        <li>Reduce stimulation</li>
+                        <li>PRN medication</li>
+                        <li>Active listening</li>
+                        <li>Diversion activities</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🤐 Confidentiality & Duty to Protect</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Confidentiality:</strong> Protect all private patient information</p>
+                    <p><strong>HIPAA:</strong> Federal law protecting health information</p>
+                    <div class="warning-box">
+                        <h4>⚠️ When to BREAK Confidentiality:</h4>
+                        <p>
+                            <strong>Duty to Warn/Protect</strong> requires breaking confidentiality when:
+                        </p>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>Serious threat to an identifiable person</li>
+                            <li>Suspected abuse (child, elder, dependent adult)</li>
+                            <li>Imminent risk of harm to self or others</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>⚖️ Legal Terms for Nurses</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Tort</h4>
+                            <p>Civil wrongdoing</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Assault</h4>
+                            <p>Threat of harm</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Battery</h4>
+                            <p>Harmful/unwanted contact</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>False Imprisonment</h4>
+                            <p>Unlawful confinement</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Negligence</h4>
+                            <p>Failure to use reasonable care</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Malpractice</h4>
+                            <p>Professional negligence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>📝 Documentation & Standards</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="tip-box">
+                        <h4>📌 Golden Rule of Documentation:</h4>
+                        <p>If it's <strong>NOT documented</strong>, legally it <strong>did NOT happen!</strong></p>
+                    </div>
+                    <p><strong>Good documentation:</strong></p>
+                    <ul>
+                        <li>Protects the patient</li>
+                        <li>Protects the nurse</li>
+                        <li>Demonstrates safe care</li>
+                        <li>Serves as legal evidence</li>
+                    </ul>
+                    <p style="margin-top: 1rem;"><strong>Nurses are legally accountable to:</strong></p>
+                    <ul>
+                        <li>Nurse Practice Acts</li>
+                        <li>Professional standards (ANA)</li>
+                        <li>Facility policies</li>
+                        <li>Customary practice</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🚨 If You Suspect Unsafe/Illegal Care</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Steps to take:</strong></p>
+                    <ul>
+                        <li>1️⃣ Protect the patient first</li>
+                        <li>2️⃣ Document the facts objectively</li>
+                        <li>3️⃣ Report via chain of command</li>
+                        <li>4️⃣ Follow facility policy</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Six Principles Section -->
+        <section id="principles" class="section">
+            <div class="section-header">
+                <h2>The Six Ethical Principles</h2>
+                <p>MEMORIZE THESE — They're heavily tested!</p>
+            </div>
+
+            <table class="principles-table">
+                <thead>
+                    <tr>
+                        <th>Principle</th>
+                        <th>Meaning</th>
+                        <th>Clinical Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="principle-badge">Autonomy</span></td>
+                        <td>Respect patient's right to choose & make own decisions</td>
+                        <td>Acknowledging patient's right to refuse medication</td>
+                    </tr>
+                    <tr>
+                        <td><span class="principle-badge">Beneficence</span></td>
+                        <td>Act to benefit or promote the well-being of the patient</td>
+                        <td>Spending extra time to calm an anxious patient</td>
+                    </tr>
+                    <tr>
+                        <td><span class="principle-badge">Nonmaleficence</span></td>
+                        <td>Do no harm to the patient</td>
+                        <td>Protecting confidential patient information</td>
+                    </tr>
+                    <tr>
+                        <td><span class="principle-badge">Justice</span></td>
+                        <td>Fair & equal treatment regardless of personal attributes</td>
+                        <td>Equal care for suicide attempt vs. aneurysm patient</td>
+                    </tr>
+                    <tr>
+                        <td><span class="principle-badge">Fidelity</span></td>
+                        <td>Maintain loyalty, keep promises, stay committed</td>
+                        <td>Maintaining expertise through continuing education</td>
+                    </tr>
+                    <tr>
+                        <td><span class="principle-badge">Veracity</span></td>
+                        <td>Tell the truth; communicate honestly</td>
+                        <td>Truthfully describing medication side effects</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="scenario-card">
+                <h4>💡 What is an Ethical Dilemma?</h4>
+                <p>An ethical dilemma occurs when two or more ethical principles <strong>conflict</strong> with each other. For example: A patient with schizophrenia refuses medication (Autonomy) but is at risk of harming herself (Beneficence). Which principle takes priority?</p>
+            </div>
+
+            <div class="card-grid" style="margin-top: 2rem;">
+                <div class="card">
+                    <div class="card-icon">🅰️</div>
+                    <h3>Memory Tip: "A-B-N-J-F-V"</h3>
+                    <ul>
+                        <li><strong>A</strong>utonomy — Let them choose</li>
+                        <li><strong>B</strong>eneficence — Do good</li>
+                        <li><strong>N</strong>onmaleficence — Do no harm</li>
+                        <li><strong>J</strong>ustice — Be fair</li>
+                        <li><strong>F</strong>idelity — Be faithful</li>
+                        <li><strong>V</strong>eracity — Be truthful</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📜</div>
+                    <h3>ANA Code of Ethics</h3>
+                    <p>The American Nurses Association provides the professional ethical foundation for RNs. Key points:</p>
+                    <ul>
+                        <li>Respect dignity of every patient</li>
+                        <li>Primary commitment is to patient</li>
+                        <li>Advocate for patient rights & safety</li>
+                        <li>Maintain competence</li>
+                        <li>Improve ethical work environment</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flashcards Section -->
+        <section id="flashcards" class="section">
+            <div class="section-header">
+                <h2>Flashcards</h2>
+                <p>Tap to flip and test your knowledge!</p>
+            </div>
+
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-face flashcard-front">
+                        <h3 id="flashcard-term">Autonomy</h3>
+                        <p id="flashcard-hint">Ethical Principle</p>
+                        <p class="tap-hint">👆 Tap to reveal answer</p>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <p id="flashcard-answer">Respecting the rights of others to make their own decisions. Example: Acknowledging a patient's right to refuse medication.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard-controls">
+                <button class="flashcard-btn prev" onclick="prevCard()">← Previous</button>
+                <button class="flashcard-btn next" onclick="nextCard()">Next →</button>
+            </div>
+            <p class="flashcard-counter"><span id="currentCard">1</span> of <span id="totalCards">20</span></p>
+        </section>
+
+        <!-- Key Terms Section -->
+        <section id="keyterms" class="section">
+            <div class="section-header">
+                <h2>Key Terms</h2>
+                <p>Master these essential legal & ethical vocabulary words</p>
+            </div>
+
+            <div class="terms-grid">
+                <div class="term-card">
+                    <h4>Ethics</h4>
+                    <p>Branch of knowledge about what is right or wrong in society; describes what ought to be.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Bioethics</h4>
+                    <p>Study of specific ethical questions that arise in healthcare settings.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Autonomy</h4>
+                    <p>Respecting patients' rights to make their own decisions about care.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Beneficence</h4>
+                    <p>The duty to act to benefit or promote the health and well-being of others.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Nonmaleficence</h4>
+                    <p>Doing no harm to the patient.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Justice</h4>
+                    <p>Duty to distribute resources or care equally, regardless of personal attributes.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Fidelity</h4>
+                    <p>Maintaining loyalty and commitment to the patient.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Veracity</h4>
+                    <p>The duty to communicate truthfully.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Voluntary Admission</h4>
+                    <p>Patient applies in writing for admission and agrees to treatment.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Involuntary Commitment</h4>
+                    <p>Court-ordered admission without patient's approval.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Emergency Commitment</h4>
+                    <p>Temporary admission (24-96 hrs) for crisis observation and treatment.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Informed Consent</h4>
+                    <p>Patient given information about risks, benefits, and alternatives before agreeing to treatment.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Implied Consent</h4>
+                    <p>Consent demonstrated by patient's actions/behavior rather than explicit agreement.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Capacity</h4>
+                    <p>Clinical assessment of a person's ability to make informed decisions.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Competency</h4>
+                    <p>Legal determination by a court regarding mental soundness to make decisions.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Tort</h4>
+                    <p>A civil wrong or injury; can be intentional or unintentional.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Assault</h4>
+                    <p>Threat of harmful or offensive contact that causes fear.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Battery</h4>
+                    <p>Actual harmful or unwanted physical contact.</p>
+                </div>
+                <div class="term-card">
+                    <h4>False Imprisonment</h4>
+                    <p>Unlawful restriction of a person's freedom of movement.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Negligence</h4>
+                    <p>Failure to exercise the degree of care that a reasonable person would use.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Malpractice</h4>
+                    <p>Professional negligence; failure to meet the standard of care expected of a professional.</p>
+                </div>
+                <div class="term-card">
+                    <h4>HIPAA</h4>
+                    <p>Health Insurance Portability and Accountability Act; federal law protecting patient health information.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Duty to Warn</h4>
+                    <p>Legal obligation to warn identifiable potential victims of threats made by patients.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Duty to Protect</h4>
+                    <p>Legal obligation to take action to protect potential victims from patient threats.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Writ of Habeas Corpus</h4>
+                    <p>Formal written order to "free the person"; challenges unlawful detention.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Least Restrictive Alternative</h4>
+                    <p>Doctrine requiring the least drastic intervention to achieve a specific purpose.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Parity</h4>
+                    <p>Equal insurance coverage for mental health and physical health conditions.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Conditional Release</h4>
+                    <p>Discharge requiring outpatient treatment for a specified period.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Matching Game Section -->
+        <section id="matching" class="section">
+            <div class="section-header">
+                <h2>Matching Game</h2>
+                <p>Match the term with its definition!</p>
+            </div>
+
+            <div class="matching-container">
+                <div class="matching-column">
+                    <h4>Terms</h4>
+                    <div id="terms-column"></div>
+                </div>
+                <div class="matching-column">
+                    <h4>Definitions</h4>
+                    <div id="definitions-column"></div>
+                </div>
+            </div>
+
+            <div class="matching-score" id="matching-score">Matched: 0 / 8</div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <button class="flashcard-btn next" onclick="resetMatching()">🔄 Reset Game</button>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="section-header">
+                <h2>Knowledge Check Quiz</h2>
+                <p>Test what you've learned!</p>
+            </div>
+
+            <div class="quiz-container" id="quiz-container">
+                <!-- Quiz will be populated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>⚖️ Varcarolis Chapter 6 Interactive Study Guide | Good luck on your exam! 🌟</p>
+    </footer>
+
+    <script>
+        // Flashcard Data
+        const flashcards = [
+            { term: "Autonomy", hint: "Ethical Principle", answer: "Respecting the rights of others to make their own decisions. Example: Acknowledging a patient's right to refuse medication." },
+            { term: "Beneficence", hint: "Ethical Principle", answer: "The duty to act to benefit or promote the health and well-being of others. Example: Spending extra time to calm an anxious patient." },
+            { term: "Nonmaleficence", hint: "Ethical Principle", answer: "Doing no harm to the patient. Example: Protecting confidential patient information from unauthorized access." },
+            { term: "Justice", hint: "Ethical Principle", answer: "The duty to distribute resources or care equally, regardless of personal attributes. Example: Equal attention to suicide attempt patient and aneurysm patient." },
+            { term: "Fidelity", hint: "Ethical Principle", answer: "Maintaining loyalty and commitment to the patient. Example: Maintaining expertise through continuing nursing education." },
+            { term: "Veracity", hint: "Ethical Principle", answer: "The duty to communicate truthfully. Example: Honestly describing medication purpose and side effects." },
+            { term: "Voluntary Admission", hint: "Admission Type", answer: "Patient applies in writing for admission and agrees to treatment. Patient has the right to request and obtain release." },
+            { term: "Involuntary Commitment", hint: "Admission Type", answer: "Court-ordered admission without patient approval. Criteria: mental illness, danger to self/others, gravely disabled, or illness prevents voluntary help-seeking." },
+            { term: "Emergency Commitment", hint: "Admission Type", answer: "Temporary admission (24-96 hours) for crisis observation, diagnosis, and treatment. Used when patient is confused or needs emergency care." },
+            { term: "Informed Consent", hint: "Patient Right", answer: "Patient must be told: diagnosis, purpose of treatment, risks & benefits, alternatives, probability of success, and risks of refusing." },
+            { term: "Capacity vs Competency", hint: "Legal Concepts", answer: "Capacity = CLINICAL judgment of ability to understand. Competency = LEGAL determination by a court. Patients are competent until declared otherwise." },
+            { term: "Assault", hint: "Legal Term", answer: "Threat of harmful or offensive contact that causes fear in the patient. No actual contact required." },
+            { term: "Battery", hint: "Legal Term", answer: "Actual harmful or unwanted physical contact. Giving injection without consent could be battery." },
+            { term: "False Imprisonment", hint: "Legal Term", answer: "Unlawful restriction of a person's freedom of movement. Improper use of restraints could constitute false imprisonment." },
+            { term: "Negligence", hint: "Legal Term", answer: "Failure to exercise the degree of care that a reasonable person would use in similar circumstances." },
+            { term: "Malpractice", hint: "Legal Term", answer: "PROFESSIONAL negligence. Failure to meet the standard of care expected of a healthcare professional." },
+            { term: "Duty to Warn/Protect", hint: "Confidentiality Exception", answer: "Legal duty to break confidentiality when: serious threat to identifiable person, suspected abuse, or imminent risk of harm." },
+            { term: "HIPAA", hint: "Federal Law", answer: "Health Insurance Portability and Accountability Act. Federal law protecting private patient health information." },
+            { term: "Least Restrictive Alternative", hint: "Legal Doctrine", answer: "Care providers must take the LEAST drastic action to achieve a specific purpose. Outpatient treatment preferred over hospitalization when safe." },
+            { term: "Writ of Habeas Corpus", hint: "Legal Protection", answer: "Formal written order to 'free the person.' Patients can file this to challenge unlawful detention in a psychiatric facility." }
+        ];
+
+        let currentFlashcard = 0;
+
+        // Quiz Data
+        const quizQuestions = [
+            {
+                question: "Which ethical principle involves respecting a patient's right to make their own treatment decisions?",
+                options: ["Beneficence", "Autonomy", "Justice", "Fidelity"],
+                correct: 1,
+                explanation: "Autonomy = patient's right to choose. Beneficence = doing good. Justice = fairness. Fidelity = loyalty."
+            },
+            {
+                question: "A nurse gives equal care to a patient who attempted suicide and a patient with a medical emergency. This demonstrates:",
+                options: ["Veracity", "Nonmaleficence", "Justice", "Autonomy"],
+                correct: 2,
+                explanation: "Justice means distributing care equally regardless of the patient's personal attributes or circumstances."
+            },
+            {
+                question: "What is the PRIMARY difference between capacity and competency?",
+                options: ["Capacity is permanent; competency is temporary", "Capacity is clinical; competency is legal", "Capacity requires testing; competency doesn't", "They are the same thing"],
+                correct: 1,
+                explanation: "Capacity is a clinical judgment by healthcare providers. Competency is a legal determination made by a court."
+            },
+            {
+                question: "A patient is held in the hospital for 72 hours for evaluation. This is called:",
+                options: ["Voluntary admission", "Involuntary commitment", "Emergency commitment", "Conditional release"],
+                correct: 2,
+                explanation: "Emergency commitment is temporary (24-96 hours) for crisis observation and treatment."
+            },
+            {
+                question: "Which is NOT required for informed consent?",
+                options: ["Risks and benefits", "Alternative treatments", "Guarantee of success", "Purpose of treatment"],
+                correct: 2,
+                explanation: "Informed consent requires information about risks, benefits, alternatives, and purpose—but NO treatment can guarantee success."
+            },
+            {
+                question: "Threatening to give a patient an injection if they don't comply is an example of:",
+                options: ["Battery", "Assault", "Negligence", "Malpractice"],
+                correct: 1,
+                explanation: "Assault is the THREAT of harm. Battery is actual unwanted contact. The threat alone constitutes assault."
+            },
+            {
+                question: "A nurse fails to raise bed rails and the patient falls. This could be:",
+                options: ["Assault", "Battery", "Negligence", "False imprisonment"],
+                correct: 2,
+                explanation: "Negligence is failure to exercise reasonable care that a prudent person would use in similar circumstances."
+            },
+            {
+                question: "When MUST a nurse break patient confidentiality?",
+                options: ["When family requests information", "When patient threatens to harm an identifiable person", "When insurance company requests records", "When patient is noncompliant"],
+                correct: 1,
+                explanation: "Duty to warn/protect requires breaking confidentiality when there's a serious threat to an identifiable person."
+            },
+            {
+                question: "The least restrictive alternative doctrine means:",
+                options: ["Patients should receive the cheapest treatment", "The least drastic intervention should be used", "Patients should have unlimited freedom", "Restraints are never allowed"],
+                correct: 1,
+                explanation: "Least restrictive alternative requires using the LEAST drastic intervention to achieve the treatment goal."
+            },
+            {
+                question: "A patient files a 'writ of habeas corpus.' What are they challenging?",
+                options: ["Their medication orders", "Their diagnosis", "Their unlawful detention", "Their treatment team"],
+                correct: 2,
+                explanation: "Writ of habeas corpus means 'free the person' and is used to challenge unlawful detention."
+            },
+            {
+                question: "Which statement about restraints is TRUE?",
+                options: ["They can be used as punishment for behavior", "They should be used as a first intervention", "They require the least restrictive method for the shortest time", "Only physical restraints count legally"],
+                correct: 2,
+                explanation: "Restraints must be: least restrictive, shortest time, for safety only, NEVER as punishment. Chemical restraints count too."
+            },
+            {
+                question: "The principle of 'do no harm' is called:",
+                options: ["Beneficence", "Autonomy", "Nonmaleficence", "Justice"],
+                correct: 2,
+                explanation: "Nonmaleficence = do no harm. Beneficence = do good. They are related but distinct principles."
+            },
+            {
+                question: "What type of discharge requires the patient to follow an outpatient treatment plan?",
+                options: ["Unconditional release", "AMA discharge", "Conditional release", "Emergency discharge"],
+                correct: 2,
+                explanation: "Conditional release requires outpatient treatment compliance for a specified period."
+            },
+            {
+                question: "Patient extends their arm for a blood draw without verbal agreement. This is:",
+                options: ["Informed consent", "Implied consent", "Involuntary consent", "No consent"],
+                correct: 1,
+                explanation: "Implied consent is demonstrated by the patient's behavior/actions rather than explicit verbal or written agreement."
+            },
+            {
+                question: "Which is the correct order if you suspect illegal or unsafe care?",
+                options: ["Report to media → Document → Protect patient", "Document → Report to police → Inform patient", "Protect patient → Document → Report via chain of command", "Call lawyer → Protect patient → Document"],
+                correct: 2,
+                explanation: "1) Protect patient first, 2) Document facts, 3) Report via chain of command, 4) Follow facility policy."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        // Matching Game Data
+        const matchingPairs = [
+            { term: "Autonomy", definition: "Right to choose" },
+            { term: "Beneficence", definition: "Do good" },
+            { term: "Nonmaleficence", definition: "Do no harm" },
+            { term: "Justice", definition: "Fair & equal care" },
+            { term: "Assault", definition: "Threat of harm" },
+            { term: "Battery", definition: "Unwanted contact" },
+            { term: "Negligence", definition: "Failure of care" },
+            { term: "HIPAA", definition: "Protects health info" }
+        ];
+
+        let selectedTerm = null;
+        let matchedCount = 0;
+
+        // Track progress
+        let sectionsVisited = new Set(['overview']);
+
+        function updateProgress() {
+            const totalSections = 6;
+            const progress = (sectionsVisited.size / totalSections) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+            
+            sectionsVisited.add(sectionId);
+            updateProgress();
+
+            if (sectionId === 'quiz' && !document.querySelector('.quiz-card')) {
+                loadQuiz();
+            }
+            if (sectionId === 'matching' && !document.querySelector('.matching-item')) {
+                initMatching();
+            }
+        }
+
+        // Accordion
+        function toggleAccordion(el) {
+            el.classList.toggle('open');
+        }
+
+        // Flashcards
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        function updateFlashcard() {
+            const card = document.querySelector('.flashcard');
+            card.classList.remove('flipped');
+            
+            document.getElementById('flashcard-term').textContent = flashcards[currentFlashcard].term;
+            document.getElementById('flashcard-hint').textContent = flashcards[currentFlashcard].hint;
+            document.getElementById('flashcard-answer').textContent = flashcards[currentFlashcard].answer;
+            document.getElementById('currentCard').textContent = currentFlashcard + 1;
+            document.getElementById('totalCards').textContent = flashcards.length;
+        }
+
+        function nextCard() {
+            currentFlashcard = (currentFlashcard + 1) % flashcards.length;
+            updateFlashcard();
+        }
+
+        function prevCard() {
+            currentFlashcard = (currentFlashcard - 1 + flashcards.length) % flashcards.length;
+            updateFlashcard();
+        }
+
+        // Quiz
+        function loadQuiz() {
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const container = document.getElementById('quiz-container');
+            
+            if (currentQuestion >= quizQuestions.length) {
+                showScore();
+                return;
+            }
+
+            const q = quizQuestions[currentQuestion];
+            answered = false;
+
+            container.innerHTML = `
+                <div class="quiz-card">
+                    <div class="quiz-question">${currentQuestion + 1}. ${q.question}</div>
+                    <div class="quiz-options">
+                        ${q.options.map((opt, i) => `
+                            <div class="quiz-option" onclick="selectAnswer(${i})">${opt}</div>
+                        `).join('')}
+                    </div>
+                    <div class="quiz-feedback" id="feedback"></div>
+                    <div class="quiz-nav">
+                        <span class="quiz-progress">Question ${currentQuestion + 1} of ${quizQuestions.length}</span>
+                        <button class="flashcard-btn next" onclick="nextQuestion()" id="next-btn" style="display: none;">Next →</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectAnswer(index) {
+            if (answered) return;
+            answered = true;
+
+            const q = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('feedback');
+
+            options.forEach((opt, i) => {
+                if (i === q.correct) {
+                    opt.classList.add('correct');
+                } else if (i === index && i !== q.correct) {
+                    opt.classList.add('incorrect');
+                }
+            });
+
+            if (index === q.correct) {
+                score++;
+                feedback.textContent = '✅ Correct! ' + q.explanation;
+                feedback.classList.add('correct');
+            } else {
+                feedback.textContent = '❌ ' + q.explanation;
+                feedback.classList.add('incorrect');
+            }
+
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            renderQuestion();
+        }
+
+        function showScore() {
+            const container = document.getElementById('quiz-container');
+            const percentage = Math.round((score / quizQuestions.length) * 100);
+            let message = '';
+            
+            if (percentage === 100) message = '⚖️ Perfect! You know your ethics & law!';
+            else if (percentage >= 80) message = '🎉 Great job! Almost there!';
+            else if (percentage >= 60) message = '👍 Good effort! Review weak areas.';
+            else message = '📚 Keep studying! Focus on the 6 principles!';
+
+            container.innerHTML = `
+                <div class="score-display">
+                    <h3>Quiz Complete!</h3>
+                    <div class="score-number">${percentage}%</div>
+                    <p>You got ${score} out of ${quizQuestions.length} correct</p>
+                    <p class="score-message">${message}</p>
+                    <button class="restart-btn" onclick="restartQuiz()">Try Again</button>
+                </div>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            renderQuestion();
+        }
+
+        // Matching Game
+        function initMatching() {
+            const termsCol = document.getElementById('terms-column');
+            const defsCol = document.getElementById('definitions-column');
+            
+            // Shuffle arrays
+            const shuffledTerms = [...matchingPairs].sort(() => Math.random() - 0.5);
+            const shuffledDefs = [...matchingPairs].sort(() => Math.random() - 0.5);
+
+            termsCol.innerHTML = shuffledTerms.map((p, i) => `
+                <div class="matching-item term" data-pair="${p.term}" onclick="selectTerm(this)">${p.term}</div>
+            `).join('');
+
+            defsCol.innerHTML = shuffledDefs.map((p, i) => `
+                <div class="matching-item definition" data-pair="${p.term}" onclick="selectDefinition(this)">${p.definition}</div>
+            `).join('');
+
+            matchedCount = 0;
+            updateMatchingScore();
+        }
+
+        function selectTerm(el) {
+            if (el.classList.contains('matched')) return;
+            
+            document.querySelectorAll('.term').forEach(t => t.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedTerm = el.dataset.pair;
+        }
+
+        function selectDefinition(el) {
+            if (!selectedTerm || el.classList.contains('matched')) return;
+
+            if (el.dataset.pair === selectedTerm) {
+                // Correct match
+                el.classList.add('matched');
+                document.querySelector(`.term[data-pair="${selectedTerm}"]`).classList.add('matched');
+                document.querySelector(`.term[data-pair="${selectedTerm}"]`).classList.remove('selected');
+                matchedCount++;
+                updateMatchingScore();
+            } else {
+                // Wrong match
+                el.classList.add('wrong');
+                setTimeout(() => el.classList.remove('wrong'), 500);
+            }
+            
+            selectedTerm = null;
+        }
+
+        function updateMatchingScore() {
+            document.getElementById('matching-score').textContent = `Matched: ${matchedCount} / ${matchingPairs.length}`;
+            
+            if (matchedCount === matchingPairs.length) {
+                document.getElementById('matching-score').textContent = '🎉 All matched! Great job!';
+            }
+        }
+
+        function resetMatching() {
+            selectedTerm = null;
+            matchedCount = 0;
+            initMatching();
+        }
+
+        // Initialize
+        updateFlashcard();
+        updateProgress();
+    </script>
+</body>
+</html>
