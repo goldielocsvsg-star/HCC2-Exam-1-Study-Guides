@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 29: Stress & Coping | Interactive Study Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1E3A5F;
+            --primary-light: #2E5A8F;
+            --secondary: #E07A5F;
+            --accent: #3D8B7A;
+            --bg-cream: #F8F6F3;
+            --bg-blue: #E8EEF4;
+            --text-dark: #1E2D3D;
+            --text-muted: #4A5B6D;
+            --success: #3D8B7A;
+            --error: #C45B4A;
+            --warning: #E9B44C;
+            --card-shadow: 0 8px 32px rgba(30, 58, 95, 0.12);
+            --hover-shadow: 0 12px 48px rgba(30, 58, 95, 0.18);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #4A7AB0 100%);
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264 1.088-.402l1.768-.661C33.64 15.347 39.647 14 50 14c10.271 0 15.362 1.222 24.629 4.928.955.383 1.869.74 2.75 1.072h6.225c-2.51-.73-5.139-1.691-8.233-2.928C65.888 13.278 60.562 12 50 12c-10.626 0-16.855 1.397-26.66 5.063l-1.767.662c-2.475.923-4.66 1.674-6.724 2.275h6.335zm0-20C13.258 2.892 8.077 4 0 4V2c5.744 0 9.951-.574 14.85-2h6.334zM77.38 0C85.239 2.966 90.502 4 100 4V2c-6.842 0-11.386-.542-16.396-2h-6.225zM0 14c8.44 0 13.718-1.21 22.272-4.402l1.768-.661C33.64 5.347 39.647 4 50 4c10.271 0 15.362 1.222 24.629 4.928C84.112 12.722 89.438 14 100 14v-2c-10.271 0-15.362-1.222-24.629-4.928C65.888 3.278 60.562 2 50 2 39.374 2 33.145 3.397 23.34 7.063l-1.767.662C13.223 10.84 8.163 12 0 12v2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(-5deg); }
+            75% { transform: translateY(5px) rotate(5deg); }
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 4px;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .progress-bar {
+            background: var(--secondary);
+            height: 8px;
+            border-radius: 50px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            padding: 2rem;
+            background: var(--bg-blue);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-tab {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab:hover, .nav-tab.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(30, 58, 95, 0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(30, 58, 95, 0.08);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .card ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Stress Response Diagram */
+        .stress-pathway {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            margin: 2rem 0;
+        }
+
+        .stress-pathway h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .pathway-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .pathway-step {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 140px;
+            font-weight: 600;
+        }
+
+        .pathway-arrow {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .pathway-effects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px dashed var(--bg-blue);
+        }
+
+        .effect-card {
+            background: var(--bg-blue);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .effect-card .emoji {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .effect-card strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .effect-card span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Continuum Visual */
+        .continuum-visual {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            margin: 2rem 0;
+        }
+
+        .continuum-bar {
+            height: 60px;
+            background: linear-gradient(90deg, var(--accent), var(--warning), var(--secondary), var(--error));
+            border-radius: 30px;
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .continuum-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .continuum-label {
+            text-align: center;
+            flex: 1;
+        }
+
+        .continuum-label strong {
+            display: block;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .continuum-label span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Flashcards */
+        .flashcard-container {
+            perspective: 1000px;
+            margin: 2rem auto;
+            max-width: 520px;
+        }
+
+        .flashcard {
+            position: relative;
+            width: 100%;
+            height: 340px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+
+        .flashcard-front h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+        }
+
+        .flashcard-front p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .flashcard-back {
+            background: white;
+            transform: rotateY(180deg);
+            border: 3px solid var(--secondary);
+        }
+
+        .flashcard-back p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .flashcard-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .flashcard-btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .flashcard-btn.prev, .flashcard-btn.next {
+            background: var(--primary);
+            color: white;
+        }
+
+        .flashcard-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(30, 58, 95, 0.3);
+        }
+
+        .flashcard-counter {
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .tap-hint {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 1rem;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .quiz-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quiz-option {
+            padding: 1rem 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .quiz-option:hover:not(.selected):not(.correct):not(.incorrect) {
+            border-color: var(--primary);
+            background: rgba(30, 58, 95, 0.05);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary);
+            background: rgba(30, 58, 95, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: var(--success);
+            background: rgba(61, 139, 122, 0.15);
+            color: var(--success);
+        }
+
+        .quiz-option.incorrect {
+            border-color: var(--error);
+            background: rgba(196, 91, 74, 0.15);
+            color: var(--error);
+        }
+
+        .quiz-feedback {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .quiz-feedback.correct {
+            background: rgba(61, 139, 122, 0.15);
+            color: var(--success);
+            display: block;
+        }
+
+        .quiz-feedback.incorrect {
+            background: rgba(196, 91, 74, 0.15);
+            color: var(--error);
+            display: block;
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .quiz-progress {
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* Score Display */
+        .score-display {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 24px;
+            color: white;
+        }
+
+        .score-display h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .score-number {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .score-message {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .restart-btn {
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background: var(--secondary);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .restart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(224, 122, 95, 0.4);
+        }
+
+        /* Accordion */
+        .accordion {
+            margin-bottom: 1rem;
+        }
+
+        .accordion-header {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(30, 58, 95, 0.08);
+        }
+
+        .accordion-header:hover {
+            background: rgba(30, 58, 95, 0.03);
+        }
+
+        .accordion-header h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion.open .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            background: white;
+            border-radius: 0 0 16px 16px;
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            margin-top: -8px;
+        }
+
+        .accordion.open .accordion-content {
+            max-height: 2000px;
+            padding: 1.5rem;
+        }
+
+        .accordion-content p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .accordion-content ul {
+            list-style: none;
+        }
+
+        .accordion-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .accordion-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Key Terms */
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .term-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .term-card:hover {
+            transform: translateX(5px);
+        }
+
+        .term-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .term-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Matching Game */
+        .matching-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .matching-column h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .matching-item {
+            padding: 1rem 1.5rem;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .matching-item:hover:not(.matched) {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+
+        .matching-item.selected {
+            border-color: var(--secondary);
+            background: rgba(224, 122, 95, 0.1);
+        }
+
+        .matching-item.matched {
+            background: rgba(61, 139, 122, 0.15);
+            border-color: var(--success);
+            cursor: default;
+        }
+
+        .matching-item.wrong {
+            animation: shake 0.5s ease;
+            border-color: var(--error);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .matching-score {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Tip Boxes */
+        .tip-box {
+            background: linear-gradient(135deg, rgba(224, 122, 95, 0.15), rgba(224, 122, 95, 0.05));
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .tip-box h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tip-box p {
+            color: var(--text-dark);
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(196, 91, 74, 0.1), rgba(196, 91, 74, 0.05));
+            border-left: 4px solid var(--error);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box h4 {
+            color: var(--error);
+            margin-bottom: 0.5rem;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(61, 139, 122, 0.15), rgba(61, 139, 122, 0.05));
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .insight-box h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Comparison Tables */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+
+        .comparison-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--bg-blue);
+        }
+
+        .comparison-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .col-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .col-box h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .col-box.positive {
+            border-top: 4px solid var(--accent);
+        }
+
+        .col-box.negative {
+            border-top: 4px solid var(--error);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-tabs {
+                padding: 1rem;
+            }
+            
+            .nav-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .matching-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .flashcard {
+                height: 380px;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pathway-steps {
+                flex-direction: column;
+            }
+
+            .pathway-arrow {
+                transform: rotate(90deg);
+            }
+
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">🌊</div>
+            <h1>Chapter 29 Study Guide</h1>
+            <p>Stress & Coping: A Biopsychosocial Process</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p class="progress-text">Track your progress as you learn!</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+        <button class="nav-tab active" onclick="showSection('overview')">📚 Overview</button>
+        <button class="nav-tab" onclick="showSection('physiology')">🧬 Physiology</button>
+        <button class="nav-tab" onclick="showSection('coping')">💪 Coping</button>
+        <button class="nav-tab" onclick="showSection('flashcards')">🎴 Flashcards</button>
+        <button class="nav-tab" onclick="showSection('keyterms')">📖 Key Terms</button>
+        <button class="nav-tab" onclick="showSection('matching')">🎯 Matching</button>
+        <button class="nav-tab" onclick="showSection('quiz')">✅ Quiz</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Overview Section -->
+        <section id="overview" class="section active">
+            <div class="section-header">
+                <h2>Understanding Stress & Coping</h2>
+                <p>A biopsychosocial process that determines health outcomes</p>
+            </div>
+
+            <!-- Core Definition -->
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🧠</div>
+                    <h3>What IS Stress & Coping?</h3>
+                    <p>NOT an event. NOT a symptom. NOT a diagnosis.</p>
+                    <p style="margin-top: 1rem;">It's a <strong>biopsychosocial PROCESS</strong> involving:</p>
+                    <ul>
+                        <li><strong>Biological:</strong> Neuroendocrine + immune responses</li>
+                        <li><strong>Psychological:</strong> Appraisal, perception, emotion</li>
+                        <li><strong>Social:</strong> Family, culture, environment, resources</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚖️</div>
+                    <h3>Why Does It Matter?</h3>
+                    <p>This process determines whether a stressor becomes:</p>
+                    <ul>
+                        <li>✅ <strong>Adaptive growth</strong> (resilience)</li>
+                        <li>❌ <strong>Chronic disease</strong> (breakdown)</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">The difference? <strong>Perception + Coping + Resources</strong></p>
+                </div>
+            </div>
+
+            <!-- Stress Continuum -->
+            <div class="continuum-visual">
+                <h3 style="font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 1rem;">The Stress Continuum</h3>
+                <p style="color: var(--text-muted);">Stress exists on a gradient from manageable to overwhelming</p>
+                <div class="continuum-bar"></div>
+                <div class="continuum-labels">
+                    <div class="continuum-label">
+                        <strong>Neutral</strong>
+                        <span>Balanced<br>Routine coping</span>
+                    </div>
+                    <div class="continuum-label">
+                        <strong>Manageable</strong>
+                        <span>Activated<br>Growth-oriented</span>
+                    </div>
+                    <div class="continuum-label">
+                        <strong>Challenging</strong>
+                        <span>Stretched<br>New resources needed</span>
+                    </div>
+                    <div class="continuum-label">
+                        <strong>Severe</strong>
+                        <span>Overloaded<br>Breakdown risk</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <h4>💡 Key Insight</h4>
+                <p>Stress operates across multiple levels: <strong>cells → organs → whole person → family → community → society</strong>. A natural disaster stresses society, but illness emerges <em>inside individuals</em>.</p>
+            </div>
+
+            <!-- Theorists -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>📜 Historical Theorists (Cannon, Selye, Lazarus & Folkman)</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Walter Cannon</h4>
+                            <p><strong>Fight or Flight</strong><br>Stress as a survival reflex for immediate danger</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Hans Selye</h4>
+                            <p><strong>General Adaptation Syndrome</strong><br>3 stages: Alarm → Resistance → Exhaustion</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Lazarus & Folkman</h4>
+                            <p><strong>Transactional Theory</strong><br>Stress depends on person-environment interaction & perception</p>
+                        </div>
+                    </div>
+                    <div class="tip-box">
+                        <h4>🎯 Remember This!</h4>
+                        <p>Lazarus & Folkman's key insight: Two people can face the <strong>same event</strong> and experience <strong>completely different stress</strong>. Why? Because <strong>perception is the switch</strong>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stress Types -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>⏱️ Types of Stress (Acute, Episodic, Chronic)</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Acute Stress</h4>
+                            <p>Short-term, reversible, adaptive. Most common type. Resolves when threat passes.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Episodic Acute</h4>
+                            <p>Repeated surges of acute stress. Common in perfectionists, high achievers, chronic worriers.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Chronic Stress</h4>
+                            <p>Constant activation of stress systems. This is where <strong>disease is born</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="warning-box">
+                        <h4>⚠️ Clinical Alert</h4>
+                        <p>Chronic stress is particularly harmful because it wears on individuals continuously, leading to adverse physical and psychological consequences across the lifespan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sources of Stress -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>📋 Sources of Stress (Physiologic vs Psychological)</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="two-col">
+                        <div class="col-box">
+                            <h4>🏥 Physiologic Stressors</h4>
+                            <ul>
+                                <li>Traumatic injury</li>
+                                <li>Myocardial infarction</li>
+                                <li>Organ failure</li>
+                                <li>Cancer</li>
+                                <li>Chronic pain</li>
+                                <li>Autoimmune disorders</li>
+                                <li>Diabetes</li>
+                                <li>COPD</li>
+                            </ul>
+                        </div>
+                        <div class="col-box">
+                            <h4>💭 Psychological/Emotional</h4>
+                            <ul>
+                                <li>Death of loved one</li>
+                                <li>Divorce/relationship problems</li>
+                                <li>Financial stress</li>
+                                <li>Job loss/occupational stress</li>
+                                <li>Caregiving</li>
+                                <li>Violence/social unrest</li>
+                                <li>Major life changes</li>
+                                <li>Academic demands</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lifespan -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>👶👴 Vulnerability Across the Lifespan</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Infants/Children</h4>
+                            <p>Limited coping skills → emotional dysregulation. Coping is <strong>learned over time</strong>.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Adolescents</h4>
+                            <p>Developing brain + high emotion → risk-taking & poor decisions. Brain still forming!</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Older Adults</h4>
+                            <p>Lifetime of experience BUT decreased resilience + social isolation → ineffective coping.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Factors -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>⚠️ Populations at Risk</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Stress is NOT distributed equally. Higher risk populations include:</p>
+                    <ul>
+                        <li>Racial and ethnic minorities</li>
+                        <li>Gender and sexual minorities</li>
+                        <li>Lower socioeconomic status</li>
+                        <li>Single parents</li>
+                        <li>Women</li>
+                        <li>Those with Adverse Childhood Experiences (ACEs)</li>
+                        <li>Caregivers for loved ones with chronic illness</li>
+                        <li>Those with chronic health conditions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Physiology Section -->
+        <section id="physiology" class="section">
+            <div class="section-header">
+                <h2>The Stress Response</h2>
+                <p>Understanding the HPA Axis & Neuroendocrine Cascade</p>
+            </div>
+
+            <!-- HPA Axis Pathway -->
+            <div class="stress-pathway">
+                <h3>🧬 HPA Axis Activation Pathway</h3>
+                <div class="pathway-steps">
+                    <div class="pathway-step">Stress Perceived<br><small>Limbic System</small></div>
+                    <span class="pathway-arrow">→</span>
+                    <div class="pathway-step">Hypothalamus<br><small>Releases CRF</small></div>
+                    <span class="pathway-arrow">→</span>
+                    <div class="pathway-step">Pituitary<br><small>Releases ACTH</small></div>
+                    <span class="pathway-arrow">→</span>
+                    <div class="pathway-step">Adrenal Cortex<br><small>Releases Cortisol</small></div>
+                </div>
+                <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted);">
+                    <strong>+</strong> SNS releases <strong>Epinephrine & Norepinephrine</strong> (Catecholamines)
+                </p>
+                
+                <div class="pathway-effects">
+                    <div class="effect-card">
+                        <div class="emoji">❤️</div>
+                        <strong>↑ Heart Rate</strong>
+                        <span>Deliver O₂ & nutrients</span>
+                    </div>
+                    <div class="effect-card">
+                        <div class="emoji">🩸</div>
+                        <strong>↑ Blood Pressure</strong>
+                        <span>Improve perfusion</span>
+                    </div>
+                    <div class="effect-card">
+                        <div class="emoji">🍬</div>
+                        <strong>↑ Blood Glucose</strong>
+                        <span>Fuel muscles & brain</span>
+                    </div>
+                    <div class="effect-card">
+                        <div class="emoji">👁️</div>
+                        <strong>Dilated Pupils</strong>
+                        <span>Enhanced vision</span>
+                    </div>
+                    <div class="effect-card">
+                        <div class="emoji">🫁</div>
+                        <strong>Bronchodilation</strong>
+                        <span>More oxygen</span>
+                    </div>
+                    <div class="effect-card">
+                        <div class="emoji">💪</div>
+                        <strong>↑ Muscle Tension</strong>
+                        <span>Injury protection</span>
+                    </div>
+                    <div class="effect-card">
+                        <div class="emoji">🍽️</div>
+                        <strong>↓ Digestion</strong>
+                        <span>Energy redirection</span>
+                    </div>
+                    <div class="effect-card">
+                        <div class="emoji">🛡️</div>
+                        <strong>↓ Immune Function</strong>
+                        <span>Energy conservation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>💡 Remember!</h4>
+                <p>This system is <strong>brilliant in emergencies</strong> and <strong>dangerous when prolonged</strong>. The same response that saves your life in acute danger destroys your health when chronic.</p>
+            </div>
+
+            <!-- Cognitive Appraisal -->
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Primary Appraisal</h3>
+                    <p>The first question your brain asks:</p>
+                    <ul>
+                        <li>Is this harmful?</li>
+                        <li>Is it threatening?</li>
+                        <li>Is it meaningful to me?</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Evaluates potential harm to self, loved ones, self-esteem, or values.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔧</div>
+                    <h3>Secondary Appraisal</h3>
+                    <p>The next question:</p>
+                    <ul>
+                        <li>What resources do I have?</li>
+                        <li>Can I control this?</li>
+                        <li>What are my options?</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Determines if the problem is manageable within current capacity.</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Why Appraisal Matters</h4>
+                <p><strong>Incorrect appraisal = Incorrect stress response = Disease risk</strong></p>
+                <p>The stress response only activates AFTER meaning is assigned. Two people facing identical situations can have completely different physiological responses based on their appraisal.</p>
+            </div>
+
+            <!-- Chronic Stress Effects -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🏥 Chronic Stress: Body System Breakdown (HIGH-YIELD!)</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>🧠 Brain & CNS</h4>
+                            <p>Cortisol damages hippocampus → memory loss, depression, anxiety, insomnia</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>❤️ Cardiovascular</h4>
+                            <p>Persistent SNS activity → hypertension, MI, stroke, arrhythmias</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>🛡️ Immune</h4>
+                            <p>Cortisol suppresses WBCs → infections, autoimmune disorders, cancer risk</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>🍽️ Gastrointestinal</h4>
+                            <p>Reduced digestion + inflammation → IBS, ulcers, gastritis, obesity</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>💪 Musculoskeletal</h4>
+                            <p>Constant tension → tension headaches, back pain, neck/shoulder pain</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>🧬 Reproductive</h4>
+                            <p>Hormonal disruption → infertility, ED, menstrual disorders, low libido</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stress-Related Disorders -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>📋 Clinical Exemplars: Stress-Related Disorders</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Anxiety Disorders</h4>
+                            <p>Maladaptive response to stress; ranges from mild to panic</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Tension Headache</h4>
+                            <p>Most common headache; bilateral, dull, bandlike pain</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Hypertension</h4>
+                            <p>Chronic elevated BP from sustained catecholamine release</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Insomnia</h4>
+                            <p>Inability to fall/stay asleep; leading cause is stress</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>IBS</h4>
+                            <p>Functional syndrome with cramping, bloating, diarrhea; stress is trigger</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Eczema</h4>
+                            <p>Chronic skin inflammation exacerbated by stress</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coping Section -->
+        <section id="coping" class="section">
+            <div class="section-header">
+                <h2>Coping Strategies</h2>
+                <p>Positive vs Maladaptive Responses</p>
+            </div>
+
+            <!-- Three Types of Coping -->
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🔧</div>
+                    <h3>Problem-Focused Coping</h3>
+                    <p><strong>Changes the SITUATION</strong></p>
+                    <p style="margin-top: 1rem;">Generating solutions to reduce or eliminate stressors. Taking action to manage or change circumstances.</p>
+                    <p style="margin-top: 1rem;"><em>Example: Scheduling a meeting to get more resources for an overwhelming project.</em></p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💭</div>
+                    <h3>Emotion-Focused Coping</h3>
+                    <p><strong>Changes EMOTIONAL response</strong></p>
+                    <p style="margin-top: 1rem;">Regulating emotions (anger, fear, anxiety) through self-regulating thinking and behavior.</p>
+                    <p style="margin-top: 1rem;"><em>Example: Going for a run, talking to a friend, journaling about feelings.</em></p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Meaning-Focused Coping</h3>
+                    <p><strong>Changes INTERPRETATION</strong></p>
+                    <p style="margin-top: 1rem;">Drawing on values, beliefs, and goals to modify personal interpretation and response.</p>
+                    <p style="margin-top: 1rem;"><em>Example: Talking with a therapist to reframe and understand one's responses.</em></p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>💡 Key Concept</h4>
+                <p>The most effective coping is <strong>flexible and matched</strong> to the stressor. Problem-focused coping tends to be more effective overall, but the best approach depends on the situation, duration, and controllability of the stressor.</p>
+            </div>
+
+            <!-- Positive vs Maladaptive -->
+            <div class="two-col">
+                <div class="col-box positive">
+                    <h4>✅ Positive Coping Strategies</h4>
+                    <ul>
+                        <li>Exercise/physical activity</li>
+                        <li>Social support</li>
+                        <li>Relaxation techniques</li>
+                        <li>Meditation/mindfulness</li>
+                        <li>Yoga/Tai Chi/Qigong</li>
+                        <li>Music therapy</li>
+                        <li>Art therapy</li>
+                        <li>Prayer/spiritual resources</li>
+                        <li>Counseling/talk therapy</li>
+                        <li>Education about the stressor</li>
+                        <li>Massage therapy</li>
+                        <li>Guided imagery</li>
+                        <li>Distraction/diversion</li>
+                    </ul>
+                </div>
+                <div class="col-box negative">
+                    <h4>❌ Maladaptive Coping</h4>
+                    <ul>
+                        <li>Substance use/abuse</li>
+                        <li>Avoidance coping</li>
+                        <li>Denial</li>
+                        <li>Social withdrawal/isolation</li>
+                        <li>Excessive eating</li>
+                        <li>Aggression/violence</li>
+                        <li>Self-harm</li>
+                        <li>Emotional outbursts</li>
+                        <li>Displacement</li>
+                        <li>Rationalization</li>
+                        <li>Regression</li>
+                        <li>Dissociation</li>
+                        <li>Attacking/bullying</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Maladaptive = Short-term relief → Long-term damage</h4>
+                <p>Maladaptive coping responses ignore the underlying cause and often lead to additional problems. Avoidance can lead to increased emotional distress, longer recovery, and other maladaptive responses.</p>
+            </div>
+
+            <!-- Nursing & Prevention -->
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🩺 Nursing Assessment</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="two-col">
+                        <div class="col-box">
+                            <h4>📋 History Focus</h4>
+                            <ul>
+                                <li>Current & past stressors</li>
+                                <li>Perception & meaning of stressors</li>
+                                <li>Coping patterns (effective & ineffective)</li>
+                                <li>Physical symptoms of stress</li>
+                                <li>Emotional state</li>
+                                <li>Social support available</li>
+                                <li>Mental health history</li>
+                            </ul>
+                        </div>
+                        <div class="col-box">
+                            <h4>🔍 Examination Focus</h4>
+                            <ul>
+                                <li>Vital signs (HR, BP, RR)</li>
+                                <li>Cardiac signs (palpitations)</li>
+                                <li>Muscle tension</li>
+                                <li>Sweating/pupil dilation</li>
+                                <li>Cognitive functioning</li>
+                                <li>Emotional state/affect</li>
+                                <li>Appearance & grooming</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>Common stress symptoms to assess:</strong> irritability, nervousness, feeling overwhelmed, depression, abdominal pain, headaches, insomnia, fatigue, lack of concentration, palpitations, chest tightness</p>
+                </div>
+            </div>
+
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>🏥 Prevention Model (Primary, Secondary, Tertiary)</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>Primary Prevention</h4>
+                            <p><strong>Build resilience BEFORE illness</strong><br>Nutrition, exercise, social support, healthy lifestyle, stress education</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Secondary Prevention</h4>
+                            <p><strong>Detect early</strong><br>Screen for stress, depression, substance abuse. Identify maladaptive coping early.</p>
+                        </div>
+                        <div class="comparison-card">
+                            <h4>Tertiary Care</h4>
+                            <p><strong>Manage established illness</strong><br>Treat stress-related conditions. Redirect to positive coping strategies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion" onclick="toggleAccordion(this)">
+                <div class="accordion-header">
+                    <h3>💊 Pharmacologic Agents</h3>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>No medications prevent or treat stress directly.</strong> However, medications may be used for stress-related conditions:</p>
+                    <ul>
+                        <li>Anxiolytics (for anxiety)</li>
+                        <li>Antidepressants (SSRIs, TCAs)</li>
+                        <li>Hypnotics (for insomnia)</li>
+                        <li>Muscle relaxants (for tension)</li>
+                        <li>Antimigraine agents</li>
+                        <li>Pain medications</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <h4>🧠 Clinical Insight</h4>
+                <p><strong>"The nervous system never forgets what the mind refuses to process."</strong></p>
+                <p style="margin-top: 0.5rem;">Stress becomes disease when: Appraisal fails → Coping fails → Support fails → Stress persists</p>
+            </div>
+        </section>
+
+        <!-- Flashcards Section -->
+        <section id="flashcards" class="section">
+            <div class="section-header">
+                <h2>Flashcards</h2>
+                <p>Tap to flip and test your knowledge!</p>
+            </div>
+
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-face flashcard-front">
+                        <h3 id="flashcard-term">Fight or Flight</h3>
+                        <p id="flashcard-hint">Walter Cannon's Theory</p>
+                        <p class="tap-hint">👆 Tap to reveal answer</p>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <p id="flashcard-answer">The immediate physiological response to perceived threat, involving SNS activation and release of catecholamines (epinephrine, norepinephrine) to prepare the body for action.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard-controls">
+                <button class="flashcard-btn prev" onclick="prevCard()">← Previous</button>
+                <button class="flashcard-btn next" onclick="nextCard()">Next →</button>
+            </div>
+            <p class="flashcard-counter"><span id="currentCard">1</span> of <span id="totalCards">22</span></p>
+        </section>
+
+        <!-- Key Terms Section -->
+        <section id="keyterms" class="section">
+            <div class="section-header">
+                <h2>Key Terms</h2>
+                <p>Master these essential stress & coping vocabulary words</p>
+            </div>
+
+            <div class="terms-grid">
+                <div class="term-card">
+                    <h4>Stress</h4>
+                    <p>A series of reactions to external and internal demands; cumulative effect determined by duration, severity, resources, and coping actions.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Coping</h4>
+                    <p>Action directed toward change through conscious or unconscious thoughts and behaviors to avoid harm and restore balance.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Fight or Flight</h4>
+                    <p>Cannon's description of the immediate physiological response to perceived threat via SNS activation.</p>
+                </div>
+                <div class="term-card">
+                    <h4>General Adaptation Syndrome</h4>
+                    <p>Selye's three-stage stress response: Alarm → Resistance → Exhaustion.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Transactional Theory</h4>
+                    <p>Lazarus & Folkman's model viewing stress as person-environment interaction with cognitive appraisal determining response.</p>
+                </div>
+                <div class="term-card">
+                    <h4>HPA Axis</h4>
+                    <p>Hypothalamic-Pituitary-Adrenal axis; the neuroendocrine pathway activated during stress response.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Cortisol</h4>
+                    <p>Glucocorticoid released from adrenal cortex; mobilizes glucose, suppresses immune function when elevated chronically.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Catecholamines</h4>
+                    <p>Epinephrine, norepinephrine, dopamine; released by SNS to trigger fight-or-flight physiological changes.</p>
+                </div>
+                <div class="term-card">
+                    <h4>CRF</h4>
+                    <p>Corticotropin-Releasing Factor; released by hypothalamus to initiate the stress response cascade.</p>
+                </div>
+                <div class="term-card">
+                    <h4>ACTH</h4>
+                    <p>Adrenocorticotropic Hormone; released by pituitary to trigger cortisol release from adrenal cortex.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Primary Appraisal</h4>
+                    <p>Initial evaluation of potential harm to self, loved ones, self-esteem, or personal values.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Secondary Appraisal</h4>
+                    <p>Evaluation of resources available to overcome, reduce, or eliminate the stressor; assesses controllability.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Acute Stress</h4>
+                    <p>Short-term, reversible stress that resolves when the perceived threat passes.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Episodic Acute Stress</h4>
+                    <p>Repeated surges of acute stress; common in perfectionists and chronic worriers.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Chronic Stress</h4>
+                    <p>Constant, sustained stress that leads to adverse physical and psychological consequences.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Problem-Focused Coping</h4>
+                    <p>Generating solutions to change the situation causing stress; most effective type of coping.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Emotion-Focused Coping</h4>
+                    <p>Regulating emotional response to stress through self-regulating thoughts and behaviors.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Meaning-Focused Coping</h4>
+                    <p>Drawing on values and beliefs to modify personal interpretation of stressor.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Maladaptive Coping</h4>
+                    <p>Coping behaviors that don't address the underlying problem and may cause additional harm.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Homeostasis</h4>
+                    <p>State of physiological balance; the goal of successful stress management and coping.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Resilience</h4>
+                    <p>The ability to adapt positively to stress and adversity; recover from challenges.</p>
+                </div>
+                <div class="term-card">
+                    <h4>ACEs</h4>
+                    <p>Adverse Childhood Experiences; linked with lasting negative effects on health into adulthood.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Matching Game Section -->
+        <section id="matching" class="section">
+            <div class="section-header">
+                <h2>Matching Game</h2>
+                <p>Match the term with its definition!</p>
+            </div>
+
+            <div class="matching-container">
+                <div class="matching-column">
+                    <h4>Terms</h4>
+                    <div id="terms-column"></div>
+                </div>
+                <div class="matching-column">
+                    <h4>Definitions</h4>
+                    <div id="definitions-column"></div>
+                </div>
+            </div>
+
+            <div class="matching-score" id="matching-score">Matched: 0 / 8</div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <button class="flashcard-btn next" onclick="resetMatching()">🔄 Reset Game</button>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="section-header">
+                <h2>Knowledge Check Quiz</h2>
+                <p>Test what you've learned!</p>
+            </div>
+
+            <div class="quiz-container" id="quiz-container">
+                <!-- Quiz will be populated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>🌊 Giddens Chapter 29: Stress & Coping Interactive Study Guide | Good luck on your exam! 🌟</p>
+    </footer>
+
+    <script>
+        // Flashcard Data
+        const flashcards = [
+            { term: "Fight or Flight", hint: "Walter Cannon's Theory", answer: "The immediate physiological response to perceived threat, involving SNS activation and release of catecholamines (epinephrine, norepinephrine) to prepare the body for action." },
+            { term: "General Adaptation Syndrome", hint: "Hans Selye's Theory", answer: "Three-stage stress response: 1) ALARM (SNS activation), 2) RESISTANCE (body adapts, tries to maintain balance), 3) EXHAUSTION (resources depleted, disease risk increases)." },
+            { term: "Transactional Theory", hint: "Lazarus & Folkman", answer: "Stress depends on the transaction between person and environment. The same event can cause different stress levels in different people because PERCEPTION is the switch." },
+            { term: "HPA Axis", hint: "Neuroendocrine Pathway", answer: "Hypothalamus releases CRF → Pituitary releases ACTH → Adrenal cortex releases CORTISOL. This is the main stress hormone pathway." },
+            { term: "Cortisol", hint: "Stress Hormone", answer: "Glucocorticoid from adrenal cortex. Increases blood glucose. When chronically elevated: immunosuppression, hippocampal damage, muscle catabolism." },
+            { term: "Catecholamines", hint: "Fight or Flight Hormones", answer: "Epinephrine, norepinephrine, dopamine. Effects: ↑HR, ↑BP, ↑glucose, bronchodilation, pupil dilation, ↓digestion." },
+            { term: "Primary Appraisal", hint: "Cognitive Assessment", answer: "First evaluation: Is this harmful? Is it threatening? Is it meaningful? Assesses potential harm to self, loved ones, self-esteem, or values." },
+            { term: "Secondary Appraisal", hint: "Cognitive Assessment", answer: "Second evaluation: What resources do I have? Can I control this? What are my options? Determines if problem is manageable." },
+            { term: "Acute Stress", hint: "Type of Stress", answer: "Short-term, reversible, adaptive. Most common type. Resolves when threat passes. Parasympathetic nervous system reengages." },
+            { term: "Chronic Stress", hint: "Type of Stress", answer: "Constant, sustained demand that wears on individuals continuously. This is where DISEASE IS BORN. Leads to multi-system breakdown." },
+            { term: "Problem-Focused Coping", hint: "Coping Strategy", answer: "Changes the SITUATION. Generating solutions to reduce or eliminate stressors. Taking action to manage circumstances. Most effective type of coping." },
+            { term: "Emotion-Focused Coping", hint: "Coping Strategy", answer: "Changes the EMOTIONAL RESPONSE. Regulating emotions (anger, fear, anxiety) through self-regulating thinking. Example: going for a run, journaling." },
+            { term: "Meaning-Focused Coping", hint: "Coping Strategy", answer: "Changes the INTERPRETATION. Drawing on values, beliefs, and goals to modify personal interpretation and response to the stressor." },
+            { term: "Maladaptive Coping", hint: "Negative Response", answer: "Behaviors that don't address the underlying problem: substance use, avoidance, denial, withdrawal, excessive eating. Short-term relief → long-term damage." },
+            { term: "Physiological Effects of Chronic Stress", hint: "Body System Impact", answer: "CNS: anxiety/depression. CV: hypertension/MI. Immune: immunosuppression. GI: IBS/ulcers. MSK: tension headaches. Repro: infertility/ED." },
+            { term: "Tension Headache", hint: "Stress Exemplar", answer: "Most common type of headache in adults. Bilateral, dull, bandlike pain from prolonged muscle tension due to stress." },
+            { term: "Primary Prevention", hint: "Nursing Prevention", answer: "Build resilience BEFORE illness. Nutrition, exercise, social support, healthy lifestyle education, stress prevention strategies." },
+            { term: "Relaxation Response", hint: "Coping Goal", answer: "State of physiologic and psychologic rest. Reduces SNS activity: ↓HR, ↓RR, ↓BP, ↓muscle tension, reduced brain activity." },
+            { term: "Resilience", hint: "Protective Factor", answer: "Ability to adapt positively to adversity and recover from challenges. Built through social support, coping skills, and life experiences." },
+            { term: "ACEs", hint: "Risk Factor", answer: "Adverse Childhood Experiences (abuse, neglect, witnessing violence). Linked with lasting negative effects on health and well-being into adulthood." },
+            { term: "Episodic Acute Stress", hint: "Type of Stress", answer: "Repeated surges of acute stress. Common in perfectionists, high achievers, chronic worriers. Always in a hurry and irritable." },
+            { term: "Homeostasis", hint: "Goal State", answer: "State of physiological balance and well-being. The ultimate goal of successful stress management and coping." }
+        ];
+
+        let currentFlashcard = 0;
+
+        // Quiz Data
+        const quizQuestions = [
+            {
+                question: "Which theorist proposed that stress depends on the transaction between person and environment, with perception as the key factor?",
+                options: ["Walter Cannon", "Hans Selye", "Lazarus & Folkman", "Florence Nightingale"],
+                correct: 2,
+                explanation: "Lazarus & Folkman's Transactional Theory states that the same event can cause different stress in different people because perception is the switch."
+            },
+            {
+                question: "The correct order of the HPA axis activation is:",
+                options: ["Pituitary → Hypothalamus → Adrenal", "Adrenal → Pituitary → Hypothalamus", "Hypothalamus → Pituitary → Adrenal", "Adrenal → Hypothalamus → Pituitary"],
+                correct: 2,
+                explanation: "HPA Axis: Hypothalamus releases CRF → Pituitary releases ACTH → Adrenal cortex releases cortisol."
+            },
+            {
+                question: "Which hormone, when chronically elevated, can damage the hippocampus and suppress immune function?",
+                options: ["Epinephrine", "Norepinephrine", "Cortisol", "ACTH"],
+                correct: 2,
+                explanation: "Cortisol, when chronically elevated, causes hippocampal damage (affecting memory), immunosuppression, and muscle catabolism."
+            },
+            {
+                question: "A patient schedules a meeting to get more help with their overwhelming workload. This is an example of:",
+                options: ["Emotion-focused coping", "Problem-focused coping", "Meaning-focused coping", "Maladaptive coping"],
+                correct: 1,
+                explanation: "Problem-focused coping changes the SITUATION by generating solutions to reduce or eliminate the stressor."
+            },
+            {
+                question: "Which type of stress is associated with the development of chronic disease?",
+                options: ["Acute stress", "Episodic acute stress", "Chronic stress", "Neutral stress"],
+                correct: 2,
+                explanation: "Chronic stress represents constant, sustained demand that is particularly harmful because it wears on individuals continuously—this is where disease is born."
+            },
+            {
+                question: "During cognitive appraisal, 'Do I have the resources to handle this?' is asked during:",
+                options: ["Primary appraisal", "Secondary appraisal", "Tertiary appraisal", "Initial appraisal"],
+                correct: 1,
+                explanation: "Secondary appraisal evaluates resources available and controllability. Primary appraisal asks 'Is this harmful/threatening?'"
+            },
+            {
+                question: "Hans Selye's General Adaptation Syndrome includes which three stages?",
+                options: ["Alert, Resist, Rest", "Alarm, Resistance, Exhaustion", "Activate, Respond, Exhaust", "Anticipate, React, Eliminate"],
+                correct: 1,
+                explanation: "Selye's GAS: Alarm (SNS activation) → Resistance (body adapts) → Exhaustion (resources depleted, disease risk)."
+            },
+            {
+                question: "Which is NOT a physiological effect of the acute stress response?",
+                options: ["Increased heart rate", "Bronchodilation", "Increased digestion", "Dilated pupils"],
+                correct: 2,
+                explanation: "During stress, digestion DECREASES (not increases) as blood is redirected to muscles and vital organs."
+            },
+            {
+                question: "A patient goes for a run after receiving upsetting news to help manage their emotions. This is:",
+                options: ["Problem-focused coping", "Emotion-focused coping", "Meaning-focused coping", "Maladaptive coping"],
+                correct: 1,
+                explanation: "Emotion-focused coping regulates the emotional response without changing the stressor. Running helps regulate emotions."
+            },
+            {
+                question: "Which population is at HIGHER risk for stress-related problems?",
+                options: ["Those with high socioeconomic status", "Those with strong social networks", "Those with Adverse Childhood Experiences (ACEs)", "Those with problem-focused coping skills"],
+                correct: 2,
+                explanation: "ACEs (Adverse Childhood Experiences) are linked with lasting negative effects on health and well-being into adulthood."
+            },
+            {
+                question: "Substance use, avoidance, and denial are examples of:",
+                options: ["Problem-focused coping", "Emotion-focused coping", "Positive coping", "Maladaptive coping"],
+                correct: 3,
+                explanation: "Maladaptive coping doesn't address the underlying problem and may cause additional harm. These provide short-term relief but long-term damage."
+            },
+            {
+                question: "Which body system effect is associated with chronic stress and persistent catecholamine exposure?",
+                options: ["Decreased heart rate", "Improved immune function", "Hypertension", "Enhanced digestion"],
+                correct: 2,
+                explanation: "Chronic stress causes persistent SNS activation → sustained elevated catecholamines → hypertension, MI, stroke risk."
+            },
+            {
+                question: "The goal of relaxation strategies is to achieve:",
+                options: ["SNS activation", "Increased cortisol", "Relaxation response", "Alarm response"],
+                correct: 2,
+                explanation: "Relaxation response = state of physiologic and psychologic rest with reduced SNS activity (↓HR, ↓BP, ↓muscle tension)."
+            },
+            {
+                question: "Which assessment finding indicates SNS activation during acute stress?",
+                options: ["Bradycardia", "Constricted pupils", "Elevated blood pressure", "Increased GI motility"],
+                correct: 2,
+                explanation: "SNS activation causes: ↑HR, ↑BP, dilated pupils, ↓GI motility, muscle tension, sweating."
+            },
+            {
+                question: "Primary prevention for stress focuses on:",
+                options: ["Treating stress-related diseases", "Building resilience before illness", "Screening for depression", "Medication management"],
+                correct: 1,
+                explanation: "Primary prevention builds resilience BEFORE illness through nutrition, exercise, social support, and stress education."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        // Matching Game Data
+        const matchingPairs = [
+            { term: "Cortisol", definition: "Stress hormone from adrenals" },
+            { term: "Primary Appraisal", definition: "Is this threatening?" },
+            { term: "Secondary Appraisal", definition: "Can I handle this?" },
+            { term: "Problem-Focused", definition: "Change the situation" },
+            { term: "Emotion-Focused", definition: "Change emotional response" },
+            { term: "Chronic Stress", definition: "Where disease is born" },
+            { term: "Maladaptive", definition: "Short-term relief, long-term damage" },
+            { term: "HPA Axis", definition: "Hypo → Pituitary → Adrenal" }
+        ];
+
+        let selectedTerm = null;
+        let matchedCount = 0;
+
+        // Track progress
+        let sectionsVisited = new Set(['overview']);
+
+        function updateProgress() {
+            const totalSections = 7;
+            const progress = (sectionsVisited.size / totalSections) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+            
+            sectionsVisited.add(sectionId);
+            updateProgress();
+
+            if (sectionId === 'quiz' && !document.querySelector('.quiz-card')) {
+                loadQuiz();
+            }
+            if (sectionId === 'matching' && !document.querySelector('.matching-item')) {
+                initMatching();
+            }
+        }
+
+        // Accordion
+        function toggleAccordion(el) {
+            el.classList.toggle('open');
+        }
+
+        // Flashcards
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        function updateFlashcard() {
+            const card = document.querySelector('.flashcard');
+            card.classList.remove('flipped');
+            
+            document.getElementById('flashcard-term').textContent = flashcards[currentFlashcard].term;
+            document.getElementById('flashcard-hint').textContent = flashcards[currentFlashcard].hint;
+            document.getElementById('flashcard-answer').textContent = flashcards[currentFlashcard].answer;
+            document.getElementById('currentCard').textContent = currentFlashcard + 1;
+            document.getElementById('totalCards').textContent = flashcards.length;
+        }
+
+        function nextCard() {
+            currentFlashcard = (currentFlashcard + 1) % flashcards.length;
+            updateFlashcard();
+        }
+
+        function prevCard() {
+            currentFlashcard = (currentFlashcard - 1 + flashcards.length) % flashcards.length;
+            updateFlashcard();
+        }
+
+        // Quiz
+        function loadQuiz() {
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const container = document.getElementById('quiz-container');
+            
+            if (currentQuestion >= quizQuestions.length) {
+                showScore();
+                return;
+            }
+
+            const q = quizQuestions[currentQuestion];
+            answered = false;
+
+            container.innerHTML = `
+                <div class="quiz-card">
+                    <div class="quiz-question">${currentQuestion + 1}. ${q.question}</div>
+                    <div class="quiz-options">
+                        ${q.options.map((opt, i) => `
+                            <div class="quiz-option" onclick="selectAnswer(${i})">${opt}</div>
+                        `).join('')}
+                    </div>
+                    <div class="quiz-feedback" id="feedback"></div>
+                    <div class="quiz-nav">
+                        <span class="quiz-progress">Question ${currentQuestion + 1} of ${quizQuestions.length}</span>
+                        <button class="flashcard-btn next" onclick="nextQuestion()" id="next-btn" style="display: none;">Next →</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectAnswer(index) {
+            if (answered) return;
+            answered = true;
+
+            const q = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('feedback');
+
+            options.forEach((opt, i) => {
+                if (i === q.correct) {
+                    opt.classList.add('correct');
+                } else if (i === index && i !== q.correct) {
+                    opt.classList.add('incorrect');
+                }
+            });
+
+            if (index === q.correct) {
+                score++;
+                feedback.textContent = '✅ Correct! ' + q.explanation;
+                feedback.classList.add('correct');
+            } else {
+                feedback.textContent = '❌ ' + q.explanation;
+                feedback.classList.add('incorrect');
+            }
+
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            renderQuestion();
+        }
+
+        function showScore() {
+            const container = document.getElementById('quiz-container');
+            const percentage = Math.round((score / quizQuestions.length) * 100);
+            let message = '';
+            
+            if (percentage === 100) message = '🌟 Perfect! You\'ve mastered stress & coping!';
+            else if (percentage >= 80) message = '🎉 Great job! Review the HPA axis one more time!';
+            else if (percentage >= 60) message = '👍 Good effort! Focus on coping strategies.';
+            else message = '📚 Keep studying! Focus on the stress response pathway.';
+
+            container.innerHTML = `
+                <div class="score-display">
+                    <h3>Quiz Complete!</h3>
+                    <div class="score-number">${percentage}%</div>
+                    <p>You got ${score} out of ${quizQuestions.length} correct</p>
+                    <p class="score-message">${message}</p>
+                    <button class="restart-btn" onclick="restartQuiz()">Try Again</button>
+                </div>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            renderQuestion();
+        }
+
+        // Matching Game
+        function initMatching() {
+            const termsCol = document.getElementById('terms-column');
+            const defsCol = document.getElementById('definitions-column');
+            
+            // Shuffle arrays
+            const shuffledTerms = [...matchingPairs].sort(() => Math.random() - 0.5);
+            const shuffledDefs = [...matchingPairs].sort(() => Math.random() - 0.5);
+
+            termsCol.innerHTML = shuffledTerms.map((p, i) => `
+                <div class="matching-item term" data-pair="${p.term}" onclick="selectTerm(this)">${p.term}</div>
+            `).join('');
+
+            defsCol.innerHTML = shuffledDefs.map((p, i) => `
+                <div class="matching-item definition" data-pair="${p.term}" onclick="selectDefinition(this)">${p.definition}</div>
+            `).join('');
+
+            matchedCount = 0;
+            updateMatchingScore();
+        }
+
+        function selectTerm(el) {
+            if (el.classList.contains('matched')) return;
+            
+            document.querySelectorAll('.term').forEach(t => t.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedTerm = el.dataset.pair;
+        }
+
+        function selectDefinition(el) {
+            if (!selectedTerm || el.classList.contains('matched')) return;
+
+            if (el.dataset.pair === selectedTerm) {
+                // Correct match
+                el.classList.add('matched');
+                document.querySelector(`.term[data-pair="${selectedTerm}"]`).classList.add('matched');
+                document.querySelector(`.term[data-pair="${selectedTerm}"]`).classList.remove('selected');
+                matchedCount++;
+                updateMatchingScore();
+            } else {
+                // Wrong match
+                el.classList.add('wrong');
+                setTimeout(() => el.classList.remove('wrong'), 500);
+            }
+            
+            selectedTerm = null;
+        }
+
+        function updateMatchingScore() {
+            document.getElementById('matching-score').textContent = `Matched: ${matchedCount} / ${matchingPairs.length}`;
+            
+            if (matchedCount === matchingPairs.length) {
+                document.getElementById('matching-score').textContent = '🎉 All matched! Great job!';
+            }
+        }
+
+        function resetMatching() {
+            selectedTerm = null;
+            matchedCount = 0;
+            initMatching();
+        }
+
+        // Initialize
+        updateFlashcard();
+        updateProgress();
+    </script>
+</body>
+</html>
