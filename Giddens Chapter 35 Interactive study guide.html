@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPV Nursing Study Guide - Interactive Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background: #f8f9fa;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-definitions { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .btn-categories { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; }
+        .btn-forms { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; }
+        .btn-consequences { background: linear-gradient(135deg, #43e97b, #38f9d7); color: white; }
+        .btn-assessment { background: linear-gradient(135deg, #fa709a, #fee140); color: white; }
+        .btn-quiz { background: linear-gradient(135deg, #30cfd0, #330867); color: white; }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-left: 5px solid #f5576c;
+        }
+
+        .card h2 {
+            color: #c0392b;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .card h3 {
+            color: #e74c3c;
+            margin: 20px 0 10px 0;
+            font-size: 1.4em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-left: 5px solid #e17055;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .clinical-tip {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            border-left: 5px solid #00b894;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .clinical-tip::before {
+            content: "💡 CLINICAL TIP: ";
+            font-weight: bold;
+            color: #00b894;
+        }
+
+        .memory-trick {
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            border-left: 5px solid #6c5ce7;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .memory-trick::before {
+            content: "🧠 MEMORY TRICK: ";
+            font-weight: bold;
+            color: #6c5ce7;
+            font-size: 1.1em;
+        }
+
+        .testable {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border: 3px dashed #e84393;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .testable::before {
+            content: "⭐ TESTABLE: ";
+            font-size: 1.2em;
+            color: #e84393;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+            padding-left: 10px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .interactive-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .interactive-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .question {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .question h4 {
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .option {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .option.correct {
+            background: linear-gradient(135deg, #d4fc79, #96e6a1);
+            border-color: #00b894;
+        }
+
+        .option.incorrect {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            border-color: #e84393;
+        }
+
+        .explanation {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
+        }
+
+        .flip-card {
+            background: transparent;
+            perspective: 1000px;
+            margin: 20px 0;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            min-height: 200px;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            min-height: 200px;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+        }
+
+        .flip-card-front {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #ecf0f1;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #e3f2fd;
+        }
+
+        .emoji-large {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+
+        .footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .score-display {
+            font-size: 2em;
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            border-radius: 15px;
+            font-weight: bold;
+            color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Interpersonal Violence (IPV) 🛡️</h1>
+            <p>Your Interactive Nursing Study Guide</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Master the concepts • Ace your exams • Make a difference</p>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="nav-btn btn-definitions" onclick="showSection('definitions')">📚 Definitions</button>
+            <button class="nav-btn btn-categories" onclick="showSection('categories')">📊 Categories</button>
+            <button class="nav-btn btn-forms" onclick="showSection('forms')">👥 Forms Across Lifespan</button>
+            <button class="nav-btn btn-consequences" onclick="showSection('consequences')">⚠️ Consequences</button>
+            <button class="nav-btn btn-assessment" onclick="showSection('assessment')">🩺 Assessment & Care</button>
+            <button class="nav-btn btn-quiz" onclick="showSection('quiz')">🎯 Quiz Time!</button>
+        </div>
+
+        <div class="content">
+            <!-- DEFINITIONS SECTION -->
+            <div id="definitions" class="section active">
+                <div class="card">
+                    <h2>🎯 Core Definitions</h2>
+                    
+                    <div class="highlight-box">
+                        <h3>Violence (WHO Definition)</h3>
+                        <p><strong>Intentional use of physical force or power</strong> (actual or threatened) against oneself or others that results in or has a high likelihood of:</p>
+                        <ul>
+                            <li>Injury or death</li>
+                            <li>Psychological harm</li>
+                            <li>Maldevelopment</li>
+                            <li>Deprivation</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Interpersonal Violence (IPV)</h3>
+                        <p><strong>Intentional use of force or power by an individual or small group against another person</strong></p>
+                        
+                        <div class="grid-2" style="margin-top: 20px;">
+                            <div class="box">
+                                <h4>🤜 Physical Violence</h4>
+                                <p>Hitting, pushing, burning, weapon use</p>
+                            </div>
+                            <div class="box">
+                                <h4>🧠 Psychological/Emotional</h4>
+                                <p>Threats, intimidation, humiliation</p>
+                            </div>
+                            <div class="box">
+                                <h4>💔 Sexual Violence</h4>
+                                <p>Assault, rape, unwanted contact</p>
+                            </div>
+                            <div class="box">
+                                <h4>🚫 Neglect & Deprivation</h4>
+                                <p>Withholding care, basic needs</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="memory-trick">
+                        Remember the 3 types of violence: <strong>SCI</strong><br>
+                        <strong>S</strong>elf-directed violence (suicide, self-harm)<br>
+                        <strong>C</strong>ollective violence (war, terrorism)<br>
+                        <strong>I</strong>nterpersonal violence (our focus!)
+                    </div>
+
+                    <div class="clinical-tip">
+                        Key distinction: IPV involves individuals or small groups. It does NOT include stranger violence, gang warfare, or military conflict in the traditional sense.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔍 Johnson's IPV Model</h2>
+                    
+                    <div class="grid-2">
+                        <div class="highlight-box">
+                            <h3>🚨 Patriarchal Terrorism</h3>
+                            <p><strong>Most severe form</strong></p>
+                            <ul>
+                                <li>One partner uses violence to dominate and control</li>
+                                <li>Systematic pattern of abuse</li>
+                                <li>Power and control are central</li>
+                                <li>High risk for severe injury/death</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-box">
+                            <h3>⚡ Situational Violence</h3>
+                            <p><strong>Less severe but still dangerous</strong></p>
+                            <ul>
+                                <li>Violence occurs in response to conflict</li>
+                                <li>Not primarily about control</li>
+                                <li>Can still escalate</li>
+                                <li>Both partners may be involved</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        ⚠️ CRITICAL: Escalation ↑ → Risk of death ↑
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATEGORIES SECTION -->
+            <div id="categories" class="section">
+                <div class="card">
+                    <h2>📊 Categories of IPV</h2>
+                    
+                    <div class="highlight-box">
+                        <h3>👨‍👩‍👧‍👦 Family/Partner Violence</h3>
+                        <ul>
+                            <li><strong>Child abuse & neglect</strong></li>
+                            <li><strong>Elder abuse & neglect</strong></li>
+                            <li><strong>Intimate partner violence (IPV)</strong></li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>Associated crimes:</strong> Assault, battery, homicide, kidnapping, weapon use</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🏘️ Community Violence</h3>
+                        <ul>
+                            <li><strong>Youth violence</strong></li>
+                            <li><strong>Bullying</strong></li>
+                            <li><strong>Sexual assault/rape</strong></li>
+                            <li><strong>Workplace or school violence</strong></li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>NOT included:</strong> Stranger violence, gang warfare, military conflict</p>
+                    </div>
+
+                    <div class="memory-trick">
+                        <strong>Family vs. Community:</strong><br>
+                        Family = Close relationships (home, family members)<br>
+                        Community = Outside the family unit (school, work, public)
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔎 Scope of IPV - The 4 Key Components</h2>
+                    
+                    <div class="grid-2">
+                        <div class="box" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+                            <h4>1️⃣ Victim & Perpetrator</h4>
+                            <p>Who is involved?</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                            <h4>2️⃣ Type of Violence</h4>
+                            <p>What happened?</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">
+                            <h4>3️⃣ Environment</h4>
+                            <p>Where did it occur?</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #fbc2eb, #a6c1ee);">
+                            <h4>4️⃣ Relationship</h4>
+                            <p>Connection between victim & perpetrator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORMS ACROSS LIFESPAN SECTION -->
+            <div id="forms" class="section">
+                <div class="card">
+                    <h2>👶👧🧑👴 Major Forms of IPV Across the Lifespan</h2>
+
+                    <div class="highlight-box">
+                        <h3>🧒 Child Abuse & Neglect</h3>
+                        
+                        <h4 style="color: #e74c3c; margin-top: 15px;">Types:</h4>
+                        <div class="grid-2">
+                            <div class="box">
+                                <strong>Physical Abuse</strong>
+                                <p>Hitting, burning, shaking</p>
+                            </div>
+                            <div class="box">
+                                <strong>Sexual Abuse</strong>
+                                <p>Any sexual contact</p>
+                            </div>
+                            <div class="box">
+                                <strong>Emotional Abuse</strong>
+                                <p>Threats, humiliation</p>
+                            </div>
+                            <div class="box">
+                                <strong>Neglect</strong>
+                                <p>Failure to provide care</p>
+                            </div>
+                        </div>
+
+                        <div class="warning-box" style="margin-top: 20px;">
+                            🚨 RED FLAGS:<br>
+                            • Inconsistent history with injuries<br>
+                            • Injuries inconsistent with developmental stage<br>
+                            • Usually perpetrated by parents or caregivers
+                        </div>
+
+                        <div class="testable">
+                            Common Myths About Child Abuse:<br>
+                            ✗ Abuse is only physical → <strong>FALSE!</strong> Can be emotional, sexual, neglect<br>
+                            ✗ Stranger danger → <strong>FALSE!</strong> Abusers are usually known to the child<br>
+                            ✗ Only happens in poor families → <strong>FALSE!</strong> Crosses all socioeconomic groups
+                        </div>
+
+                        <div class="clinical-tip">
+                            <strong>Mandated reporting required!</strong> Nurses MUST report suspected child abuse.
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>👴 Elder Abuse</h3>
+                        
+                        <h4 style="color: #e74c3c; margin-top: 15px;">Types:</h4>
+                        <ul>
+                            <li><strong>Physical abuse</strong> - hitting, rough handling</li>
+                            <li><strong>Emotional abuse</strong> - threats, humiliation</li>
+                            <li><strong>Sexual abuse</strong> - any unwanted sexual contact</li>
+                            <li><strong>Neglect</strong> - failure to provide care</li>
+                            <li><strong>Exploitation</strong> - stealing money, property</li>
+                            <li><strong>Abandonment</strong> - desertion by caregiver</li>
+                        </ul>
+
+                        <div class="warning-box" style="margin-top: 20px;">
+                            🎯 HIGH-RISK ELDERS:<br>
+                            • Cognitive impairment (dementia, Alzheimer's)<br>
+                            • Physical frailty<br>
+                            • Dependence on caregivers<br><br>
+                            ⚠️ Often underreported!
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🧑 Youth Violence (Ages 10-24)</h3>
+                        
+                        <p><strong>Includes:</strong> Bullying, fighting, weapon threats, gang violence</p>
+                        
+                        <div class="testable">
+                            MAJOR STATISTICS:<br>
+                            • Leading cause of death for Black youth<br>
+                            • ER visits >1,000/day<br>
+                            • Sexual minority youth at higher risk
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>😢 Bullying</h3>
+                        
+                        <p><strong>Definition:</strong> Repeated aggressive behavior with power imbalance</p>
+                        
+                        <div class="grid-2" style="margin-top: 15px;">
+                            <div class="box">
+                                <strong>Types of Bullying</strong>
+                                <p>• Physical<br>• Verbal<br>• Emotional<br>• Cyber</p>
+                            </div>
+                            <div class="box">
+                                <strong>Consequences</strong>
+                                <p>• Anxiety<br>• Depression<br>• Isolation<br>• Suicide risk</p>
+                            </div>
+                        </div>
+
+                        <div class="clinical-tip">
+                            Occurs in children AND adults (workplace bullying is real!)
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>💔 Sexual Violence</h3>
+                        
+                        <p><strong>Includes:</strong> Sexual assault, rape, sexual abuse</p>
+                        
+                        <div class="testable">
+                            <strong>80% committed by someone KNOWN to the victim</strong>
+                        </div>
+
+                        <div class="warning-box" style="margin-top: 15px;">
+                            <strong>RAPE DEFINITION:</strong> Penetration without consent<br>
+                            • Resistance is NOT required<br>
+                            • Victim may be unable to consent due to: age, drugs, alcohol, incapacity
+                        </div>
+
+                        <h4 style="color: #e74c3c; margin-top: 20px;">Types of Rape:</h4>
+                        <table>
+                            <tr>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Acquaintance</strong></td>
+                                <td>By someone the victim knows</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Date</strong></td>
+                                <td>During a date/social situation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Spousal/Partner</strong></td>
+                                <td>By intimate partner</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stranger</strong></td>
+                                <td>By unknown person</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Statutory</strong></td>
+                                <td>With person below age of consent</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🎯 Flip Cards: Test Your Knowledge!</h2>
+                    <p style="margin-bottom: 20px; text-align: center; color: #667eea; font-weight: bold;">Hover over each card to see the answer!</p>
+                    
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <p>What percentage of sexual violence is committed by someone known to the victim?</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <p><strong>80%</strong><br><br>Most sexual violence is NOT by strangers!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <p>What are the 3 high-risk factors for elder abuse?</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <p>1. Cognitive impairment<br>2. Physical frailty<br>3. Dependence on caregivers</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <p>True or False: Child abuse only occurs in low-income families</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <p><strong>FALSE!</strong><br><br>Child abuse crosses ALL socioeconomic groups</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONSEQUENCES SECTION -->
+            <div id="consequences" class="section">
+                <div class="card">
+                    <h2>⚠️ Consequences of IPV</h2>
+
+                    <div class="highlight-box">
+                        <h3>🤕 Physical Consequences</h3>
+                        
+                        <table>
+                            <tr>
+                                <th>Injury Type</th>
+                                <th>Details</th>
+                            </tr>
+                            <tr>
+                                <td>🟣 <strong>Bruises & Fractures</strong></td>
+                                <td>Especially facial fractures</td>
+                            </tr>
+                            <tr>
+                                <td>🧠 <strong>Head & Neck Injuries</strong></td>
+                                <td>Can lead to traumatic brain injury (TBI)</td>
+                            </tr>
+                            <tr>
+                                <td>🫁 <strong>Abdominal Injuries</strong></td>
+                                <td>Risk of internal bleeding</td>
+                            </tr>
+                            <tr>
+                                <td>🔥 <strong>Burns</strong></td>
+                                <td><strong>Patterned burns = RED FLAG</strong></td>
+                            </tr>
+                            <tr>
+                                <td>🤰 <strong>Pregnancy-related</strong></td>
+                                <td>Increased risk of homicide</td>
+                            </tr>
+                            <tr>
+                                <td>💔 <strong>Sexual Violence</strong></td>
+                                <td>STIs, pregnancy, chronic pelvic pain</td>
+                            </tr>
+                        </table>
+
+                        <div class="warning-box" style="margin-top: 20px;">
+                            ⚠️ PATTERNED INJURIES (burns, bruises in shapes) = HIGH suspicion for abuse!
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🧠 Psychosocial Consequences</h3>
+                        
+                        <div class="testable">
+                            <strong>PTSD is the MOST COMMON psychosocial consequence!</strong>
+                        </div>
+
+                        <h4 style="color: #e74c3c; margin-top: 20px;">PTSD Symptoms (3 Categories):</h4>
+                        <div class="grid-3">
+                            <div class="box" style="background: linear-gradient(135deg, #ff9a9e, #fecfef);">
+                                <h4>Re-experiencing</h4>
+                                <p>Flashbacks, nightmares</p>
+                            </div>
+                            <div class="box" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                                <h4>Avoidance/Numbing</h4>
+                                <p>Avoiding triggers, emotional detachment</p>
+                            </div>
+                            <div class="box" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+                                <h4>Hyperarousal</h4>
+                                <p>Always on alert, easily startled</p>
+                            </div>
+                        </div>
+
+                        <div class="memory-trick">
+                            Remember PTSD symptoms: <strong>RAH!</strong><br>
+                            <strong>R</strong>e-experiencing<br>
+                            <strong>A</strong>voidance<br>
+                            <strong>H</strong>yperarousal
+                        </div>
+
+                        <h4 style="color: #e74c3c; margin-top: 20px;">Other Psychosocial Effects:</h4>
+                        <ul>
+                            <li><strong>Depression</strong> (very common)</li>
+                            <li><strong>Anxiety</strong></li>
+                            <li><strong>Suicide risk</strong></li>
+                            <li><strong>Low self-esteem</strong></li>
+                            <li><strong>Social withdrawal</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>⏳ Long-Term Effects</h3>
+                        
+                        <ul>
+                            <li><strong>Chronic illness</strong> (GI disorders, cardiac disease)</li>
+                            <li><strong>Substance abuse</strong></li>
+                            <li><strong>Poor coping skills</strong></li>
+                            <li><strong>Aggression and criminal behavior</strong></li>
+                        </ul>
+
+                        <div class="clinical-tip">
+                            Childhood exposure to IPV increases risk of becoming a perpetrator or victim in adulthood - the cycle continues!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🎯 Risk Factors for IPV</h2>
+
+                    <div class="highlight-box">
+                        <h3>👥 High-Risk Populations</h3>
+                        
+                        <div class="grid-2">
+                            <div class="box" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+                                <strong>🍼 Infants & Children</strong>
+                                <p>Vulnerable, dependent</p>
+                            </div>
+                            <div class="box" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                                <strong>👴 Older Adults</strong>
+                                <p>Frailty, dependence</p>
+                            </div>
+                            <div class="box" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">
+                                <strong>👩 Women</strong>
+                                <p>Especially women of color</p>
+                            </div>
+                            <div class="box" style="background: linear-gradient(135deg, #fbc2eb, #a6c1ee);">
+                                <strong>🏳️‍🌈 LGBTQ+ Individuals</strong>
+                                <p>Higher victimization rates</p>
+                            </div>
+                            <div class="box" style="background: linear-gradient(135deg, #ff9a9e, #fecfef);">
+                                <strong>♿ People with Disabilities</strong>
+                                <p>Increased vulnerability</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🔍 Individual Risk Factors</h3>
+                        
+                        <ul>
+                            <li><strong>Substance abuse</strong> (especially alcohol) - major risk factor!</li>
+                            <li><strong>Mental illness</strong></li>
+                            <li><strong>History of violence</strong></li>
+                            <li><strong>Exposure to IPV during childhood</strong> (perpetuates cycle)</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🌍 Sociocultural Factors</h3>
+                        
+                        <ul>
+                            <li><strong>Poverty</strong></li>
+                            <li><strong>Cultural acceptance of violence</strong></li>
+                            <li><strong>Gender norms</strong> (patriarchal beliefs)</li>
+                            <li><strong>Media romanticizing violence</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ASSESSMENT & CARE SECTION -->
+            <div id="assessment" class="section">
+                <div class="card">
+                    <h2>🩺 Nursing Assessment</h2>
+
+                    <div class="highlight-box">
+                        <h3>📋 History - Red Flags</h3>
+                        
+                        <div class="warning-box">
+                            🚨 SUSPICIOUS INDICATORS:<br>
+                            • Inconsistent or vague explanations<br>
+                            • Delays in seeking care<br>
+                            • Implausible injury explanations<br>
+                            • Fearful behavior<br>
+                            • Partner/caregiver answers all questions
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🗣️ Screening - BEST PRACTICE</h3>
+                        
+                        <div class="testable">
+                            Use NONJUDGMENTAL, INDIRECT questions!
+                        </div>
+
+                        <div class="clinical-tip">
+                            <strong>Example Questions:</strong><br>
+                            "Do you feel safe at home?"<br>
+                            "Has anyone made you feel afraid or threatened?"<br>
+                            "Has anyone hurt you physically or emotionally?"
+                        </div>
+
+                        <ul style="margin-top: 15px;">
+                            <li>Screen in private (away from suspected abuser)</li>
+                            <li>Use calm, caring tone</li>
+                            <li>Never accusatory</li>
+                            <li>Believe the victim</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🔍 Physical Exam Red Flags</h3>
+                        
+                        <table>
+                            <tr>
+                                <th>Finding</th>
+                                <th>Significance</th>
+                            </tr>
+                            <tr>
+                                <td>🔴 Patterned bruises/burns</td>
+                                <td>Shape of object (belt, hand, cigarette)</td>
+                            </tr>
+                            <tr>
+                                <td>🧠 Head, neck injuries</td>
+                                <td>Common in IPV, high risk for TBI</td>
+                            </tr>
+                            <tr>
+                                <td>🫁 Abdominal injuries</td>
+                                <td>Internal bleeding risk</td>
+                            </tr>
+                            <tr>
+                                <td>❌ Injuries inconsistent with explanation</td>
+                                <td>Major red flag!</td>
+                            </tr>
+                            <tr>
+                                <td>📅 Multiple injuries in different stages of healing</td>
+                                <td>Ongoing abuse pattern</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="testable">
+                        <strong>MANDATORY REPORTING</strong> required for:<br>
+                        • Child abuse<br>
+                        • Elder abuse<br>
+                        (Laws vary by state for adult IPV)
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>👩‍⚕️ Nursing Responsibilities - CORE COMPETENCIES</h2>
+
+                    <div class="grid-2">
+                        <div class="box" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
+                            <h4>1️⃣ Recognize Signs</h4>
+                            <p>Know red flags and patterns</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white;">
+                            <h4>2️⃣ Person-Centered Assessment</h4>
+                            <p>Compassionate, nonjudgmental</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #4facfe, #00f2fe); color: white;">
+                            <h4>3️⃣ Report Suspected Abuse</h4>
+                            <p>Legal obligation!</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                            <h4>4️⃣ Collaborate</h4>
+                            <p>Work with interdisciplinary team</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                            <h4>5️⃣ Provide Education</h4>
+                            <p>Resources and referrals</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #30cfd0, #330867); color: white;">
+                            <h4>6️⃣ Document Objectively</h4>
+                            <p>Quotes, observations, no opinions</p>
+                        </div>
+                    </div>
+
+                    <div class="clinical-tip" style="margin-top: 20px;">
+                        <strong>Documentation Tips:</strong><br>
+                        • Use patient's own words (in quotes)<br>
+                        • Objective observations only<br>
+                        • Take photos if consented (with proper protocol)<br>
+                        • Never write opinions or suspicions
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🛡️ Prevention & Management</h2>
+
+                    <div class="highlight-box">
+                        <h3>1️⃣ Primary Prevention</h3>
+                        <p><strong>Goal: Prevent violence BEFORE it happens</strong></p>
+                        <ul>
+                            <li>Education programs</li>
+                            <li>School engagement</li>
+                            <li>Community programs</li>
+                            <li>CDC Division of Violence Prevention initiatives</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>2️⃣ Secondary Prevention</h3>
+                        <p><strong>Goal: Early identification and intervention</strong></p>
+                        <ul>
+                            <li>Routine screening (all patients!)</li>
+                            <li>Early identification of at-risk individuals</li>
+                            <li>Referral to support services</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🩺 Nursing Interventions</h3>
+                        
+                        <div class="grid-2">
+                            <div class="box" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+                                <strong>🛡️ Ensure Immediate Safety</strong>
+                                <p>Separate from abuser, safe environment</p>
+                            </div>
+                            <div class="box" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                                <strong>❤️ Emotional Support</strong>
+                                <p>Listen, validate feelings</p>
+                            </div>
+                            <div class="box" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">
+                                <strong>🚫 Reinforce: NOT Their Fault</strong>
+                                <p>Victim is NEVER to blame</p>
+                            </div>
+                            <div class="box" style="background: linear-gradient(135deg, #fbc2eb, #a6c1ee);">
+                                <strong>📞 Referrals</strong>
+                                <p>Counseling, shelters, legal aid</p>
+                            </div>
+                        </div>
+
+                        <div class="testable" style="margin-top: 20px;">
+                            <strong>CRITICAL MESSAGE:</strong> Always tell the victim "This is NOT your fault"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📚 Key Takeaways for Exams</h2>
+                    
+                    <div class="testable">
+                        ⭐ IPV occurs across ALL ages and populations<br>
+                        ⭐ Most abuse is committed by someone KNOWN to the victim<br>
+                        ⭐ Nurses are MANDATED REPORTERS<br>
+                        ⭐ PTSD and depression are the MOST COMMON outcomes<br>
+                        ⭐ Childhood exposure → adult violence risk<br>
+                        ⭐ SCREENING SAVES LIVES
+                    </div>
+
+                    <div class="memory-trick">
+                        <strong>The 3 P's of IPV Nursing Care:</strong><br>
+                        <strong>P</strong>rotect (ensure safety)<br>
+                        <strong>P</strong>rovide (support, resources)<br>
+                        <strong>P</strong>revent (education, screening)
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUIZ SECTION -->
+            <div id="quiz" class="section">
+                <div class="card">
+                    <h2>🎯 Interactive NCLEX-Style Quiz</h2>
+                    <p style="text-align: center; color: #667eea; margin-bottom: 20px;">Test your knowledge and get instant feedback!</p>
+
+                    <div class="quiz-container">
+                        <div class="question" id="q1">
+                            <h4>Question 1: A nurse is assessing a 5-year-old child with multiple bruises in various stages of healing. The parent states the child "falls a lot." What is the nurse's PRIORITY action?</h4>
+                            <div class="option" onclick="checkAnswer('q1', 'a', false)">
+                                A) Teach the parent about child safety
+                            </div>
+                            <div class="option" onclick="checkAnswer('q1', 'b', false)">
+                                B) Document the findings and continue routine care
+                            </div>
+                            <div class="option" onclick="checkAnswer('q1', 'c', true)">
+                                C) Report suspected child abuse to appropriate authorities
+                            </div>
+                            <div class="option" onclick="checkAnswer('q1', 'd', false)">
+                                D) Question the child privately about how injuries occurred
+                            </div>
+                            <div class="explanation" id="exp-q1">
+                                <strong>✅ Correct Answer: C</strong><br>
+                                Nurses are MANDATED REPORTERS. Multiple bruises in various stages of healing with an inconsistent explanation is a major red flag for child abuse. The nurse MUST report to authorities (CPS, social services). While documentation and assessment are important, reporting is the priority legal obligation.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q2">
+                            <h4>Question 2: Which of the following is the MOST COMMON psychosocial consequence of interpersonal violence?</h4>
+                            <div class="option" onclick="checkAnswer('q2', 'a', false)">
+                                A) Substance abuse
+                            </div>
+                            <div class="option" onclick="checkAnswer('q2', 'b', true)">
+                                B) Post-traumatic stress disorder (PTSD)
+                            </div>
+                            <div class="option" onclick="checkAnswer('q2', 'c', false)">
+                                C) Aggression
+                            </div>
+                            <div class="option" onclick="checkAnswer('q2', 'd', false)">
+                                D) Social withdrawal
+                            </div>
+                            <div class="explanation" id="exp-q2">
+                                <strong>✅ Correct Answer: B</strong><br>
+                                PTSD is the MOST COMMON psychosocial consequence of IPV. Remember the RAH acronym: Re-experiencing, Avoidance, Hyperarousal. While all other options can occur, PTSD is specifically noted as the most common in your study materials.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q3">
+                            <h4>Question 3: A nurse is screening a patient for intimate partner violence. Which question is MOST appropriate?</h4>
+                            <div class="option" onclick="checkAnswer('q3', 'a', false)">
+                                A) "Does your partner hit you?"
+                            </div>
+                            <div class="option" onclick="checkAnswer('q3', 'b', true)">
+                                B) "Do you feel safe at home?"
+                            </div>
+                            <div class="option" onclick="checkAnswer('q3', 'c', false)">
+                                C) "Why do you stay with your partner if they abuse you?"
+                            </div>
+                            <div class="option" onclick="checkAnswer('q3', 'd', false)">
+                                D) "Is your partner violent toward you?"
+                            </div>
+                            <div class="explanation" id="exp-q3">
+                                <strong>✅ Correct Answer: B</strong><br>
+                                Best practice is to use NONJUDGMENTAL, INDIRECT questions. "Do you feel safe at home?" is open-ended and allows the patient to share without feeling accused or defensive. Option C is judgmental and victim-blaming. Options A and D are too direct and may elicit denial.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q4">
+                            <h4>Question 4: Which statement about sexual violence is TRUE?</h4>
+                            <div class="option" onclick="checkAnswer('q4', 'a', true)">
+                                A) 80% of sexual violence is committed by someone known to the victim
+                            </div>
+                            <div class="option" onclick="checkAnswer('q4', 'b', false)">
+                                B) Rape requires evidence of physical resistance
+                            </div>
+                            <div class="option" onclick="checkAnswer('q4', 'c', false)">
+                                C) Most sexual assaults are committed by strangers
+                            </div>
+                            <div class="option" onclick="checkAnswer('q4', 'd', false)">
+                                D) Statutory rape only occurs with strangers
+                            </div>
+                            <div class="explanation" id="exp-q4">
+                                <strong>✅ Correct Answer: A</strong><br>
+                                This is a KEY TESTABLE fact: 80% of sexual violence is committed by someone KNOWN to the victim (acquaintance, date, partner, family member). Rape does NOT require physical resistance - the victim may be unable to consent due to age, drugs, alcohol, or incapacity. Most assaults are NOT by strangers.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q5">
+                            <h4>Question 5: Which population is at HIGHEST risk for elder abuse?</h4>
+                            <div class="option" onclick="checkAnswer('q5', 'a', false)">
+                                A) Elders living independently with no health issues
+                            </div>
+                            <div class="option" onclick="checkAnswer('q5', 'b', true)">
+                                B) Elders with cognitive impairment and caregiver dependence
+                            </div>
+                            <div class="option" onclick="checkAnswer('q5', 'c', false)">
+                                C) Elders who are financially independent
+                            </div>
+                            <div class="option" onclick="checkAnswer('q5', 'd', false)">
+                                D) Elders living in assisted living facilities only
+                            </div>
+                            <div class="explanation" id="exp-q5">
+                                <strong>✅ Correct Answer: B</strong><br>
+                                The 3 HIGH-RISK factors for elder abuse are: (1) Cognitive impairment, (2) Physical frailty, and (3) Dependence on caregivers. Elders with dementia who depend on others for care are most vulnerable. Elder abuse often occurs at home and is underreported.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q6">
+                            <h4>Question 6: In Johnson's IPV Model, which type represents the MOST SEVERE form of intimate partner violence?</h4>
+                            <div class="option" onclick="checkAnswer('q6', 'a', true)">
+                                A) Patriarchal terrorism
+                            </div>
+                            <div class="option" onclick="checkAnswer('q6', 'b', false)">
+                                B) Situational violence
+                            </div>
+                            <div class="option" onclick="checkAnswer('q6', 'c', false)">
+                                C) Reactive abuse
+                            </div>
+                            <div class="option" onclick="checkAnswer('q6', 'd', false)">
+                                D) Mutual combat
+                            </div>
+                            <div class="explanation" id="exp-q6">
+                                <strong>✅ Correct Answer: A</strong><br>
+                                Patriarchal terrorism is the MOST SEVERE form in Johnson's model. It involves one partner using violence to DOMINATE and CONTROL systematically. Situational violence occurs in response to conflict and is generally less severe (though still dangerous). Remember: Escalation increases risk of death!
+                            </div>
+                        </div>
+
+                        <div class="question" id="q7">
+                            <h4>Question 7: A nurse observes patterned burn marks on a child's buttocks. What does this finding suggest?</h4>
+                            <div class="option" onclick="checkAnswer('q7', 'a', false)">
+                                A) The child has a clotting disorder
+                            </div>
+                            <div class="option" onclick="checkAnswer('q7', 'b', true)">
+                                B) High suspicion for intentional abuse
+                            </div>
+                            <div class="option" onclick="checkAnswer('q7', 'c', false)">
+                                C) Normal childhood injury
+                            </div>
+                            <div class="option" onclick="checkAnswer('q7', 'd', false)">
+                                D) The child needs vitamin supplementation
+                            </div>
+                            <div class="explanation" id="exp-q7">
+                                <strong>✅ Correct Answer: B</strong><br>
+                                PATTERNED BURNS are a MAJOR RED FLAG for abuse! Burns in the shape of objects (cigarettes, irons, heating elements) or symmetric patterns indicate intentional infliction. This requires mandatory reporting. Accidental burns are typically irregular and on surfaces that would contact heat accidentally.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q8">
+                            <h4>Question 8: Which statement about child abuse is a COMMON MYTH?</h4>
+                            <div class="option" onclick="checkAnswer('q8', 'a', true)">
+                                A) "Child abuse only happens in poor families"
+                            </div>
+                            <div class="option" onclick="checkAnswer('q8', 'b', false)">
+                                B) "Abuse can be physical, emotional, or sexual"
+                            </div>
+                            <div class="option" onclick="checkAnswer('q8', 'c', false)">
+                                C) "Most abusers are known to the child"
+                            </div>
+                            <div class="option" onclick="checkAnswer('q8', 'd', false)">
+                                D) "Neglect is a form of abuse"
+                            </div>
+                            <div class="explanation" id="exp-q8">
+                                <strong>✅ Correct Answer: A</strong><br>
+                                This is TESTABLE! Common myths about child abuse include: abuse only being physical (FALSE - can be emotional, sexual, neglect), stranger danger (FALSE - abusers usually known), and only happening in poor families (FALSE - crosses ALL socioeconomic groups). Remember: abuse happens everywhere!
+                            </div>
+                        </div>
+
+                        <div class="question" id="q9">
+                            <h4>Question 9: What are the three symptom categories of PTSD following interpersonal violence?</h4>
+                            <div class="option" onclick="checkAnswer('q9', 'a', false)">
+                                A) Denial, anger, depression
+                            </div>
+                            <div class="option" onclick="checkAnswer('q9', 'b', true)">
+                                B) Re-experiencing, avoidance/numbing, hyperarousal
+                            </div>
+                            <div class="option" onclick="checkAnswer('q9', 'c', false)">
+                                C) Anxiety, fear, withdrawal
+                            </div>
+                            <div class="option" onclick="checkAnswer('q9', 'd', false)">
+                                D) Aggression, substance abuse, isolation
+                            </div>
+                            <div class="explanation" id="exp-q9">
+                                <strong>✅ Correct Answer: B</strong><br>
+                                Remember the RAH acronym: <strong>R</strong>e-experiencing (flashbacks, nightmares), <strong>A</strong>voidance/numbing (avoiding triggers, emotional detachment), <strong>H</strong>yperarousal (always on alert, easily startled). This is the classic PTSD triad you need to know!
+                            </div>
+                        </div>
+
+                        <div class="question" id="q10">
+                            <h4>Question 10: A pregnant patient discloses intimate partner violence. What is the nurse's PRIORITY concern?</h4>
+                            <div class="option" onclick="checkAnswer('q10', 'a', true)">
+                                A) Increased risk of homicide during pregnancy
+                            </div>
+                            <div class="option" onclick="checkAnswer('q10', 'b', false)">
+                                B) Ensuring adequate prenatal vitamins
+                            </div>
+                            <div class="option" onclick="checkAnswer('q10', 'c', false)">
+                                C) Scheduling more frequent prenatal appointments
+                            </div>
+                            <div class="option" onclick="checkAnswer('q10', 'd', false)">
+                                D) Providing parenting education
+                            </div>
+                            <div class="explanation" id="exp-q10">
+                                <strong>✅ Correct Answer: A</strong><br>
+                                CRITICAL FACT: Pregnancy INCREASES the risk of homicide in IPV situations! This is a life-threatening emergency. The nurse's priority is ensuring immediate safety, providing resources for escape/shelter, and potentially involving social services and law enforcement. All other interventions are secondary to safety.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="score-display" id="score">
+                        Questions Answered: <span id="answered">0</span>/10<br>
+                        Correct: <span id="correct">0</span>
+                    </div>
+
+                    <button class="interactive-btn" onclick="resetQuiz()">🔄 Reset Quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>🌟 You've Got This! 🌟</h3>
+            <p style="margin-top: 10px;">Remember: Nurses are on the frontline of identifying and preventing IPV.</p>
+            <p style="margin-top: 5px; font-size: 0.9em;">Your knowledge and compassion can save lives! 💙</p>
+            <p style="margin-top: 20px; font-size: 0.8em;">Created with 💜 for Future Nurses</p>
+        </div>
+    </div>
+
+    <script>
+        let answeredQuestions = 0;
+        let correctAnswers = 0;
+
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function checkAnswer(questionId, option, isCorrect) {
+            const question = document.getElementById(questionId);
+            const options = question.querySelectorAll('.option');
+            const explanation = document.getElementById('exp-' + questionId);
+
+            // Check if already answered
+            if (question.dataset.answered === 'true') {
+                return;
+            }
+
+            // Mark as answered
+            question.dataset.answered = 'true';
+            answeredQuestions++;
+
+            // Show result
+            options.forEach(opt => {
+                opt.style.pointerEvents = 'none';
+            });
+
+            const clickedOption = Array.from(options).find(opt => 
+                opt.textContent.trim().startsWith(option.toUpperCase())
+            );
+
+            if (isCorrect) {
+                clickedOption.classList.add('correct');
+                correctAnswers++;
+            } else {
+                clickedOption.classList.add('incorrect');
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.onclick.toString().includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+
+            explanation.classList.add('show');
+            updateScore();
+        }
+
+        function updateScore() {
+            document.getElementById('answered').textContent = answeredQuestions;
+            document.getElementById('correct').textContent = correctAnswers;
+        }
+
+        function resetQuiz() {
+            answeredQuestions = 0;
+            correctAnswers = 0;
+
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(question => {
+                question.dataset.answered = 'false';
+                const options = question.querySelectorAll('.option');
+                options.forEach(opt => {
+                    opt.classList.remove('correct', 'incorrect');
+                    opt.style.pointerEvents = 'auto';
+                });
+                const explanation = question.querySelector('.explanation');
+                explanation.classList.remove('show');
+            });
+
+            updateScore();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateScore();
+        });
+    </script>
+</body>
+</html>

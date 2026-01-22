@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sexual Assault & Sexual Violence - Interactive Study Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background: #f8f9fa;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-definitions { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .btn-types { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; }
+        .btn-drugs { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; }
+        .btn-assessment { background: linear-gradient(135deg, #43e97b, #38f9d7); color: white; }
+        .btn-care { background: linear-gradient(135deg, #fa709a, #fee140); color: white; }
+        .btn-myths { background: linear-gradient(135deg, #ff9a9e, #fecfef); color: white; }
+        .btn-quiz { background: linear-gradient(135deg, #30cfd0, #330867); color: white; }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-left: 5px solid #f5576c;
+        }
+
+        .card h2 {
+            color: #c0392b;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .card h3 {
+            color: #e74c3c;
+            margin: 20px 0 10px 0;
+            font-size: 1.4em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-left: 5px solid #e17055;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .clinical-tip {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            border-left: 5px solid #00b894;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .clinical-tip::before {
+            content: "💡 CLINICAL TIP: ";
+            font-weight: bold;
+            color: #00b894;
+        }
+
+        .memory-trick {
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            border-left: 5px solid #6c5ce7;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .memory-trick::before {
+            content: "🧠 MEMORY TRICK: ";
+            font-weight: bold;
+            color: #6c5ce7;
+            font-size: 1.1em;
+        }
+
+        .testable {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border: 3px dashed #e84393;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .testable::before {
+            content: "⭐ TESTABLE: ";
+            font-size: 1.2em;
+            color: #e84393;
+        }
+
+        .priority-box {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            border: 4px solid #c0392b;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .priority-box::before {
+            content: "🚨 PRIORITY: ";
+            font-size: 1.2em;
+            color: #c0392b;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+            padding-left: 10px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .interactive-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .interactive-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .question {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .question h4 {
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .option {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .option.correct {
+            background: linear-gradient(135deg, #d4fc79, #96e6a1);
+            border-color: #00b894;
+        }
+
+        .option.incorrect {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            border-color: #e84393;
+        }
+
+        .explanation {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
+        }
+
+        .flip-card {
+            background: transparent;
+            perspective: 1000px;
+            margin: 20px 0;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            min-height: 200px;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            min-height: 200px;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+        }
+
+        .flip-card-front {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #e3f2fd;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            border-left: 5px solid #e74c3c;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+
+        .footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .score-display {
+            font-size: 2em;
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            border-radius: 15px;
+            font-weight: bold;
+            color: #c0392b;
+        }
+
+        .myth-fact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .myth {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #e84393;
+        }
+
+        .myth::before {
+            content: "❌ MYTH: ";
+            font-weight: bold;
+            color: #e84393;
+        }
+
+        .fact {
+            background: linear-gradient(135deg, #d4fc79, #96e6a1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #00b894;
+        }
+
+        .fact::before {
+            content: "✅ FACT: ";
+            font-weight: bold;
+            color: #00b894;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Sexual Assault & Sexual Violence 🛡️</h1>
+            <p>Interactive Nursing Study Guide</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Trauma-informed care • Evidence-based practice • Compassionate advocacy</p>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="nav-btn btn-definitions" onclick="showSection('definitions')">📚 Definitions</button>
+            <button class="nav-btn btn-types" onclick="showSection('types')">📊 Types & Perpetrators</button>
+            <button class="nav-btn btn-drugs" onclick="showSection('drugs')">💊 Drug-Facilitated Assault</button>
+            <button class="nav-btn btn-assessment" onclick="showSection('assessment')">🩺 Assessment & Care</button>
+            <button class="nav-btn btn-care" onclick="showSection('management')">⚕️ Medical & Legal</button>
+            <button class="nav-btn btn-myths" onclick="showSection('myths')">🔍 Myths vs Facts</button>
+            <button class="nav-btn btn-quiz" onclick="showSection('quiz')">🎯 Quiz Time!</button>
+        </div>
+
+        <div class="content">
+            <!-- DEFINITIONS SECTION -->
+            <div id="definitions" class="section active">
+                <div class="card">
+                    <h2>📖 Core Definitions (HIGH-YIELD)</h2>
+                    
+                    <div class="highlight-box">
+                        <h3>🔴 Sexual Assault</h3>
+                        <p><strong>Any unwanted sexual behavior</strong></p>
+                        <p style="margin-top: 10px;">Ranges from:</p>
+                        <ul>
+                            <li>Harassment</li>
+                            <li>Unwanted touching/fondling</li>
+                            <li>Rape</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🔴 Sexual Violence</h3>
+                        <p><strong>Broader term that includes:</strong></p>
+                        <ul>
+                            <li>Sexual assault</li>
+                            <li>Rape</li>
+                            <li>Incest</li>
+                            <li>Human trafficking</li>
+                            <li>Female genital mutilation</li>
+                            <li>Denial of STI prevention or emergency contraception</li>
+                            <li>Organized rape during conflict</li>
+                        </ul>
+                    </div>
+
+                    <div class="testable">
+                        <h3 style="color: #e84393;">RAPE DEFINITION:</h3>
+                        <p style="font-size: 1.3em; margin-top: 10px;">Penetration (vaginal, anal, or oral), <strong>NO MATTER HOW SLIGHT</strong>, without consent</p>
+                    </div>
+
+                    <div class="warning-box">
+                        🔑 <strong>CONSENT CANNOT BE GIVEN IF:</strong><br><br>
+                        ✗ Person is a minor<br>
+                        ✗ Intoxicated or drugged<br>
+                        ✗ Cognitively impaired<br>
+                        ✗ Unconscious<br>
+                        ✗ Threatened or coerced
+                    </div>
+
+                    <div class="memory-trick">
+                        Remember when consent CANNOT be given: <strong>MITU-T</strong><br>
+                        <strong>M</strong>inor<br>
+                        <strong>I</strong>ntoxicated<br>
+                        <strong>T</strong>hreatened<br>
+                        <strong>U</strong>nconscious<br>
+                        <strong>T</strong>hinking impaired (cognitive disability)
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>👥 Who Is Affected</h2>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Most commonly:</strong> Adult males assault adult females</p>
+                        <p style="margin-top: 15px; font-size: 1.1em;"><strong>BUT: ANY gender, age, or ability level can be affected!</strong></p>
+                    </div>
+
+                    <div class="grid-3">
+                        <div class="box" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+                            <h4>🧒 Children</h4>
+                            <p>High-risk population</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                            <h4>👴 Older Adults</h4>
+                            <p>Vulnerable population</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">
+                            <h4>♿ People with Disabilities</h4>
+                            <p>Increased vulnerability</p>
+                        </div>
+                    </div>
+
+                    <div class="clinical-tip">
+                        <strong>Sexual Homicide (Erotophonophilia):</strong> Sexual activity associated with murder - extremely rare but important to know
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📊 Epidemiology (TESTABLE NUMBERS)</h2>
+                    
+                    <div class="stat-box">
+                        Lifetime Rape Prevalence:<br>
+                        🚺 Females: ~19%<br>
+                        🚹 Males: ~2%
+                    </div>
+
+                    <div class="testable">
+                        <strong>KEY STATISTICS:</strong><br>
+                        • 79% of first rapes occur BEFORE AGE 25<br>
+                        • ~40% occur BEFORE AGE 18<br>
+                        • Nearly HALF of female victims are raped by acquaintances<br>
+                        • Intimate partner rape ≈ 9% lifetime prevalence
+                    </div>
+
+                    <div class="warning-box">
+                        ⚠️ HIGHEST RISK GROUPS:<br>
+                        • Multiracial females<br>
+                        • American Indian/Alaskan Native females
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🚹 Male Sexual Assault</h2>
+                    
+                    <div class="highlight-box">
+                        <h3>Key Differences</h3>
+                        <ul>
+                            <li><strong>Often underreported</strong> due to stigma</li>
+                            <li>More likely to involve <strong>multiple assailants</strong></li>
+                            <li>More likely to involve <strong>severe physical trauma</strong></li>
+                        </ul>
+
+                        <h4 style="color: #e74c3c; margin-top: 20px;">Common Settings:</h4>
+                        <ul>
+                            <li>Prisons</li>
+                            <li>Locked institutions</li>
+                        </ul>
+                    </div>
+
+                    <div class="testable">
+                        <strong>CRITICAL:</strong> Emotional consequences are the SAME as females!
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>👁️ Stalking</h2>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Pattern of unwanted attention causing fear</strong></p>
+                        
+                        <div class="stat-box" style="margin-top: 20px;">
+                            Lifetime Prevalence:<br>
+                            🚺 Females: ~15%<br>
+                            🚹 Males: ~6%
+                        </div>
+
+                        <div class="clinical-tip">
+                            Often begins before age 25, similar to sexual assault
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TYPES & PERPETRATORS SECTION -->
+            <div id="types" class="section">
+                <div class="card">
+                    <h2>📋 Types of Rape</h2>
+
+                    <div class="grid-2">
+                        <div class="highlight-box">
+                            <h3>⚠️ Attempted Rape</h3>
+                            <p><strong>Threat or intent to rape without completion</strong></p>
+                            <h4 style="color: #e74c3c; margin-top: 15px;">Includes:</h4>
+                            <ul>
+                                <li>Interrupted assaults</li>
+                                <li>Drugging with intent to rape</li>
+                            </ul>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h3>🔴 Completed Rape</h3>
+                            <p><strong>Penetration without consent</strong></p>
+                            <h4 style="color: #e74c3c; margin-top: 15px;">Includes:</h4>
+                            <ul>
+                                <li>Spousal/marital rape (illegal in ALL states)</li>
+                                <li>Rape with objects</li>
+                                <li>Rape of individuals unable to consent</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="clinical-tip">
+                        Spousal/marital rape is now illegal in all 50 states - important legal point!
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>👤 Relationship to the Perpetrator (VERY TESTABLE)</h2>
+
+                    <div class="testable">
+                        <p style="font-size: 1.3em; text-align: center;">🚨 MOST PERPETRATORS ARE KNOWN TO THE VICTIM 🚨</p>
+                    </div>
+
+                    <div class="grid-3" style="margin-top: 20px;">
+                        <div class="box" style="background: linear-gradient(135deg, #ff9a9e, #fecfef);">
+                            <h4>💑 Intimate Partners</h4>
+                            <p>Current or former partners</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                            <h4>👥 Acquaintances</h4>
+                            <p>People the victim knows</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+                            <h4>🍷 Dates</h4>
+                            <p>Dating situations</p>
+                        </div>
+                    </div>
+
+                    <div class="warning-box" style="margin-top: 20px;">
+                        ⚠️ Stranger rape is LESS COMMON than commonly believed!
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>⚖️ Statutory Rape</h3>
+                        <p><strong>Minors cannot legally consent</strong></p>
+                        <p style="margin-top: 10px;">Age of consent: <strong>16-18 years</strong> (varies by state)</p>
+                        <p style="margin-top: 10px; font-style: italic;">Even if the minor "agrees," it's still rape because they cannot legally consent</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🎯 Flip Cards: Test Your Knowledge!</h2>
+                    <p style="margin-bottom: 20px; text-align: center; color: #667eea; font-weight: bold;">Hover over each card to see the answer!</p>
+                    
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <p>What percentage of first rapes occur before age 25?</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <p><strong>79%</strong><br><br>Most sexual assaults happen to young people!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <p>True or False: Most rapes are committed by strangers</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <p><strong>FALSE!</strong><br><br>Most perpetrators are KNOWN to the victim</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <p>Can an intoxicated person legally give consent?</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <p><strong>NO!</strong><br><br>Consent cannot be given when intoxicated or drugged</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DRUG-FACILITATED ASSAULT SECTION -->
+            <div id="drugs" class="section">
+                <div class="card">
+                    <h2>💊 Drug-Facilitated Sexual Assault</h2>
+
+                    <div class="priority-box">
+                        Victim is drugged or intoxicated → UNABLE to consent or recall
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>⚠️ Consequences of Drug-Facilitated Assault</h3>
+                        <ul>
+                            <li><strong>Amnesia</strong> - can't remember the assault</li>
+                            <li><strong>Inability to resist</strong> - physically incapacitated</li>
+                            <li><strong>Reduced credibility as witness</strong> - legal challenges</li>
+                        </ul>
+                    </div>
+
+                    <div class="testable">
+                        <p style="font-size: 1.3em;">🍺 ALCOHOL is the MOST COMMON date-rape drug!</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>⚗️ Common Date-Rape Drugs</h2>
+
+                    <table>
+                        <tr>
+                            <th>Drug</th>
+                            <th>Type</th>
+                            <th>Effects</th>
+                        </tr>
+                        <tr>
+                            <td><strong>GHB</strong></td>
+                            <td>CNS Depressant</td>
+                            <td>Amnesia, respiratory depression, sedation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rohypnol</strong></td>
+                            <td>Potent Benzodiazepine</td>
+                            <td>Sedation, amnesia, muscle relaxation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ketamine</strong></td>
+                            <td>Dissociative Anesthetic</td>
+                            <td>Dissociation, hallucinations, compliance</td>
+                        </tr>
+                    </table>
+
+                    <div class="memory-trick">
+                        Date-rape drugs: <strong>GRK</strong><br>
+                        <strong>G</strong>HB (CNS depressant)<br>
+                        <strong>R</strong>ohypnol (roofies - benzo)<br>
+                        <strong>K</strong>etamine (special K - dissociative)
+                    </div>
+
+                    <div class="warning-box" style="margin-top: 20px;">
+                        ⚖️ <strong>Drug-Induced Rape Prevention & Punishment Act (1996):</strong><br>
+                        Up to 20 YEARS in prison for drug-facilitated rape
+                    </div>
+
+                    <div class="clinical-tip">
+                        <strong>Safety Tips to Share:</strong><br>
+                        • Never leave drinks unattended<br>
+                        • Don't accept drinks from strangers<br>
+                        • Watch your drink being made<br>
+                        • Use a buddy system at parties/bars<br>
+                        • If you feel unusually intoxicated, seek help immediately
+                    </div>
+                </div>
+            </div>
+
+            <!-- ASSESSMENT & CARE SECTION -->
+            <div id="assessment" class="section">
+                <div class="card">
+                    <h2>😢 Clinical Presentation</h2>
+
+                    <div class="warning-box">
+                        ⚠️ There is NO "typical" response to sexual assault!
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>💔 Common Emotional Responses</h3>
+                        <div class="grid-2">
+                            <ul>
+                                <li>Acute stress disorder</li>
+                                <li>PTSD</li>
+                                <li>Fear, shame, guilt</li>
+                                <li>Anger, rage</li>
+                            </ul>
+                            <ul>
+                                <li>Anxiety</li>
+                                <li>Depression</li>
+                                <li>Suicidal ideation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🧠 Trauma Symptoms</h3>
+                        <ul>
+                            <li><strong>Flashbacks, nightmares</strong></li>
+                            <li><strong>Hyperalertness</strong> (always on guard)</li>
+                            <li><strong>Dissociation</strong> (feeling detached)</li>
+                            <li><strong>Avoidance</strong> (avoiding triggers)</li>
+                            <li><strong>Depersonalization & derealization</strong></li>
+                            <li><strong>Sexual dysfunction</strong></li>
+                            <li><strong>Somatic complaints</strong> (physical symptoms)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🩺 Nursing Assessment (PRIORITY)</h2>
+
+                    <div class="priority-box">
+                        Use TRAUMA-INFORMED, PATIENT-CENTERED care!
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>✅ General Principles</h3>
+                        <ul>
+                            <li>✓ Minimize repeated questioning</li>
+                            <li>✓ AVOID "why" questions (can sound blaming)</li>
+                            <li>✓ Use nonjudgmental language</li>
+                            <li>✓ Allow patient control and pacing</li>
+                            <li>✓ Never force exam or procedures</li>
+                        </ul>
+                    </div>
+
+                    <div class="testable">
+                        <strong>ASSESS (Priority Areas):</strong><br>
+                        1️⃣ Anxiety level<br>
+                        2️⃣ Coping mechanisms<br>
+                        3️⃣ Support systems<br>
+                        4️⃣ Emotional trauma<br>
+                        5️⃣ Physical trauma<br>
+                        6️⃣ Suicidal ideation
+                    </div>
+
+                    <div class="warning-box">
+                        🚨 <strong>HIGH SUICIDE RISK:</strong><br>
+                        History of assault + self-blame = CRITICAL concern!
+                    </div>
+
+                    <div class="memory-trick">
+                        Assessment priorities: <strong>ACES + PT</strong><br>
+                        <strong>A</strong>nxiety level<br>
+                        <strong>C</strong>oping mechanisms<br>
+                        <strong>E</strong>motional trauma<br>
+                        <strong>S</strong>upport systems<br>
+                        <strong>P</strong>hysical trauma<br>
+                        <strong>T</strong>houghts of suicide
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>⚖️ Forensic Patient</h2>
+
+                    <div class="highlight-box">
+                        <p><strong>Forensic Patient:</strong> Any patient who may interact with the legal system</p>
+                        
+                        <h3 style="margin-top: 20px;">Evidence Must Be:</h3>
+                        <div class="grid-3">
+                            <div class="box" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+                                <h4>📦 Collected</h4>
+                                <p>Properly gathered</p>
+                            </div>
+                            <div class="box" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                                <h4>🔒 Preserved</h4>
+                                <p>Chain of custody</p>
+                            </div>
+                            <div class="box" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">
+                                <h4>📝 Documented</h4>
+                                <p>Objectively recorded</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clinical-tip">
+                        <strong>Important Notes:</strong><br>
+                        • Patients may delay reporting<br>
+                        • Patients may have NO visible injuries<br>
+                        • Absence of injury does NOT mean assault didn't occur!
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔍 Physical Assessment</h2>
+
+                    <div class="highlight-box">
+                        <h3>Examination Components</h3>
+                        <ul>
+                            <li><strong>Head-to-toe exam</strong></li>
+                            <li><strong>Genital examination</strong> (with consent)</li>
+                            <li>Document: Size, color, location of ALL injuries</li>
+                            <li>Use body maps and photos (per policy)</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        ⚠️ REMEMBER: Injuries may be ABSENT!<br>
+                        Lack of physical injury ≠ lack of assault
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>🧪 Evidence Collection</h3>
+                        <ul>
+                            <li>Swabs (oral, vaginal, rectal)</li>
+                            <li>Hair samples</li>
+                            <li>Blood samples</li>
+                            <li>Nail scrapings</li>
+                            <li>Clothing (place in paper bags, NOT plastic)</li>
+                        </ul>
+
+                        <div class="clinical-tip">
+                            Paper bags prevent mold/degradation of biological evidence. Plastic bags trap moisture!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>✅ Best Practice: Sexual Assault Exam</h2>
+
+                    <div class="testable">
+                        <strong>5-STEP PROCESS:</strong><br><br>
+                        1️⃣ Head-to-toe assessment<br>
+                        2️⃣ Detailed genital exam<br>
+                        3️⃣ Evidence collection<br>
+                        4️⃣ Documentation<br>
+                        5️⃣ Treatment & discharge planning
+                    </div>
+
+                    <div class="priority-box" style="margin-top: 20px;">
+                        ✔ Patient may REFUSE any part of the exam<br>
+                        ✔ INFORMED CONSENT required for ALL steps
+                    </div>
+
+                    <div class="clinical-tip">
+                        Patient autonomy is CRITICAL! Never force procedures. This prevents revictimization.
+                    </div>
+                </div>
+            </div>
+
+            <!-- MEDICAL & LEGAL SECTION -->
+            <div id="management" class="section">
+                <div class="card">
+                    <h2>⚕️ Medical Management</h2>
+
+                    <div class="highlight-box">
+                        <h3>🏥 Immediate Care</h3>
+                        <ul>
+                            <li><strong>STI prophylaxis</strong> (CDC-recommended)</li>
+                            <li><strong>HIV & hepatitis risk counseling</strong></li>
+                            <li><strong>Pregnancy testing</strong></li>
+                            <li><strong>Emergency contraception</strong> (NOT abortion)</li>
+                            <li><strong>Pain management</strong></li>
+                            <li><strong>Tetanus if indicated</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="clinical-tip">
+                        Emergency contraception (Plan B, ella) prevents pregnancy - it's NOT an abortion pill! Important distinction for patient education.
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>📅 Follow-Up Care</h3>
+                        <p><strong>Schedule follow-up appointments:</strong></p>
+                        <ul>
+                            <li>2 weeks post-assault</li>
+                            <li>4 weeks post-assault</li>
+                            <li>6 weeks post-assault</li>
+                        </ul>
+                        <p style="margin-top: 15px;">For: STI testing, pregnancy test, emotional support, counseling referrals</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>⚖️ Legal & Ethical Considerations</h2>
+
+                    <div class="testable">
+                        <strong>MANDATORY REPORTING:</strong><br>
+                        ✓ ALL child victims<br>
+                        ✓ Dependent adults (state-specific)
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Adult Victims</h3>
+                        <p>• May choose <strong>anonymous reporting</strong></p>
+                        <p>• Can have exam without police report</p>
+                        <p>• Evidence can be collected and held ("Jane Doe kit")</p>
+                    </div>
+
+                    <div class="warning-box">
+                        ⚖️ <strong>VAWA (Violence Against Women Act, 1994):</strong><br><br>
+                        ✓ States MUST pay for sexual assault exams<br>
+                        ✓ Victim NOT required to report to police<br>
+                        ✓ No cost to victim
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>👩‍⚕️ Sexual Assault Nurse Examiner (SANE)</h2>
+
+                    <div class="highlight-box">
+                        <p><strong>SANE:</strong> RN with specialized forensic training</p>
+                        <p style="margin-top: 10px;"><strong>Member of Sexual Assault Response Team (SART)</strong></p>
+                    </div>
+
+                    <div class="grid-3" style="margin-top: 20px;">
+                        <div class="box" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
+                            <h4>🏥 Medical Care</h4>
+                            <p>Comprehensive exam & treatment</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white;">
+                            <h4>🔬 Evidence Collection</h4>
+                            <p>Proper forensic procedures</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #4facfe, #00f2fe); color: white;">
+                            <h4>⚖️ Expert Testimony</h4>
+                            <p>Court appearances</p>
+                        </div>
+                    </div>
+
+                    <div class="clinical-tip">
+                        If SANE unavailable → bedside nurse assumes role with appropriate support and resources
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🎯 Nursing Diagnoses</h2>
+
+                    <div class="priority-box">
+                        PRIORITY: Rape-trauma syndrome
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 20px;">
+                        <h3>Additional Diagnoses</h3>
+                        <ul>
+                            <li>Rape-trauma response</li>
+                            <li>Anxiety</li>
+                            <li>Fear</li>
+                            <li>Disturbed personal identity</li>
+                            <li>Impaired sexual functioning</li>
+                            <li>Social isolation</li>
+                            <li>Situational low self-esteem</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🎯 Expected Outcomes</h2>
+
+                    <div class="grid-2">
+                        <div class="box" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">
+                            <h4>Short-Term</h4>
+                            <ul style="text-align: left;">
+                                <li>Verbalizes feelings</li>
+                                <li>Understands trauma responses</li>
+                                <li>Identifies coping strategies</li>
+                            </ul>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #fbc2eb, #a6c1ee);">
+                            <h4>Long-Term</h4>
+                            <ul style="text-align: left;">
+                                <li>Connects with support</li>
+                                <li>Reduced anxiety/fear</li>
+                                <li>Recovery toward pre-assault functioning</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>💙 Interventions (CORE NURSING ROLE)</h2>
+
+                    <div class="testable">
+                        <strong>ESSENTIAL NURSING ACTIONS:</strong>
+                    </div>
+
+                    <div class="grid-2" style="margin-top: 20px;">
+                        <div class="box" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
+                            <h4>🛡️ Ensure Privacy & Safety</h4>
+                            <p>Separate space, security measures</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white;">
+                            <h4>✅ Believe the Patient</h4>
+                            <p>NEVER question their story</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #4facfe, #00f2fe); color: white;">
+                            <h4>💭 Normalize Trauma Responses</h4>
+                            <p>"Your feelings are normal"</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                            <h4>🚫 NOT Their Fault</h4>
+                            <p>"This was NOT your fault"</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                            <h4>🤝 Involve Support</h4>
+                            <p>Advocates, family, friends</p>
+                        </div>
+                        <div class="box" style="background: linear-gradient(135deg, #ff9a9e, #fecfef);">
+                            <h4>📄 Written Instructions</h4>
+                            <p>Discharge planning, resources</p>
+                        </div>
+                    </div>
+
+                    <div class="priority-box" style="margin-top: 20px;">
+                        🚨 MOST IMPORTANT MESSAGE:<br>
+                        <span style="font-size: 1.3em;">"This was NOT your fault"</span>
+                    </div>
+
+                    <div class="clinical-tip">
+                        <strong>Follow-Up Schedule:</strong> Arrange appointments at 2, 4, and 6 weeks post-assault
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📚 Long-Term Care & Resources</h2>
+
+                    <div class="highlight-box">
+                        <h3>🌟 Ongoing Support</h3>
+                        <ul>
+                            <li><strong>Individual counseling</strong></li>
+                            <li><strong>Group therapy</strong></li>
+                            <li><strong>PTSD treatment</strong> (if developed)</li>
+                            <li><strong>Crisis hotlines</strong> (RAINN: 1-800-656-HOPE)</li>
+                            <li><strong>Community advocacy programs</strong></li>
+                            <li><strong>Case management</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="clinical-tip">
+                        RAINN (Rape, Abuse & Incest National Network) operates the National Sexual Assault Hotline - available 24/7
+                    </div>
+                </div>
+            </div>
+
+            <!-- MYTHS VS FACTS SECTION -->
+            <div id="myths" class="section">
+                <div class="card">
+                    <h2>🔍 Myths vs Facts (NCLEX FAVORITE)</h2>
+                    <p style="text-align: center; margin-bottom: 20px; font-size: 1.1em; color: #667eea;">These are HIGHLY testable! Know them well!</p>
+
+                    <div class="myth-fact-container">
+                        <div class="myth">
+                            Victims provoke rape by their behavior, clothing, or being in the wrong place
+                        </div>
+                        <div class="fact">
+                            Victims are NEVER responsible for being assaulted. Rape is ALWAYS the perpetrator's choice.
+                        </div>
+                    </div>
+
+                    <div class="myth-fact-container">
+                        <div class="myth">
+                            Rape is about sexual desire
+                        </div>
+                        <div class="fact">
+                            Rape is about POWER and CONTROL, not sexual attraction
+                        </div>
+                    </div>
+
+                    <div class="myth-fact-container">
+                        <div class="myth">
+                            Most rapes are committed by strangers
+                        </div>
+                        <div class="fact">
+                            Most perpetrators are KNOWN to the victim (acquaintances, partners, dates)
+                        </div>
+                    </div>
+
+                    <div class="myth-fact-container">
+                        <div class="myth">
+                            Only women are victims of rape
+                        </div>
+                        <div class="fact">
+                            Men are also victims of sexual assault. ANY gender can be victimized.
+                        </div>
+                    </div>
+
+                    <div class="myth-fact-container">
+                        <div class="myth">
+                            If there are no physical injuries, rape didn't occur
+                        </div>
+                        <div class="fact">
+                            Absence of physical injury does NOT mean assault didn't happen. Many victims have no visible injuries.
+                        </div>
+                    </div>
+
+                    <div class="myth-fact-container">
+                        <div class="myth">
+                            Victims who don't fight back weren't really raped
+                        </div>
+                        <div class="fact">
+                            Freezing is a common trauma response. Lack of resistance does NOT equal consent.
+                        </div>
+                    </div>
+
+                    <div class="testable" style="margin-top: 30px;">
+                        <strong>Remember these for exams!</strong> NCLEX loves to test your ability to distinguish myths from facts about sexual assault.
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUIZ SECTION -->
+            <div id="quiz" class="section">
+                <div class="card">
+                    <h2>🎯 Interactive NCLEX-Style Quiz</h2>
+                    <p style="text-align: center; color: #667eea; margin-bottom: 20px;">Test your knowledge and get instant feedback!</p>
+
+                    <div class="quiz-container">
+                        <div class="question" id="q1">
+                            <h4>Question 1: What is the MOST COMMON date-rape drug?</h4>
+                            <div class="option" onclick="checkAnswer('q1', 'a', true)">
+                                A) Alcohol
+                            </div>
+                            <div class="option" onclick="checkAnswer('q1', 'b', false)">
+                                B) Rohypnol
+                            </div>
+                            <div class="option" onclick="checkAnswer('q1', 'c', false)">
+                                C) GHB
+                            </div>
+                            <div class="option" onclick="checkAnswer('q1', 'd', false)">
+                                D) Ketamine
+                            </div>
+                            <div class="explanation" id="exp-q1">
+                                <strong>✅ Correct Answer: A</strong><br>
+                                ALCOHOL is the most common date-rape drug! While GHB, Rohypnol, and Ketamine are all used, alcohol remains the #1 substance used to facilitate sexual assault because it's legal, readily available, and socially acceptable.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q2">
+                            <h4>Question 2: A 20-year-old patient presents to the ED after a suspected sexual assault. What is the nurse's PRIORITY action?</h4>
+                            <div class="option" onclick="checkAnswer('q2', 'a', false)">
+                                A) Obtain a detailed sexual history
+                            </div>
+                            <div class="option" onclick="checkAnswer('q2', 'b', true)">
+                                B) Ensure privacy and safety
+                            </div>
+                            <div class="option" onclick="checkAnswer('q2', 'c', false)">
+                                C) Call the police immediately
+                            </div>
+                            <div class="option" onclick="checkAnswer('q2', 'd', false)">
+                                D) Begin the forensic examination
+                            </div>
+                            <div class="explanation" id="exp-q2">
+                                <strong>✅ Correct Answer: B</strong><br>
+                                The PRIORITY is ensuring privacy and safety first. Create a safe, private environment before proceeding with assessment or evidence collection. The patient should feel secure and protected. Police notification is the patient's choice (unless mandated for minors/dependent adults).
+                            </div>
+                        </div>
+
+                        <div class="question" id="q3">
+                            <h4>Question 3: Which statement about sexual assault perpetrators is TRUE?</h4>
+                            <div class="option" onclick="checkAnswer('q3', 'a', true)">
+                                A) Most perpetrators are known to the victim
+                            </div>
+                            <div class="option" onclick="checkAnswer('q3', 'b', false)">
+                                B) Most assaults are committed by strangers
+                            </div>
+                            <div class="option" onclick="checkAnswer('q3', 'c', false)">
+                                C) Stranger rape is more common than acquaintance rape
+                            </div>
+                            <div class="option" onclick="checkAnswer('q3', 'd', false)">
+                                D) Sexual assault rarely involves intimate partners
+                            </div>
+                            <div class="explanation" id="exp-q3">
+                                <strong>✅ Correct Answer: A</strong><br>
+                                This is VERY TESTABLE! Most perpetrators are KNOWN to the victim - they may be intimate partners, acquaintances, or dates. Stranger rape is actually LESS COMMON than commonly believed. Nearly half of female victims are raped by acquaintances.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q4">
+                            <h4>Question 4: What percentage of first rapes occur before age 25?</h4>
+                            <div class="option" onclick="checkAnswer('q4', 'a', false)">
+                                A) 40%
+                            </div>
+                            <div class="option" onclick="checkAnswer('q4', 'b', false)">
+                                B) 50%
+                            </div>
+                            <div class="option" onclick="checkAnswer('q4', 'c', false)">
+                                C) 65%
+                            </div>
+                            <div class="option" onclick="checkAnswer('q4', 'd', true)">
+                                D) 79%
+                            </div>
+                            <div class="explanation" id="exp-q4">
+                                <strong>✅ Correct Answer: D</strong><br>
+                                TESTABLE NUMBER: 79% of first rapes occur BEFORE age 25, and approximately 40% occur before age 18. This highlights the vulnerability of young people to sexual assault.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q5">
+                            <h4>Question 5: A nurse is caring for a sexual assault survivor who states, "I should have fought harder. This is my fault." What is the BEST response?</h4>
+                            <div class="option" onclick="checkAnswer('q5', 'a', false)">
+                                A) "Why didn't you fight back?"
+                            </div>
+                            <div class="option" onclick="checkAnswer('q5', 'b', false)">
+                                B) "You need to stop blaming yourself"
+                            </div>
+                            <div class="option" onclick="checkAnswer('q5', 'c', true)">
+                                C) "This was not your fault. You survived, and that's what matters."
+                            </div>
+                            <div class="option" onclick="checkAnswer('q5', 'd', false)">
+                                D) "Let's focus on the evidence collection"
+                            </div>
+                            <div class="explanation" id="exp-q5">
+                                <strong>✅ Correct Answer: C</strong><br>
+                                The MOST IMPORTANT message is "This was NOT your fault." Validate survival, normalize trauma responses (freezing is common), and provide emotional support. Never ask "why" questions (option A) as they can sound blaming. Avoid dismissive statements (option B). While evidence is important, emotional support is the priority when patient expresses self-blame.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q6">
+                            <h4>Question 6: Which condition indicates a patient CANNOT legally give consent for sexual activity?</h4>
+                            <div class="option" onclick="checkAnswer('q6', 'a', false)">
+                                A) Being in a committed relationship
+                            </div>
+                            <div class="option" onclick="checkAnswer('q6', 'b', true)">
+                                B) Being intoxicated
+                            </div>
+                            <div class="option" onclick="checkAnswer('q6', 'c', false)">
+                                C) Having previous sexual experience
+                            </div>
+                            <div class="option" onclick="checkAnswer('q6', 'd', false)">
+                                D) Being physically attracted to someone
+                            </div>
+                            <div class="explanation" id="exp-q6">
+                                <strong>✅ Correct Answer: B</strong><br>
+                                Consent CANNOT be given when intoxicated or drugged! Remember MITU-T: Minor, Intoxicated, Threatened, Unconscious, Thinking impaired. All of these conditions prevent legal consent.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q7">
+                            <h4>Question 7: A patient has no visible physical injuries after reporting sexual assault. What should the nurse understand?</h4>
+                            <div class="option" onclick="checkAnswer('q7', 'a', false)">
+                                A) The assault probably didn't happen
+                            </div>
+                            <div class="option" onclick="checkAnswer('q7', 'b', false)">
+                                B) The patient is likely lying
+                            </div>
+                            <div class="option" onclick="checkAnswer('q7', 'c', true)">
+                                C) Absence of injury does not mean assault didn't occur
+                            </div>
+                            <div class="option" onclick="checkAnswer('q7', 'd', false)">
+                                D) No evidence collection is needed
+                            </div>
+                            <div class="explanation" id="exp-q7">
+                                <strong>✅ Correct Answer: C</strong><br>
+                                CRITICAL CONCEPT: Lack of physical injury ≠ lack of assault! Many sexual assault victims have NO visible injuries. The nurse should BELIEVE the patient and proceed with appropriate care and evidence collection. Never question the validity of the assault based on absence of injuries.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q8">
+                            <h4>Question 8: Which statement about the Violence Against Women Act (VAWA) is correct?</h4>
+                            <div class="option" onclick="checkAnswer('q8', 'a', false)">
+                                A) Victims must pay for their own sexual assault exams
+                            </div>
+                            <div class="option" onclick="checkAnswer('q8', 'b', true)">
+                                B) States must pay for sexual assault exams; victims not required to report to police
+                            </div>
+                            <div class="option" onclick="checkAnswer('q8', 'c', false)">
+                                C) Victims must file a police report to receive an exam
+                            </div>
+                            <div class="option" onclick="checkAnswer('q8', 'd', false)">
+                                D) Only federal facilities must provide free exams
+                            </div>
+                            <div class="explanation" id="exp-q8">
+                                <strong>✅ Correct Answer: B</strong><br>
+                                VAWA (1994) mandates that states MUST pay for sexual assault exams and victims are NOT required to report to police to receive care. This removes financial barriers and respects patient autonomy. No cost to victim, regardless of whether they choose to involve law enforcement.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q9">
+                            <h4>Question 9: What is the primary focus of rape?</h4>
+                            <div class="option" onclick="checkAnswer('q9', 'a', false)">
+                                A) Sexual desire
+                            </div>
+                            <div class="option" onclick="checkAnswer('q9', 'b', true)">
+                                B) Power and control
+                            </div>
+                            <div class="option" onclick="checkAnswer('q9', 'c', false)">
+                                C) Physical attraction
+                            </div>
+                            <div class="option" onclick="checkAnswer('q9', 'd', false)">
+                                D) Romantic feelings
+                            </div>
+                            <div class="explanation" id="exp-q9">
+                                <strong>✅ Correct Answer: B</strong><br>
+                                MYTH vs FACT! Rape is about POWER and CONTROL, NOT sexual desire or attraction. This is a common myth that's frequently tested. Understanding this helps nurses provide better trauma-informed care and education.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q10">
+                            <h4>Question 10: A nurse is collecting evidence from a sexual assault victim. How should clothing be stored?</h4>
+                            <div class="option" onclick="checkAnswer('q10', 'a', false)">
+                                A) In plastic bags to preserve moisture
+                            </div>
+                            <div class="option" onclick="checkAnswer('q10', 'b', true)">
+                                B) In paper bags to prevent mold and degradation
+                            </div>
+                            <div class="option" onclick="checkAnswer('q10', 'c', false)">
+                                C) In the patient's personal belongings
+                            </div>
+                            <div class="option" onclick="checkAnswer('q10', 'd', false)">
+                                D) Clothing should be discarded, not collected
+                            </div>
+                            <div class="explanation" id="exp-q10">
+                                <strong>✅ Correct Answer: B</strong><br>
+                                FORENSIC NURSING: Always use PAPER bags for clothing evidence, NEVER plastic! Plastic bags trap moisture and can cause mold/degradation of biological evidence (DNA, fluids). Paper bags allow evidence to breathe and preserve it properly. This maintains chain of custody and evidence integrity.
+                            </div>
+                        </div>
+
+                        <div class="question" id="q11">
+                            <h4>Question 11: Which patient characteristic indicates HIGH RISK for suicide after sexual assault?</h4>
+                            <div class="option" onclick="checkAnswer('q11', 'a', false)">
+                                A) Having strong family support
+                            </div>
+                            <div class="option" onclick="checkAnswer('q11', 'b', true)">
+                                B) History of assault plus self-blame
+                            </div>
+                            <div class="option" onclick="checkAnswer('q11', 'c', false)">
+                                C) Engaging with counseling services
+                            </div>
+                            <div class="option" onclick="checkAnswer('q11', 'd', false)">
+                                D) Expressing anger at the perpetrator
+                            </div>
+                            <div class="explanation" id="exp-q11">
+                                <strong>✅ Correct Answer: B</strong><br>
+                                CRITICAL: History of assault + self-blame = HIGH SUICIDE RISK! This is a priority assessment finding. Self-blame increases risk significantly. The nurse must assess for suicidal ideation and implement safety measures. This is one of the six priority assessment areas (ACES + PT).
+                            </div>
+                        </div>
+
+                        <div class="question" id="q12">
+                            <h4>Question 12: What is the legal definition of statutory rape?</h4>
+                            <div class="option" onclick="checkAnswer('q12', 'a', false)">
+                                A) Rape by a stranger in a public place
+                            </div>
+                            <div class="option" onclick="checkAnswer('q12', 'b', false)">
+                                B) Rape involving physical force
+                            </div>
+                            <div class="option" onclick="checkAnswer('q12', 'c', true)">
+                                C) Sexual activity with a minor who cannot legally consent
+                            </div>
+                            <div class="option" onclick="checkAnswer('q12', 'd', false)">
+                                D) Rape that occurs within marriage
+                            </div>
+                            <div class="explanation" id="exp-q12">
+                                <strong>✅ Correct Answer: C</strong><br>
+                                Statutory rape = sexual activity with a MINOR who cannot legally consent. Age of consent is 16-18 (varies by state). Even if the minor "agrees," it's still rape because they cannot legally consent due to age. This is different from other forms of rape.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="score-display" id="score">
+                        Questions Answered: <span id="answered">0</span>/12<br>
+                        Correct: <span id="correct">0</span>
+                    </div>
+
+                    <button class="interactive-btn" onclick="resetQuiz()">🔄 Reset Quiz</button>
+                </div>
+
+                <div class="card">
+                    <h2>📝 Key Exam Takeaways</h2>
+
+                    <div class="testable">
+                        <strong>REMEMBER FOR EXAMS:</strong><br><br>
+                        ✓ Sexual assault is COMMON and UNDERREPORTED<br>
+                        ✓ Most perpetrators are KNOWN to victims<br>
+                        ✓ Drug-facilitated rape is increasing (alcohol #1)<br>
+                        ✓ Lack of injury ≠ lack of assault<br>
+                        ✓ Nurses are both MEDICAL and LEGAL advocates<br>
+                        ✓ Trauma-informed care prevents revictimization<br>
+                        ✓ "This was NOT your fault" - most important message
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>🌟 You Are Making a Difference 🌟</h3>
+            <p style="margin-top: 10px;">As a nurse, you are often the first healthcare provider a survivor encounters.</p>
+            <p style="margin-top: 5px;">Your compassionate, trauma-informed care can be life-changing. 💙</p>
+            <p style="margin-top: 20px; font-size: 0.9em;">Resources: RAINN National Hotline 1-800-656-HOPE (4673)</p>
+            <p style="margin-top: 20px; font-size: 0.8em;">Created with 💜 for Future Nurses</p>
+        </div>
+    </div>
+
+    <script>
+        let answeredQuestions = 0;
+        let correctAnswers = 0;
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function checkAnswer(questionId, option, isCorrect) {
+            const question = document.getElementById(questionId);
+            const options = question.querySelectorAll('.option');
+            const explanation = document.getElementById('exp-' + questionId);
+
+            if (question.dataset.answered === 'true') {
+                return;
+            }
+
+            question.dataset.answered = 'true';
+            answeredQuestions++;
+
+            options.forEach(opt => {
+                opt.style.pointerEvents = 'none';
+            });
+
+            const clickedOption = Array.from(options).find(opt => 
+                opt.textContent.trim().startsWith(option.toUpperCase())
+            );
+
+            if (isCorrect) {
+                clickedOption.classList.add('correct');
+                correctAnswers++;
+            } else {
+                clickedOption.classList.add('incorrect');
+                options.forEach(opt => {
+                    if (opt.onclick.toString().includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+
+            explanation.classList.add('show');
+            updateScore();
+        }
+
+        function updateScore() {
+            document.getElementById('answered').textContent = answeredQuestions;
+            document.getElementById('correct').textContent = correctAnswers;
+        }
+
+        function resetQuiz() {
+            answeredQuestions = 0;
+            correctAnswers = 0;
+
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(question => {
+                question.dataset.answered = 'false';
+                const options = question.querySelectorAll('.option');
+                options.forEach(opt => {
+                    opt.classList.remove('correct', 'incorrect');
+                    opt.style.pointerEvents = 'auto';
+                });
+                const explanation = question.querySelector('.explanation');
+                explanation.classList.remove('show');
+            });
+
+            updateScore();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateScore();
+        });
+    </script>
+</body>
+</html>
