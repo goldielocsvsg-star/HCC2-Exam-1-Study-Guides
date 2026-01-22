@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡️ Family Violence & Abuse - Interactive Study Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s;
+            color: white;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-types { background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 90%); }
+        .btn-child { background: linear-gradient(135deg, #FFA8A8 0%, #FCFF00 100%); }
+        .btn-ipv { background: linear-gradient(135deg, #FF6B9D 0%, #C86DD7 100%); }
+        .btn-elder { background: linear-gradient(135deg, #A8EDEA 0%, #FED6E3 100%); }
+        .btn-nursing { background: linear-gradient(135deg, #81FBB8 0%, #28C76F 100%); }
+        .btn-quiz { background: linear-gradient(135deg, #F6D365 0%, #FDA085 100%); }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+        }
+
+        .content-box h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .content-box h3 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        .highlight-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #f5576c;
+        }
+
+        .stats-box {
+            background: linear-gradient(135deg, #FFE985 0%, #FA742B 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 3px solid #ff4757;
+        }
+
+        .warning-box::before {
+            content: "⚠️ ";
+            font-size: 1.5em;
+        }
+
+        .cycle-visual {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .cycle-step {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .cycle-step:hover {
+            transform: scale(1.05);
+        }
+
+        .cycle-1 { background: linear-gradient(135deg, #FFA07A 0%, #FF6347 100%); }
+        .cycle-2 { background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%); }
+        .cycle-3 { background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%); }
+
+        .flip-card {
+            background: transparent;
+            perspective: 1000px;
+            margin: 15px 0;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            padding: 20px;
+            border-radius: 10px;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            transform: rotateY(180deg);
+        }
+
+        .quiz-container {
+            background: linear-gradient(135deg, #E0C3FC 0%, #8EC5FC 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .quiz-question {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-option {
+            background: #f5f7fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background: #e8eaf6;
+            transform: translateX(5px);
+        }
+
+        .quiz-option.correct {
+            background: #81FBB8;
+            border-color: #28C76F;
+        }
+
+        .quiz-option.incorrect {
+            background: #FFB6C1;
+            border-color: #FF6B9D;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 2em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .memory-trick {
+            background: linear-gradient(135deg, #FFEAA7 0%, #FD79A8 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 3px dashed #6C5CE7;
+        }
+
+        .memory-trick::before {
+            content: "💡 Memory Trick: ";
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .priority-box {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .priority-box::before {
+            content: "🎯 PRIORITY: ";
+            font-size: 1.3em;
+        }
+
+        .table-style {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .table-style th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .table-style td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .table-style tr:nth-child(even) {
+            background: #f5f7fa;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .cycle-step {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Family Violence & Abuse</h1>
+            <p>Interactive Nursing Study Guide | Chapter 28</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Future Nurse AI Study Series</p>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="nav-btn btn-types" onclick="showSection('types')">Types of Abuse</button>
+            <button class="nav-btn btn-child" onclick="showSection('child')">Child Abuse</button>
+            <button class="nav-btn btn-ipv" onclick="showSection('ipv')">IPV & Cycle</button>
+            <button class="nav-btn btn-elder" onclick="showSection('elder')">Elder Abuse</button>
+            <button class="nav-btn btn-nursing" onclick="showSection('nursing')">Nursing Care</button>
+            <button class="nav-btn btn-quiz" onclick="showSection('quiz')">Practice Quiz</button>
+        </div>
+
+        <div id="progress-section">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar" style="width: 0%;">0% Complete</div>
+            </div>
+        </div>
+
+        <!-- TYPES OF ABUSE SECTION -->
+        <div id="types" class="section active">
+            <div class="content-box">
+                <h2>🎯 5 Major Types of Abuse</h2>
+                
+                <div class="memory-trick">
+                    <strong>P-S-E-N-E</strong> (Physical, Sexual, Emotional, Neglect, Economic)
+                </div>
+
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>1️⃣ Physical Abuse</h3>
+                            <p><strong>Click to see details →</strong></p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Physical Abuse Details</h3>
+                            <ul>
+                                <li>Intentional bodily harm</li>
+                                <li>Slapping, punching, choking, burning</li>
+                                <li>🚩 Red flags: injuries at different stages, repeated "accidents"</li>
+                                <li>Patterned bruises/burns</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>2️⃣ Sexual Abuse</h3>
+                            <p><strong>Click to see details →</strong></p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Sexual Abuse Details</h3>
+                            <ul>
+                                <li>ANY sexual contact without consent</li>
+                                <li>⚠️ Cannot consent if: child, intoxicated, cognitively impaired, unconscious</li>
+                                <li><strong>KEY: Most perpetrators are KNOWN to victim</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>3️⃣ Emotional/Psychological Abuse</h3>
+                            <p><strong>Click to see details →</strong></p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Emotional Abuse Details</h3>
+                            <ul>
+                                <li>Undermines self-worth</li>
+                                <li>Criticism, humiliation, intimidation, isolation, name-calling</li>
+                                <li>Often COEXISTS with physical/sexual abuse</li>
+                                <li>Signs: low self-esteem, anxiety, withdrawal</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>4️⃣ Neglect</h3>
+                            <p><strong>Click to see details →</strong></p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Neglect Details</h3>
+                            <ul>
+                                <li>Failure to provide basic needs</li>
+                                <li>Physical, emotional, educational, medical</li>
+                                <li>Seen in children AND older adults</li>
+                                <li>Signs: poor hygiene, malnutrition, untreated conditions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h3>5️⃣ Economic Abuse</h3>
+                            <p><strong>Click to see details →</strong></p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Economic Abuse Details</h3>
+                            <ul>
+                                <li>Control of financial resources</li>
+                                <li>Forbidding work/school</li>
+                                <li>Withholding money</li>
+                                <li>Common in IPV</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>TESTABLE:</strong> Abuse occurs across ALL ages, genders, cultures, and socioeconomic groups. 38 states define domestic violence in criminal code.
+                </div>
+            </div>
+        </div>
+
+        <!-- CHILD ABUSE SECTION -->
+        <div id="child" class="section">
+            <div class="content-box">
+                <h2>👶 Child Abuse: Acts of Commission vs Omission</h2>
+
+                <div class="highlight-box">
+                    <h3>Acts of COMMISSION (Intentional)</h3>
+                    <ul>
+                        <li>Physical abuse</li>
+                        <li>Sexual abuse</li>
+                        <li>Emotional abuse</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>Acts of OMISSION (Neglect)</h3>
+                    <ul>
+                        <li>Physical neglect</li>
+                        <li>Emotional neglect</li>
+                        <li>Medical/dental neglect</li>
+                        <li>Educational neglect</li>
+                        <li>Inadequate supervision</li>
+                        <li>Exposure to violence</li>
+                    </ul>
+                </div>
+
+                <div class="stats-box">
+                    <h3>📊 HIGH-YIELD STATISTICS</h3>
+                    <ul>
+                        <li><strong>Most common:</strong> Neglect (~73%)</li>
+                        <li><strong>Most vulnerable:</strong> Children <3 years</li>
+                        <li><strong>Deaths:</strong> 78% occur in children <4 years</li>
+                        <li><strong>Perpetrators:</strong> ~92% are PARENTS</li>
+                        <li><strong>Sexual abuse:</strong> 27% girls, 5% boys by age 17</li>
+                    </ul>
+                </div>
+
+                <div class="memory-trick">
+                    Think <strong>"Neglect is #1"</strong> - Most common type is neglect at 73%
+                </div>
+
+                <div class="warning-box">
+                    <h3>🚨 Shaken Baby Syndrome</h3>
+                    <ul>
+                        <li><strong>Leading cause of death</strong> from physical abuse</li>
+                        <li>Occurs in children <2 years</li>
+                        <li>Symptoms: seizures, vomiting, bulging fontanel, retinal hemorrhages</li>
+                    </ul>
+                </div>
+
+                <div class="priority-box">
+                    ANY bruising in infants <6 months is suspicious!
+                </div>
+
+                <h3 style="color: #764ba2; margin-top: 30px;">Long-term Consequences</h3>
+                <div class="highlight-box">
+                    <ul>
+                        <li>PTSD</li>
+                        <li>Major depression</li>
+                        <li>Anxiety disorders</li>
+                        <li>Poor impulse control</li>
+                        <li>Dissociative disorders</li>
+                        <li>↑ Risk: criminal behavior, substance abuse, adult victimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- IPV SECTION -->
+        <div id="ipv" class="section">
+            <div class="content-box">
+                <h2>💔 Intimate Partner Violence (IPV)</h2>
+
+                <div class="stats-box">
+                    <h3>📊 Epidemiology</h3>
+                    <ul>
+                        <li>~25% of women</li>
+                        <li>~10% of men</li>
+                        <li><strong>Highest risk: ages 18-34</strong></li>
+                        <li>Occurs equally in same-sex and heterosexual relationships</li>
+                        <li><strong>50% of murdered women</strong> killed by intimate partners</li>
+                    </ul>
+                </div>
+
+                <h3 style="color: #764ba2; margin-top: 30px;">⚠️ Risk Factors</h3>
+                <div class="highlight-box">
+                    <ul>
+                        <li>Belief in dominance/control</li>
+                        <li>Pathological jealousy</li>
+                        <li>Isolation of partner</li>
+                        <li>Financial control</li>
+                        <li>Substance use</li>
+                        <li>Pregnancy</li>
+                        <li><strong>🔴 HIGHEST DANGER: Attempting to leave relationship</strong></li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>CRITICAL:</strong> Pregnancy does NOT protect from violence. Attempting to leave is the MOST DANGEROUS time!
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h2>🔄 Cycle of Violence (VERY TESTABLE!)</h2>
+                
+                <div class="memory-trick">
+                    Remember <strong>TAH</strong> (Tension → Acute → Honeymoon)
+                </div>
+
+                <div class="cycle-visual">
+                    <div class="cycle-step cycle-1">
+                        <h3>1️⃣ Tension-Building</h3>
+                        <p>Verbal abuse</p>
+                        <p>Intimidation</p>
+                        <p>Victim "keeps peace"</p>
+                    </div>
+                    
+                    <div class="cycle-step cycle-2">
+                        <h3>2️⃣ Acute Battering</h3>
+                        <p>Severe violence</p>
+                        <p>Physical/sexual assault</p>
+                        <p>Loss of control</p>
+                    </div>
+                    
+                    <div class="cycle-step cycle-3">
+                        <h3>3️⃣ Honeymoon</h3>
+                        <p>Apologies</p>
+                        <p>Gifts & promises</p>
+                        <p>Temporary calm</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>WITHOUT INTERVENTION:</strong> Cycles escalate & calm periods shorten
+                </div>
+
+                <div class="priority-box">
+                    IPV victims = 2× RISK OF SUICIDE. Always assess!
+                </div>
+            </div>
+        </div>
+
+        <!-- ELDER ABUSE SECTION -->
+        <div id="elder" class="section">
+            <div class="content-box">
+                <h2>👵 Older Adult Abuse</h2>
+
+                <div class="stats-box">
+                    <h3>📊 Key Facts</h3>
+                    <ul>
+                        <li>~1 in 10 adults >60 years abused</li>
+                        <li>Many cases go UNREPORTED</li>
+                        <li>Family members often perpetrators</li>
+                        <li>Occurs in homes AND institutions</li>
+                    </ul>
+                </div>
+
+                <h3 style="color: #764ba2; margin-top: 30px;">Types of Elder Abuse</h3>
+                <table class="table-style">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Examples</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Physical</strong></td>
+                            <td>Hitting, restraining, rough handling</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sexual</strong></td>
+                            <td>Non-consensual sexual contact</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Emotional</strong></td>
+                            <td>Verbal abuse, isolation, intimidation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Financial</strong></td>
+                            <td>Theft, fraud, exploitation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Neglect</strong></td>
+                            <td>Failure to meet basic needs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Self-neglect</strong></td>
+                            <td>Unable to care for self</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="color: #764ba2; margin-top: 30px;">🎯 High-Risk Factors</h3>
+                <div class="highlight-box">
+                    <ul>
+                        <li>Cognitive impairment (Alzheimer disease)</li>
+                        <li>Physical dependency on others</li>
+                        <li>Female gender</li>
+                        <li>>75 years of age</li>
+                        <li>Living with relatives</li>
+                    </ul>
+                </div>
+
+                <div class="memory-trick">
+                    <strong>C-P-F-A-L</strong> (Cognitive, Physical dependency, Female, Age >75, Living with relatives)
+                </div>
+            </div>
+        </div>
+
+        <!-- NURSING CARE SECTION -->
+        <div id="nursing" class="section">
+            <div class="content-box">
+                <h2>🩺 Nursing Assessment & Interventions</h2>
+
+                <div class="priority-box">
+                    Screen ALL patients! Complete assessment in PRIVATE!
+                </div>
+
+                <h3 style="color: #764ba2; margin-top: 30px;">✅ DO's</h3>
+                <div class="highlight-box">
+                    <ul>
+                        <li>✓ Be calm and supportive</li>
+                        <li>✓ Use nonjudgmental approach</li>
+                        <li>✓ Use open-ended questions</li>
+                        <li>✓ Use term "partner" instead of spouse/boyfriend</li>
+                        <li>✓ Explain mandatory reporting</li>
+                        <li>✓ Assess safety</li>
+                        <li>✓ Document verbatim statements</li>
+                        <li>✓ Use body maps for injuries</li>
+                    </ul>
+                </div>
+
+                <h3 style="color: #764ba2; margin-top: 30px;">❌ DON'Ts</h3>
+                <div class="warning-box">
+                    <ul>
+                        <li>✗ Blame the victim</li>
+                        <li>✗ Show shock or judgment</li>
+                        <li>✗ Pressure for details</li>
+                        <li>✗ Use words "abuse" or "violence" initially</li>
+                    </ul>
+                </div>
+
+                <h3 style="color: #764ba2; margin-top: 30px;">🚨 Physical Abuse Red Flags</h3>
+                <div class="stats-box">
+                    <ul>
+                        <li>Injuries at various stages of healing</li>
+                        <li>Head, neck, abdominal injuries</li>
+                        <li>Patterned bruises or burns</li>
+                        <li>Injuries during pregnancy</li>
+                        <li>ANY bruising in infants <6 months</li>
+                    </ul>
+                </div>
+
+                <h3 style="color: #764ba2; margin-top: 30px;">⚖️ Mandatory Reporting</h3>
+                <div class="warning-box">
+                    <ul>
+                        <li><strong>REQUIRED by law</strong> for child and vulnerable adult abuse</li>
+                        <li>Proof NOT required → reasonable suspicion is enough!</li>
+                        <li>Follow state-specific timelines</li>
+                        <li>Nurses are MANDATED REPORTERS</li>
+                    </ul>
+                </div>
+
+                <h3 style="color: #764ba2; margin-top: 30px;">📋 Common Nursing Diagnoses</h3>
+                <div class="highlight-box">
+                    <ul>
+                        <li>Risk for violence</li>
+                        <li>Risk for suicide</li>
+                        <li>Anxiety</li>
+                        <li>Fear</li>
+                        <li>Impaired coping</li>
+                        <li>Chronic low self-esteem</li>
+                        <li>Impaired family coping</li>
+                        <li>Caregiver role strain</li>
+                    </ul>
+                </div>
+
+                <div class="priority-box">
+                    SAFETY is the PRIORITY OUTCOME!
+                </div>
+
+                <h3 style="color: #764ba2; margin-top: 30px;">⚠️ Suicide & Homicide Risk Assessment</h3>
+                <div class="warning-box">
+                    <strong>Always assess:</strong>
+                    <ul>
+                        <li>Suicidal ideation</li>
+                        <li>Homicidal ideation</li>
+                        <li>Access to weapons</li>
+                    </ul>
+                    <br>
+                    <strong>Homicide risk ↑ with:</strong>
+                    <ul>
+                        <li>Guns in the home</li>
+                        <li>Substance use</li>
+                        <li>Extreme jealousy</li>
+                        <li>Prior violence</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ SECTION -->
+        <div id="quiz" class="section">
+            <div class="quiz-container">
+                <h2 style="text-align: center; color: #667eea; margin-bottom: 20px;">🎯 Practice Quiz</h2>
+                <div class="score-display" id="scoreDisplay">Score: 0/10</div>
+
+                <div class="quiz-question" id="q1">
+                    <h3>Question 1: What is the MOST common type of child abuse?</h3>
+                    <div class="quiz-option" onclick="checkAnswer(1, 'A', false)">A) Physical abuse</div>
+                    <div class="quiz-option" onclick="checkAnswer(1, 'B', false)">B) Sexual abuse</div>
+                    <div class="quiz-option" onclick="checkAnswer(1, 'C', true)">C) Neglect (~73%)</div>
+                    <div class="quiz-option" onclick="checkAnswer(1, 'D', false)">D) Emotional abuse</div>
+                    <div id="explanation1" style="display:none; margin-top:15px; padding:15px; background:#e8f5e9; border-radius:8px;">
+                        <strong>✓ Correct!</strong> Neglect accounts for approximately 73% of child abuse cases, making it the most common type.
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q2">
+                    <h3>Question 2: What percentage of child abuse perpetrators are parents?</h3>
+                    <div class="quiz-option" onclick="checkAnswer(2, 'A', false)">A) ~50%</div>
+                    <div class="quiz-option" onclick="checkAnswer(2, 'B', false)">B) ~75%</div>
+                    <div class="quiz-option" onclick="checkAnswer(2, 'C', true)">C) ~92%</div>
+                    <div class="quiz-option" onclick="checkAnswer(2, 'D', false)">D) ~100%</div>
+                    <div id="explanation2" style="display:none; margin-top:15px; padding:15px; background:#e8f5e9; border-radius:8px;">
+                        <strong>✓ Correct!</strong> Approximately 92% of child abuse perpetrators are parents - this is a high-yield fact for exams.
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q3">
+                    <h3>Question 3: Which phase of the cycle of violence involves apologies and gifts?</h3>
+                    <div class="quiz-option" onclick="checkAnswer(3, 'A', false)">A) Tension-building phase</div>
+                    <div class="quiz-option" onclick="checkAnswer(3, 'B', false)">B) Acute battering phase</div>
+                    <div class="quiz-option" onclick="checkAnswer(3, 'C', true)">C) Honeymoon phase</div>
+                    <div class="quiz-option" onclick="checkAnswer(3, 'D', false)">D) Recovery phase</div>
+                    <div id="explanation3" style="display:none; margin-top:15px; padding:15px; background:#e8f5e9; border-radius:8px;">
+                        <strong>✓ Correct!</strong> The honeymoon phase is characterized by apologies, gifts, promises, and temporary calm. Remember TAH!
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q4">
+                    <h3>Question 4: What is the MOST dangerous time for IPV victims?</h3>
+                    <div class="quiz-option" onclick="checkAnswer(4, 'A', false)">A) During pregnancy</div>
+                    <div class="quiz-option" onclick="checkAnswer(4, 'B', true)">B) When attempting to leave the relationship</div>
+                    <div class="quiz-option" onclick="checkAnswer(4, 'C', false)">C) After reporting to police</div>
+                    <div class="quiz-option" onclick="checkAnswer(4, 'D', false)">D) During holidays</div>
+                    <div id="explanation4" style="display:none; margin-top:15px; padding:15px; background:#e8f5e9; border-radius:8px;">
+                        <strong>✓ Correct!</strong> Attempting to leave the relationship is the HIGHEST DANGER PERIOD for IPV victims.
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q5">
+                    <h3>Question 5: IPV victims have how many times the risk of suicide?</h3>
+                    <div class="quiz-option" onclick="checkAnswer(5, 'A', true)">A) 2× risk</div>
+                    <div class="quiz-option" onclick="checkAnswer(5, 'B', false)">B) 3× risk</div>
+                    <div class="quiz-option" onclick="checkAnswer(5, 'C', false)">C) 5× risk</div>
+                    <div class="quiz-option" onclick="checkAnswer(5, 'D', false)">D) Same risk as general population</div>
+                    <div id="explanation5" style="display:none; margin-top:15px; padding:15px; background:#e8f5e9; border-radius:8px;">
+                        <strong>✓ Correct!</strong> IPV victims have 2× the risk of suicide. Always assess suicidal and homicidal ideation!
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q6">
+                    <h3>Question 6: ANY bruising in which age group is considered suspicious?</h3>
+                    <div class="quiz-option" onclick="checkAnswer(6, 'A', true)">A) Infants <6 months</div>
+                    <div class="quiz-option" onclick="checkAnswer(6, 'B', false)">B) Toddlers <2 years</div>
+                    <div class="quiz-option" onclick="checkAnswer(6, 'C', false)">C) Children <5 years</div>
+                    <div class="quiz-option" onclick="checkAnswer(6, 'D', false)">D) All children</div>
+                    <div id="explanation6" style="display:none; margin-top:15px; padding:15px; background:#e8f5e9; border-radius:8px;">
+                        <strong>✓ Correct!</strong> ANY bruising in infants under 6 months is suspicious as they typically aren't mobile enough to sustain accidental bruising.
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q7">
+                    <h3>Question 7: For mandatory reporting of child abuse, what is required?</h3>
+                    <div class="quiz-option" onclick="checkAnswer(7, 'A', false)">A) Proof beyond reasonable doubt</div>
+                    <div class="quiz-option" onclick="checkAnswer(7, 'B', true)">B) Reasonable suspicion</div>
+                    <div class="quiz-option" onclick="checkAnswer(7, 'C', false)">C) Witness testimony</div>
+                    <div class="quiz-option" onclick="checkAnswer(7, 'D', false)">D) Written confession</div>
+                    <div id="explanation7" style="display:none; margin-top:15px; padding:15px; background:#e8f5e9; border-radius:8px;">
+                        <strong>✓ Correct!</strong> Only REASONABLE SUSPICION is required for mandatory reporting - proof is NOT needed!
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q8">
+                    <h3>Question 8: What is the leading cause of death from physical child abuse?</h3>
+                    <div class="quiz-option" onclick="checkAnswer(8, 'A', false)">A) Blunt force trauma</div>
+                    <div class="quiz-option" onclick="checkAnswer(8, 'B', true)">B) Shaken Baby Syndrome</div>
+                    <div class="quiz-option" onclick="checkAnswer(8, 'C', false)">C) Burns</div>
+                    <div class="quiz-option" onclick="checkAnswer(8, 'D', false)">D) Starvation</div>
+                    <div id="explanation8" style="display:none; margin-top:15px; padding:15px; background:#e8f5e9; border-radius:8px;">
+                        <strong>✓ Correct!</strong> Shaken Baby Syndrome is the leading cause of death from physical abuse in children under 2 years.
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q9">
+                    <h3>Question 9: What is the PRIORITY outcome for abuse victims?</h3>
+                    <div class="quiz-option" onclick="checkAnswer(9, 'A', true)">A) Safety</div>
+                    <div class="quiz-option" onclick="checkAnswer(9, 'B', false)">B) Legal prosecution</div>
+                    <div class="quiz-option" onclick="checkAnswer(9, 'C', false)">C) Family reunification</div>
+                    <div class="quiz-option" onclick="checkAnswer(9, 'D', false)">D) Emotional healing</div>
+                    <div id="explanation9" style="display:none; margin-top:15px; padding:15px; background:#e8f5e9; border-radius:8px;">
+                        <strong>✓ Correct!</strong> SAFETY is ALWAYS the priority outcome for victims of abuse. Everything else comes after safety is ensured.
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="q10">
+                    <h3>Question 10: Approximately what percentage of older adults over 60 experience abuse?</h3>
+                    <div class="quiz-option" onclick="checkAnswer(10, 'A', false)">A) 1 in 20 (5%)</div>
+                    <div class="quiz-option" onclick="checkAnswer(10, 'B', true)">B) 1 in 10 (10%)</div>
+                    <div class="quiz-option" onclick="checkAnswer(10, 'C', false)">C) 1 in 5 (20%)</div>
+                    <div class="quiz-option" onclick="checkAnswer(10, 'D', false)">D) 1 in 3 (33%)</div>
+                    <div id="explanation10" style="display:none; margin-top:15px; padding:15px; background:#e8f5e9; border-radius:8px;">
+                        <strong>✓ Correct!</strong> Approximately 1 in 10 adults over 60 years old experience abuse, though many cases go unreported.
+                    </div>
+                </div>
+
+                <button class="nav-btn btn-quiz" onclick="resetQuiz()" style="margin-top: 20px; display: block; margin-left: auto; margin-right: auto;">Reset Quiz</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let score = 0;
+        let totalQuestions = 10;
+        let answeredQuestions = new Set();
+
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update progress
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const sections = ['types', 'child', 'ipv', 'elder', 'nursing'];
+            const visitedSections = sections.filter(id => {
+                const section = document.getElementById(id);
+                return section.classList.contains('active') || section.dataset.visited === 'true';
+            });
+            
+            // Mark current section as visited
+            const activeSections = document.querySelectorAll('.section.active');
+            activeSections.forEach(section => section.dataset.visited = 'true');
+            
+            const progress = Math.min((answeredQuestions.size / totalQuestions) * 100, 100);
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressBar').textContent = Math.round(progress) + '% Complete';
+        }
+
+        function checkAnswer(questionNum, selectedOption, isCorrect) {
+            if (answeredQuestions.has(questionNum)) {
+                return; // Already answered
+            }
+
+            const options = document.querySelectorAll(`#q${questionNum} .quiz-option`);
+            
+            options.forEach(option => {
+                option.style.pointerEvents = 'none'; // Disable further clicks
+                
+                if (option.textContent.includes(selectedOption)) {
+                    if (isCorrect) {
+                        option.classList.add('correct');
+                        score++;
+                    } else {
+                        option.classList.add('incorrect');
+                    }
+                }
+                
+                // Show the correct answer
+                if (option.onclick.toString().includes('true')) {
+                    option.classList.add('correct');
+                }
+            });
+
+            // Show explanation
+            document.getElementById(`explanation${questionNum}`).style.display = 'block';
+
+            // Update score
+            answeredQuestions.add(questionNum);
+            document.getElementById('scoreDisplay').textContent = `Score: ${score}/${totalQuestions}`;
+            
+            // Update progress
+            updateProgress();
+        }
+
+        function resetQuiz() {
+            score = 0;
+            answeredQuestions.clear();
+            document.getElementById('scoreDisplay').textContent = `Score: 0/${totalQuestions}`;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const options = document.querySelectorAll(`#q${i} .quiz-option`);
+                options.forEach(option => {
+                    option.classList.remove('correct', 'incorrect');
+                    option.style.pointerEvents = 'auto';
+                });
+                document.getElementById(`explanation${i}`).style.display = 'none';
+            }
+            
+            updateProgress();
+        }
+
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>
