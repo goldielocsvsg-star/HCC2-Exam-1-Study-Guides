@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💊 Gas Exchange & Anemia Medications Study Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            background-attachment: fixed;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.8em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px 20px;
+            border: 3px solid #dc2626;
+            border-radius: 10px;
+            font-size: 16px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            background: white;
+            border: 3px solid #dc2626;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            color: #dc2626;
+            font-size: 16px;
+        }
+
+        .tab:hover {
+            background: #fee2e2;
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            color: white;
+            border-color: #991b1b;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .med-card {
+            background: white;
+            border: 3px solid #dc2626;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+        }
+
+        .med-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .med-header {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            color: white;
+            padding: 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .med-header:hover {
+            background: linear-gradient(135deg, #991b1b, #7f1d1d);
+        }
+
+        .med-header h3 {
+            font-size: 1.6em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .med-subheader {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-top: 5px;
+            font-weight: normal;
+        }
+
+        .toggle-icon {
+            font-size: 1.8em;
+            transition: transform 0.3s;
+        }
+
+        .toggle-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .med-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        }
+
+        .med-content.expanded {
+            padding: 25px;
+            max-height: 3000px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .info-section {
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-section h4 {
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+        }
+
+        .info-section p {
+            line-height: 1.8;
+            color: #1f2937;
+            font-size: 1.05em;
+        }
+
+        /* Color coding for different sections */
+        .drug-class { 
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe); 
+            border-color: #2563eb; 
+        }
+        
+        .drug-class h4 { color: #1e40af; }
+
+        .mechanism { 
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe); 
+            border-color: #4f46e5; 
+        }
+        
+        .mechanism h4 { color: #3730a3; }
+
+        .indications { 
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8); 
+            border-color: #db2777; 
+        }
+        
+        .indications h4 { color: #9f1239; }
+
+        .side-effects { 
+            background: linear-gradient(135deg, #fef3c7, #fde68a); 
+            border-color: #f59e0b; 
+        }
+        
+        .side-effects h4 { color: #b45309; }
+
+        .nursing { 
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0); 
+            border-color: #059669; 
+        }
+        
+        .nursing h4 { color: #065f46; }
+
+        .patient-ed { 
+            background: linear-gradient(135deg, #dbeafe, #93c5fd); 
+            border-color: #2563eb; 
+        }
+        
+        .patient-ed h4 { color: #1e40af; }
+
+        .outcomes { 
+            background: linear-gradient(135deg, #fecaca, #fca5a5); 
+            border-color: #dc2626; 
+        }
+        
+        .outcomes h4 { color: #991b1b; }
+
+        .comparison-section {
+            background: white;
+            border: 3px solid #2563eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .comparison-section h2 {
+            color: #1e40af;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #2563eb;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            color: white;
+            padding: 18px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .comparison-table td {
+            padding: 18px;
+            border-bottom: 1px solid #e5e7eb;
+            background: white;
+            font-size: 1.05em;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover td {
+            background: #fef2f2;
+        }
+
+        .pearls-section {
+            background: white;
+            border: 3px solid #dc2626;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .pearls-section h2 {
+            color: #991b1b;
+            margin-bottom: 25px;
+            font-size: 2em;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #dc2626;
+        }
+
+        .pearl-item {
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 5px solid;
+            font-size: 1.1em;
+            line-height: 1.8;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .pearl-red {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border-color: #dc2626;
+        }
+
+        .pearl-blue {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-color: #2563eb;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                width: 100%;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 1.1em;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💊 GAS EXCHANGE & ANEMIA MEDICATIONS</h1>
+            <p>Comprehensive Study Guide for NCLEX Success</p>
+        </div>
+
+        <div class="controls">
+            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search medications by name, class, or keyword...">
+            <button class="btn btn-primary" onclick="expandAll()">📖 Expand All</button>
+            <button class="btn btn-secondary" onclick="collapseAll()">📚 Collapse All</button>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" data-category="all">All Medications</div>
+            <div class="tab" data-category="bronchodilators">Bronchodilators</div>
+            <div class="tab" data-category="controllers">Controllers & Anti-Inflammatories</div>
+            <div class="tab" data-category="anemia">Anemia Medications</div>
+            <div class="tab" data-category="comparisons">Quick Reference & Pearls</div>
+        </div>
+
+        <div id="medContainer"></div>
+        <div id="comparisonContainer" class="hidden"></div>
+    </div>
+
+    <script>
+        const medications = [
+            {
+                name: "BECLOMETHASONE",
+                subtitle: "Inhaled Corticosteroid",
+                class: "Glucocorticoid / Anti-inflammatory",
+                category: "controllers",
+                mechanism: "Decreases inflammation in airways by suppressing airway hypersensitivity. Acts on bronchial smooth muscle to reduce edema and mucus production. Inhibits inflammatory mediators including cytokines, leukotrienes, and prostaglandins.",
+                indications: "Chronic asthma control, COPD management, prevention of bronchospasm. Used for long-term control, NOT acute attacks. Reduces airway inflammation and hyperresponsiveness over time.",
+                sideEffects: "Common: Oral candidiasis (thrush), hoarseness, dry mouth, cough, bronchial irritation. Long-term: osteoporosis, cataracts, adrenal suppression, growth suppression in children, increased risk of oral infections.",
+                nursing: "RINSE MOUTH AFTER EACH USE to prevent oral thrush. Administer via spacer device for better delivery and reduced oral deposition. Monitor for signs of oral infection (white patches). Assess for adrenal insufficiency with long-term use. NOT for acute bronchospasm relief - educate patient this is a preventive medication. Monitor growth in children on long-term therapy.",
+                patientEd: "Rinse and spit after each use - do not swallow the rinse water. Use spacer device properly to maximize lung delivery. Report white patches in mouth (thrush) immediately. This is a controller medication, NOT a rescue inhaler - use daily even when feeling well. Continue use as prescribed - stopping suddenly can worsen symptoms. Report any signs of infection (thrush, respiratory infection).",
+                outcomes: "Decreased inflammation in airways, reduced frequency and severity of asthma exacerbations, improved lung function over time (FEV1 improvement), reduced need for rescue medications, improved quality of life, better symptom control."
+            },
+            {
+                name: "ALBUTEROL / SALMETEROL",
+                subtitle: "Short-Acting & Long-Acting Beta-Agonists",
+                class: "Beta2-Adrenergic Agonist / Bronchodilator",
+                category: "bronchodilators",
+                mechanism: "Relaxes bronchial smooth muscle through beta2 receptor stimulation, causing bronchodilation. Opens airways by relaxing bronchiole muscles, allowing increased airflow. Inhibits release of inflammatory mediators from mast cells. Albuterol = short-acting (4-6 hours), Salmeterol = long-acting (12 hours).",
+                indications: "Albuterol: Acute bronchospasm relief (rescue inhaler), prevention of exercise-induced bronchospasm (use 15-30 min before exercise). Salmeterol: Chronic asthma and COPD management (long-acting control), NOT for acute symptoms. Both used for reversible airway obstruction.",
+                sideEffects: "Cardiovascular: Tachycardia, palpitations, increased heart rate, hypertension. Metabolic: Hyperglycemia (with prolonged use), hypokalemia. Other: Tremors, nervousness, headache, muscle cramps. Tolerance can develop with overuse. Paradoxical bronchospasm (rare).",
+                nursing: "Assess heart rate and blood pressure before and after administration. Monitor for tremors and nervousness. Educate on proper inhaler technique - shake well before use. Albuterol is RESCUE medication (PRN), Salmeterol is CONTROLLER (scheduled BID). Do not use long-acting for acute symptoms. Monitor potassium levels with prolonged use. If patient needs rescue inhaler more than twice weekly, asthma is not well-controlled. Rinse mouth after use.",
+                patientEd: "Albuterol is your quick-relief rescue inhaler for sudden symptoms - works within minutes. Shake inhaler well before each use. Wait 1-2 minutes between puffs if taking multiple. Salmeterol is NOT for sudden breathing problems - use twice daily for prevention even when feeling well. Report increased need for rescue inhaler (using more than twice/week indicates poor control - notify provider). Do not exceed prescribed doses. Report rapid heartbeat, chest pain, or tremors.",
+                outcomes: "Rapid bronchodilation (albuterol: onset 5-15 min), improved airflow and peak flow measurements, relief of wheezing and dyspnea, improved exercise tolerance, reduced frequency of exacerbations with long-acting agents, improved ability to perform daily activities."
+            },
+            {
+                name: "IPRATROPIUM / TIOTROPIUM",
+                subtitle: "Short-Acting & Long-Acting Anticholinergics",
+                class: "Anticholinergic / Bronchodilator",
+                category: "bronchodilators",
+                mechanism: "Blocks acetylcholine at muscarinic receptors (M1, M2, M3) in bronchial smooth muscle, causing bronchodilation. Reduces mucus secretion in airways by blocking cholinergic stimulation of mucus glands. Prevents bronchoconstriction. Tiotropium has longer duration due to slow receptor dissociation.",
+                indications: "Primary: COPD maintenance therapy, chronic bronchitis management. Often combined with beta-agonists (e.g., albuterol) for enhanced bronchodilation effect. Not typically first-line for asthma but can be used as adjunct therapy in severe cases. Ipratropium QID, Tiotropium once daily.",
+                sideEffects: "Common: Dry mouth, bitter/metallic taste, throat irritation. Serious if sprayed in eyes: Blurred vision, acute angle-closure glaucoma, eye pain. Urinary retention (especially in elderly males with BPH), constipation, tachycardia. Paradoxical bronchospasm (rare). Allergic reactions in patients with peanut/soy allergy (some formulations).",
+                nursing: "Assess respiratory status (breath sounds, respiratory rate, oxygen saturation) before and after use. Monitor for urinary retention in elderly males with BPH - assess bladder distention. Educate to avoid spraying in eyes (serious eye complications possible). Can be used with albuterol for additive bronchodilation effect - give beta-agonist first, then anticholinergic. Rinse mouth after use to reduce dry mouth and bitter taste. NOT a rescue medication - explain this is for prevention. Monitor intraocular pressure in glaucoma patients.",
+                patientEd: "AVOID getting medication in eyes - can cause serious vision problems including glaucoma. Rinse mouth after use to prevent dry mouth and bitter taste. This is a maintenance medication, not for sudden breathing problems - keep rescue inhaler available. Report difficulty urinating, especially if you have prostate problems. Report eye pain, vision changes, or seeing halos around lights immediately. Dry mouth is common - suck on sugar-free candy, use mouth rinses. Do not exceed prescribed frequency.",
+                outcomes: "Improved airway patency and lung function (FEV1 improvement), reduced bronchospasm, decreased mucus production and easier expectoration, improved ability to breathe with chronic respiratory conditions, reduced COPD exacerbations, improved exercise tolerance and daily functioning."
+            },
+            {
+                name: "MONTELUKAST (Singulair)",
+                subtitle: "Leukotriene Receptor Antagonist",
+                class: "Leukotriene Modifier / Anti-inflammatory",
+                category: "controllers",
+                mechanism: "Blocks leukotriene receptors (specifically LTD4) in airways, preventing bronchoconstriction and inflammation. Leukotrienes are potent inflammatory mediators released during allergic responses that cause airway edema, increased mucus secretion, and smooth muscle contraction. Also reduces eosinophil migration.",
+                indications: "Chronic asthma prophylaxis (add-on controller therapy), allergic rhinitis (seasonal and perennial), prevention of exercise-induced bronchospasm. Particularly useful for aspirin-sensitive asthma and patients with concurrent allergic rhinitis. CONTROLLER medication, not for acute symptoms. Can be used in children as young as 6 months (granule formulation).",
+                sideEffects: "Common: Headache, upper respiratory infection, dizziness, GI upset, abdominal pain. SERIOUS BLACK BOX WARNING: Neuropsychiatric events including agitation, aggressive behavior, depression, suicidal thoughts, sleep disturbances, nightmares, hallucinations - particularly concerning in children and adolescents. Other: Elevated liver enzymes (rare).",
+                nursing: "CRITICAL: Monitor closely for neuropsychiatric symptoms - mood changes, depression, anxiety, suicidal thoughts, sleep problems, behavioral changes. Discontinue immediately if these occur and notify provider. Assess effectiveness over time (takes several days to weeks for full effect - not immediate). Taken ONCE DAILY, typically at bedtime. NOT for acute bronchospasm - ensure patient has rescue inhaler. Available as tablet, chewable tablet, or oral granules for children. Review medication guide with patient/family. Monitor liver function tests periodically.",
+                patientEd: "Take once daily at bedtime as prescribed, even when feeling well. This prevents asthma symptoms but does NOT treat sudden breathing problems - always keep rescue inhaler available. IMMEDIATELY report mood changes, depression, anxiety, trouble sleeping, unusual thoughts, or behavior changes to provider. Discontinue and call provider if psychiatric symptoms develop. May help reduce allergy symptoms too. Takes time to work - don't expect immediate relief. Chewable tablets available for children - don't swallow whole.",
+                outcomes: "Reduced frequency of asthma attacks and exacerbations, improved symptom control and quality of life, decreased need for rescue medications and oral corticosteroids, reduced allergic rhinitis symptoms (sneezing, congestion, runny nose), improved lung function, better exercise tolerance, reduced nighttime awakenings."
+            },
+            {
+                name: "CROMOLYN (Intal)",
+                subtitle: "Mast Cell Stabilizer",
+                class: "Mast Cell Stabilizer / Anti-inflammatory",
+                category: "controllers",
+                mechanism: "Stabilizes mast cell membranes, preventing degranulation and release of histamine and other inflammatory mediators (leukotrienes, prostaglandins, bradykinin). Prevents allergic response cascade before it begins. Does NOT reverse symptoms once triggered - purely preventive with no bronchodilator effect. Must be present before allergen exposure.",
+                indications: "Prophylaxis of asthma (especially allergic/exercise-induced) and allergic rhinitis. Prevention of exercise-induced bronchospasm (use 15-20 minutes before exercise). Allergic conjunctivitis (ophthalmic form). Mastocytosis. PREVENTIVE ONLY - no role in acute symptoms or rescue therapy. More commonly used in pediatric asthma.",
+                sideEffects: "Generally very well-tolerated with minimal systemic effects due to poor systemic absorption. Common: Throat irritation, cough, dry mouth, bad taste, nausea, hoarseness. Nasal burning/stinging with nasal spray formulation. Rarely: Paradoxical bronchospasm (discontinue if occurs), headache, dizziness.",
+                nursing: "Emphasize PROPHYLACTIC nature - must use regularly before symptom exposure, not effective once symptoms start. Takes 2-4 weeks for full therapeutic effect - counsel patient on delayed onset. Completely ineffective for acute bronchospasm - ensure patient has rescue inhaler. Available as nebulizer solution, MDI, nasal spray, and ophthalmic drops. Safe for children and preferred in pediatric asthma. Use 15-20 minutes before exercise for exercise-induced bronchospasm. Must be used consistently QID for asthma control. Very safe medication with excellent long-term safety profile.",
+                patientEd: "This medication PREVENTS symptoms - it will NOT help if you are already having trouble breathing or having symptoms. Must use regularly for several weeks before seeing maximum benefit - don't get discouraged. Use 15-20 minutes before exercise or allergen exposure to prevent symptoms. Continue use even when symptoms are controlled - stopping will allow symptoms to return. Safe for long-term use with minimal side effects. Keep using rescue inhaler for acute symptoms. Do not swallow capsule contents - for inhalation only.",
+                outcomes: "Reduced frequency and severity of allergic reactions and asthma symptoms, prevention of exercise-induced bronchospasm, decreased asthma exacerbations requiring steroids, improved daily symptom control over time, reduced allergic conjunctivitis symptoms, decreased need for other medications, improved quality of life."
+            },
+            {
+                name: "THEOPHYLLINE",
+                subtitle: "Methylxanthine Bronchodilator",
+                class: "Methylxanthine / Bronchodilator",
+                category: "bronchodilators",
+                mechanism: "Multiple mechanisms: (1) Inhibits phosphodiesterase, increasing cAMP leading to bronchial smooth muscle relaxation, (2) Stimulates respiratory drive in medullary respiratory center, (3) Increases diaphragm contractility and reduces fatigue, (4) Mild anti-inflammatory effects, (5) Increases mucociliary clearance.",
+                indications: "Chronic asthma management and COPD maintenance therapy when other therapies are insufficient. Used when inhaled therapies are inadequate or unavailable. Often used as add-on therapy. NOT typically first-line due to narrow therapeutic window and multiple drug interactions. Can be used in sleep apnea (stimulates respiratory drive).",
+                sideEffects: "NARROW THERAPEUTIC WINDOW - toxic at slightly elevated levels (therapeutic: 5-15 mcg/mL). Toxicity signs: nausea, vomiting, tachycardia, dysrhythmias (including ventricular), seizures, tremors, insomnia, nervousness, agitation. GI upset common even at therapeutic levels. Severe toxicity: life-threatening arrhythmias, status epilepticus. Can cause hyperglycemia, hypokalemia.",
+                nursing: "CRITICAL: Monitor serum theophylline levels regularly (therapeutic range: 5-15 mcg/mL, some sources 10-20). Draw levels 4-6 hours after dose or before morning dose (trough). Signs of toxicity require IMMEDIATE intervention - hold medication, notify provider, prepare for possible IV fluids/activated charcoal. Monitor heart rate and rhythm continuously if toxic. MULTIPLE drug interactions - review all medications (erythromycin, ciprofloxacin, cimetidine increase levels; smoking, phenytoin, rifampin decrease levels). Avoid abrupt discontinuation. Take with food to reduce GI upset. Caffeine potentiates effects and side effects. Use sustained-release formulations to minimize peaks.",
+                patientEd: "Take EXACTLY as prescribed at the same times each day - do not adjust dose yourself. Report nausea, vomiting, rapid heartbeat, tremors, or seizures IMMEDIATELY (signs of dangerous toxicity). Avoid excessive caffeine intake (coffee, energy drinks, tea, chocolate) - caffeine is chemically similar and adds to effects. Many medications interact with theophylline - tell ALL providers and pharmacists you take this. Do not crush or chew sustained-release tablets. Regular blood tests needed to monitor levels - keep all lab appointments. Report fever, illness, starting/stopping smoking (affects levels). Do not switch brands without provider approval.",
+                outcomes: "Improved bronchodilation and airflow, reduced frequency of exacerbations, improved respiratory muscle function and endurance, symptom control when other medications insufficient, reduced dyspnea, improved exercise tolerance, decreased nighttime symptoms, possible improvement in sleep apnea."
+            },
+            {
+                name: "ACETYLCYSTEINE (Mucomyst)",
+                subtitle: "Mucolytic Agent",
+                class: "Mucolytic / Antioxidant",
+                category: "controllers",
+                mechanism: "Breaks down disulfide bonds in mucus glycoproteins, making secretions less viscous and easier to expectorate. Reduces mucus thickness by splitting mucopolysaccharide chains. Also functions as antioxidant. Different use: acetaminophen overdose antidote (restores hepatic glutathione, preventing liver damage).",
+                indications: "Respiratory: Thick, tenacious respiratory secretions in conditions like cystic fibrosis, chronic bronchitis, pneumonia, atelectasis due to mucous plugging. Diagnostic bronchial studies requiring mucus clearance. Antidote: Acetaminophen (Tylenol) overdose treatment within 24 hours of ingestion (prevents hepatotoxicity).",
+                sideEffects: "Respiratory: Bronchospasm (particularly in asthmatics - can be severe), increased respiratory secretions initially, hemoptysis. GI: Nausea, vomiting (especially with oral route). Other: Stomatitis, rhinorrhea, foul odor (rotten eggs smell - sulfur compound), unpleasant taste. Rare: Anaphylactoid reactions with IV use for acetaminophen overdose.",
+                nursing: "CAUTION in asthmatic patients - can trigger severe bronchospasm; have bronchodilator available and consider pre-treating with beta-agonist. Foul odor (like rotten eggs) is expected - warn patient in advance. Encourage increased fluid intake (2-3L/day) to enhance effectiveness and thin secretions further. May cause increased coughing initially as secretions mobilize - this is therapeutic. For oral use: mix with juice or cola to mask taste and odor. Nebulizer treatments require specific dilution with sterile water or NS. Store opened vials in refrigerator, use within 96 hours. Monitor breath sounds before and after treatment. For acetaminophen overdose: IV route preferred, give within 8-10 hours for best results.",
+                patientEd: "This medication will make your thick secretions thinner and easier to cough up. You may cough more initially - this is GOOD, it means the medication is working and clearing mucus. Medication has a strong foul smell (like rotten eggs) - this is completely normal and expected. Drink plenty of water (8-10 glasses daily) to help thin secretions even more. Report any wheezing, chest tightness, or difficulty breathing immediately. If using nebulizer at home, clean equipment after each use. May leave bad taste in mouth - rinse with water after treatment.",
+                outcomes: "Improved ability to clear secretions (productive cough), reduced mucus viscosity and plugging, decreased respiratory congestion and atelectasis, improved oxygenation (increased O2 sat), easier breathing and reduced work of breathing, improved breath sounds on auscultation, prevention of liver damage in acetaminophen overdose."
+            },
+            {
+                name: "FERROUS SULFATE / FERROUS FUMARATE / FERROUS GLUCONATE",
+                subtitle: "Oral Iron Supplements",
+                class: "Oral Iron Preparation",
+                category: "anemia",
+                mechanism: "Provides supplemental elemental iron to correct deficiency and support hemoglobin synthesis. Iron is an essential component of hemoglobin molecule for oxygen transport. Also needed for myoglobin and various enzyme systems. Oral forms absorbed primarily in duodenum and upper jejunum (acidic environment enhances absorption).",
+                indications: "Treatment and prevention of iron deficiency anemia (most common cause of anemia worldwide). Pregnancy supplementation (increased iron demands). Chronic blood loss conditions (menorrhagia, GI bleeding). Dietary deficiency (vegetarians, children, adolescents). Malabsorption syndromes. Post-gastrectomy. Chronic kidney disease.",
+                sideEffects: "GI effects (most common): Nausea, constipation (very common), diarrhea, abdominal cramping, epigastric pain. Dark/tarry stools (normal, NOT GI bleed - iron turns stool black). Liquid preparations may stain teeth if not diluted properly. Can interact with many medications (reduces absorption of tetracyclines, quinolones, levothyroxine, bisphosphonates). Overdose: toxic, especially in children.",
+                nursing: "Administer on EMPTY STOMACH for best absorption (1 hour before or 2 hours after meals). If severe GI upset occurs, can give with small amount of food but absorption decreases by 40-50%. Encourage vitamin C intake (orange juice, ascorbic acid) to enhance absorption - vitamin C converts ferric to ferrous form. AVOID taking with dairy products (calcium blocks absorption), antacids (increase pH, decrease absorption), or tea/coffee (tannins bind iron). Dark stools are EXPECTED - educate patient this is normal, not bleeding. Monitor hemoglobin/hematocrit and serum ferritin levels regularly. Takes 2-3 weeks to see Hgb rise, 2-3 months to replete stores. Liquid forms: dilute in juice, give with straw to prevent tooth staining. Keep out of reach of children - iron overdose is dangerous in pediatrics.",
+                patientEd: "Take on empty stomach if tolerated for best absorption (1 hour before meals). If stomach upset, take with small amount of food. Your stools will turn dark green to black - this is NORMAL, not bleeding. Increase fiber (fruits, vegetables, whole grains) and fluids (8-10 glasses water daily) to prevent constipation - very common side effect. Take with orange juice or vitamin C supplement to improve absorption. AVOID dairy, antacids, and coffee/tea within 2 hours of taking iron - they block absorption. Do not stop when you feel better - continue until provider says to stop (typically 3-6 months to rebuild iron stores). May take weeks to feel less tired. Keep away from children - iron poisoning is dangerous. Report severe stomach pain, vomiting, or diarrhea.",
+                outcomes: "Increased hemoglobin and hematocrit levels (rise in 2-3 weeks), improved reticulocyte count, improved energy and decreased fatigue (most noticeable symptom improvement), resolution of anemia symptoms (pallor, shortness of breath, weakness, pica, restless legs), normalized iron studies (ferritin, TIBC, transferrin saturation), improved exercise tolerance, resolution of tachycardia, improved cognitive function."
+            },
+            {
+                name: "IRON DEXTRAN",
+                subtitle: "Parenteral Iron - IV/IM",
+                class: "Parenteral Iron Preparation",
+                category: "anemia",
+                mechanism: "Provides iron supplementation via IV or IM route, bypassing GI absorption. Iron is released slowly from the dextran complex and transported to bone marrow for incorporation into hemoglobin synthesis. Releases iron slowly to avoid toxicity and allows incorporation into hemoglobin and storage as ferritin.",
+                indications: "Severe iron deficiency anemia when oral iron fails, is not tolerated, or cannot be absorbed. Chronic kidney disease with anemia (especially hemodialysis patients). Inflammatory bowel disease with malabsorption. Inability to absorb oral iron (gastric bypass, celiac disease). Need for rapid iron repletion. Patient non-compliance with oral therapy.",
+                sideEffects: "SERIOUS: ANAPHYLAXIS risk (especially with IV administration - life-threatening). Hypotension, flushing, chest pain, dyspnea during infusion. Injection site reactions, pain, sterile abscess. IM injection causes PERMANENT brown skin staining at site. Arthralgias, myalgias (\"arthralgia-myalgia syndrome\"), fever, malaise 24-48 hours post-dose. Lymphadenopathy. Delayed hypersensitivity reactions possible. Headache. Rare: Seizures, cardiac arrhythmias.",
+                nursing: "CRITICAL: TEST DOSE REQUIRED before full dose due to anaphylaxis risk (0.5 mL test dose, observe 1 hour). Have EMERGENCY EQUIPMENT immediately available: epinephrine, oxygen, airway management, IV fluids, antihistamines, corticosteroids. Monitor vital signs closely during and for 30-60 minutes after infusion - especially first dose. Patient MUST remain under observation for at least 30 minutes post-administration. For IM: use Z-TRACK method to prevent skin staining and leakage. Give deep IM in upper outer quadrant of buttock. Do NOT massage site. Assess for hypersensitivity reactions: rash, itching, wheezing, hypotension, tachycardia. Monitor hemoglobin, hematocrit, iron studies. Warn about brown skin discoloration with IM (permanent). Newer IV iron formulations (ferumoxytol, iron sucrose) have lower anaphylaxis risk than iron dextran.",
+                patientEd: "You will receive a small TEST DOSE first to check for allergic reactions - this is very important for your safety. Tell staff IMMEDIATELY if you feel itching, rash, difficulty breathing, chest tightness, dizziness, or throat swelling during or after the infusion. If given IM, the injection site may be permanently discolored (brown staining) - this is expected and will not go away. You may experience muscle aches, joint pain, or low-grade fever for 1-2 days after injection - take acetaminophen (Tylenol) as needed for discomfort. Do not take ibuprofen/NSAIDs without checking with provider. You must stay in the clinic/hospital for at least 30 minutes after receiving the dose for monitoring. Report fever >101°F, severe pain, or signs of infection at injection site.",
+                outcomes: "Rapid improvement in hemoglobin levels (faster than oral - rise in 1-2 weeks), correction of iron deficiency anemia, improved energy and functional status quickly, resolution of iron deficiency, normalized iron studies, improved exercise tolerance, reduced fatigue and weakness, correction of underlying anemia-related complications."
+            },
+            {
+                name: "CYANOCOBALAMIN / HYDROXOCOBALAMIN (Vitamin B12)",
+                subtitle: "Cobalamin Supplementation",
+                class: "Vitamin B12 Supplement",
+                category: "anemia",
+                mechanism: "Essential water-soluble vitamin required for DNA synthesis, red blood cell formation and maturation, and neurological function. Required cofactor for methionine synthase (DNA synthesis) and methylmalonyl-CoA mutase (fatty acid metabolism, myelin synthesis). Corrects deficiency that impairs RBC production causing megaloblastic anemia (large, immature RBCs).",
+                indications: "Pernicious anemia (autoimmune destruction of gastric parietal cells → lack of intrinsic factor needed for B12 absorption). B12 deficiency from malabsorption (Crohn's disease, celiac disease, gastric bypass surgery). Dietary deficiency (strict vegans - no animal products). Post-gastric surgery (decreased intrinsic factor and acid). Metformin use (decreases B12 absorption). Neurological complications of B12 deficiency (subacute combined degeneration). Hereditary disorders affecting B12 metabolism.",
+                sideEffects: "Generally very well-tolerated with few side effects. Possible: Mild diarrhea, itching, rash, feeling of swelling. Peripheral vascular thrombosis (rare with IV). Hypokalemia can occur during initial treatment as cells rapidly take up potassium during accelerated hematopoiesis (\"refeeding\" effect). Polycythemia vera (rare - excessive RBC production). Pain/redness at injection site. Rare allergic reactions (flushing, pruritus).",
+                nursing: "Can be given PO, IM, SubQ, or intranasal depending on cause. PERNICIOUS ANEMIA requires PARENTERAL route (IM or SubQ) - no intrinsic factor to absorb oral B12. Oral B12 only works if intrinsic factor present or in very high doses (1000-2000 mcg). Monitor POTASSIUM levels during initial treatment - risk of hypokalemia as rapid RBC production occurs and cells take up K+. May need potassium supplementation initially. Assess neurological status baseline and ongoing (proprioception, vibration sense, reflexes, gait, mental status) - prolonged deficiency causes irreversible neurological damage (demyelination). Monthly injections (1000 mcg IM) typically needed lifelong for pernicious anemia. Monitor CBC, reticulocyte count (should increase within 1 week), B12 levels. Check for folic acid deficiency too - often coexist. Hydroxocobalamin preferred over cyanocobalamin in cyanide toxicity treatment.",
+                patientEd: "For pernicious anemia, you will need LIFELONG monthly injections (or every 2-3 months) - oral supplements will NOT work because your stomach cannot absorb B12. Report tingling, numbness, \"pins and needles\" sensation, balance problems, confusion, or memory problems (neurological symptoms) - these need immediate attention. You should start feeling more energetic and less weak within a few days of starting treatment. Continue treatment EXACTLY as prescribed even when feeling better - stopping will cause symptoms to return. If you are vegan (no animal products), you need consistent B12 supplementation for life - B12 only found in animal products. Injections may sting briefly - this is normal. Intranasal spray available as alternative to injections if prescribed. Keep all follow-up appointments and lab tests.",
+                outcomes: "Resolution of megaloblastic anemia, increased reticulocyte count within 3-5 days (\"reticulocytosis\"), improved hemoglobin/hematocrit, improved energy levels and decreased weakness/fatigue (noticeable within days), resolution of neurological symptoms IF caught early (paresthesias, ataxia, cognitive dysfunction), normalized B12 levels (>300 pg/mL), improved cognitive function and mood, resolution of glossitis (smooth, red tongue), improved appetite, prevention of permanent neurological damage."
+            },
+            {
+                name: "FOLIC ACID (Folate)",
+                subtitle: "Vitamin B9 Supplementation",
+                class: "Vitamin B9 / Water-Soluble Vitamin",
+                category: "anemia",
+                mechanism: "Essential water-soluble B vitamin required for DNA synthesis, cell division, and amino acid metabolism. Critical for RBC formation and maturation in bone marrow - required for thymidine synthesis. Required for normal neural tube development in fetus (critical first 28 days of pregnancy). Deficiency causes megaloblastic anemia identical in appearance to B12 deficiency anemia.",
+                indications: "Folate deficiency anemia. Pregnancy/lactation supplementation (increased folate demands - 600 mcg/day needed). Prevention of neural tube defects in fetus (spina bifida, anencephaly). Medications that interfere with folate metabolism (methotrexate, sulfasalazine, phenytoin, trimethoprim). Malabsorption conditions (celiac disease, Crohn's disease, tropical sprue). Chronic alcohol use (impaired absorption and increased excretion). Hemolytic anemias (increased RBC turnover = increased folate needs). Sickle cell disease.",
+                sideEffects: "Generally VERY safe with minimal side effects even at high doses. Rare: Flushing, nausea, loss of appetite, bloating, bitter taste. Behavioral changes (rare). CRITICAL CONCERN: Can mask B12 deficiency by correcting the anemia BUT NOT the neurological damage - patient's anemia improves but nerve damage progresses undetected (subacute combined degeneration). High doses may interfere with anti-seizure medications.",
+                nursing: "CRITICAL: Must rule out B12 DEFICIENCY BEFORE starting folate supplementation. Folate will correct megaloblastic anemia from B12 deficiency BUT will NOT prevent or reverse neurological damage - neurological damage continues and becomes irreversible. Check B12 level in all patients with suspected folate deficiency. Well absorbed orally - no need for injection in most cases. Encourage dietary sources: dark leafy greens (spinach, kale), fortified grains and cereals, legumes, citrus fruits, liver. ALL women of childbearing age should take 400-800 mcg daily to prevent neural tube defects (critical in first weeks of pregnancy before woman knows she's pregnant). Higher doses needed during pregnancy (600 mcg) and lactation (500 mcg). Monitor CBC, reticulocyte count. Generally given orally unless severe malabsorption. Can be given IM/IV if necessary.",
+                patientEd: "Take with or without food - absorption not significantly affected. If pregnant or planning pregnancy, VERY IMPORTANT to take daily BEFORE conception and throughout pregnancy to prevent serious birth defects (spina bifida) in baby. Start taking when planning pregnancy, not after you know you're pregnant (damage occurs in first month). Eat folate-rich foods: spinach, broccoli, fortified cereals, beans, oranges, avocados. Do not use as substitute for balanced diet - food sources important. Continue throughout pregnancy and while breastfeeding if prescribed. Over-the-counter supplements are safe but tell provider if you have anemia - need to rule out B12 deficiency first. Usually need to take for several months to correct deficiency and replenish stores. Safe in pregnancy (Pregnancy Category A).",
+                outcomes: "Resolution of megaloblastic anemia, increased reticulocyte count within 3-5 days, improved RBC production and maturation, normal fetal neural tube development during pregnancy (prevents 50-70% of neural tube defects), improved energy levels and decreased fatigue, resolution of anemia symptoms (weakness, pallor, glossitis), normalized folate levels (>3 ng/mL), improved cell division and growth, prevention of pregnancy complications related to folate deficiency."
+            }
+        ];
+
+        function renderMedications(filter = 'all', searchTerm = '') {
+            const container = document.getElementById('medContainer');
+            container.innerHTML = '';
+
+            let filteredMeds = medications;
+
+            if (filter !== 'all') {
+                filteredMeds = medications.filter(med => med.category === filter);
+            }
+
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                filteredMeds = filteredMeds.filter(med => 
+                    med.name.toLowerCase().includes(term) ||
+                    med.class.toLowerCase().includes(term) ||
+                    med.mechanism.toLowerCase().includes(term) ||
+                    med.indications.toLowerCase().includes(term) ||
+                    med.nursing.toLowerCase().includes(term)
+                );
+            }
+
+            // Group by category
+            const categories = {
+                'controllers': { title: '🛡️ CONTROLLERS & ANTI-INFLAMMATORY MEDICATIONS', color: '#2563eb' },
+                'bronchodilators': { title: '💨 BRONCHODILATOR MEDICATIONS', color: '#dc2626' },
+                'anemia': { title: '🩸 ANEMIA MEDICATIONS', color: '#991b1b' }
+            };
+
+            if (filter === 'all') {
+                ['controllers', 'bronchodilators', 'anemia'].forEach(cat => {
+                    const catMeds = filteredMeds.filter(m => m.category === cat);
+                    if (catMeds.length > 0) {
+                        container.innerHTML += `<div class="section-header" style="background: linear-gradient(135deg, ${categories[cat].color}, ${categories[cat].color}dd);">${categories[cat].title}</div>`;
+                        catMeds.forEach(med => container.appendChild(createMedCard(med)));
+                    }
+                });
+            } else {
+                filteredMeds.forEach(med => container.appendChild(createMedCard(med)));
+            }
+
+            if (filteredMeds.length === 0) {
+                container.innerHTML = '<div class="section-header" style="background: #6b7280;">No medications found matching your search.</div>';
+            }
+        }
+
+        function createMedCard(med) {
+            const card = document.createElement('div');
+            card.className = 'med-card';
+
+            card.innerHTML = `
+                <div class="med-header" onclick="toggleCard(this)">
+                    <div>
+                        <h3>${med.name}</h3>
+                        <div class="med-subheader">${med.subtitle}</div>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="med-content">
+                    <div class="info-grid">
+                        <div class="info-section drug-class">
+                            <h4>💊 Drug Class</h4>
+                            <p>${med.class}</p>
+                        </div>
+                        <div class="info-section mechanism">
+                            <h4>⚙️ Mechanism of Action</h4>
+                            <p>${med.mechanism}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section indications">
+                        <h4>📋 Clinical Indications</h4>
+                        <p>${med.indications}</p>
+                    </div>
+                    
+                    <div class="info-section side-effects">
+                        <h4>⚠️ Side Effects & Adverse Reactions</h4>
+                        <p>${med.sideEffects}</p>
+                    </div>
+                    
+                    <div class="info-section nursing">
+                        <h4>🩺 Critical Nursing Considerations</h4>
+                        <p>${med.nursing}</p>
+                    </div>
+                    
+                    <div class="info-section patient-ed">
+                        <h4>📚 Patient Education Points</h4>
+                        <p>${med.patientEd}</p>
+                    </div>
+                    
+                    <div class="info-section outcomes">
+                        <h4>✨ Expected Therapeutic Outcomes</h4>
+                        <p>${med.outcomes}</p>
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function toggleCard(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                icon.classList.remove('rotated');
+            } else {
+                content.classList.add('expanded');
+                icon.classList.add('rotated');
+            }
+        }
+
+        function expandAll() {
+            document.querySelectorAll('.med-content').forEach(content => {
+                content.classList.add('expanded');
+                content.previousElementSibling.querySelector('.toggle-icon').classList.add('rotated');
+            });
+        }
+
+        function collapseAll() {
+            document.querySelectorAll('.med-content').forEach(content => {
+                content.classList.remove('expanded');
+                content.previousElementSibling.querySelector('.toggle-icon').classList.remove('rotated');
+            });
+        }
+
+        function showComparisons() {
+            const medContainer = document.getElementById('medContainer');
+            const comparisonContainer = document.getElementById('comparisonContainer');
+            
+            medContainer.classList.add('hidden');
+            comparisonContainer.classList.remove('hidden');
+            
+            comparisonContainer.innerHTML = `
+                <div class="comparison-section">
+                    <h2>💨 Bronchodilator Quick Comparison</h2>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Drug Class</th>
+                                <th>Onset of Action</th>
+                                <th>Primary Use</th>
+                                <th>Key Nursing Point</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Albuterol (SABA)</strong></td>
+                                <td>5-15 minutes</td>
+                                <td><strong>RESCUE</strong> - Acute bronchospasm</td>
+                                <td>Fast-acting! First-line for acute symptoms</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Salmeterol (LABA)</strong></td>
+                                <td>20+ minutes</td>
+                                <td><strong>CONTROLLER</strong> - Daily prevention</td>
+                                <td>NEVER use for acute attacks - too slow</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ipratropium (SAMA)</strong></td>
+                                <td>15-30 minutes</td>
+                                <td>COPD maintenance therapy</td>
+                                <td>Often combined with albuterol for synergy</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tiotropium (LAMA)</strong></td>
+                                <td>30-60 minutes</td>
+                                <td>Once-daily COPD control</td>
+                                <td>Longer duration than ipratropium (24 hrs)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Theophylline</strong></td>
+                                <td>Varies (oral)</td>
+                                <td>Add-on chronic management</td>
+                                <td>Narrow therapeutic window - monitor levels!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="comparison-section">
+                    <h2>🩸 Anemia Medication Quick Comparison</h2>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Medication</th>
+                                <th>Route</th>
+                                <th>Enhances Absorption</th>
+                                <th>Decreases Absorption / Special Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Oral Iron</strong><br>(Ferrous sulfate, gluconate, fumarate)</td>
+                                <td>PO</td>
+                                <td>• Vitamin C / Orange juice<br>• Empty stomach<br>• Acidic environment</td>
+                                <td>• Dairy products (calcium)<br>• Antacids (↑ pH)<br>• Tea/Coffee (tannins)<br>• Dark stools = NORMAL</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Iron Dextran</strong></td>
+                                <td>IV / IM</td>
+                                <td>N/A - Bypasses GI tract</td>
+                                <td>• <strong>TEST DOSE REQUIRED</strong><br>• Anaphylaxis risk<br>• Z-track IM (permanent staining)<br>• Emergency equipment ready</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vitamin B12</strong><br>(Cyanocobalamin)</td>
+                                <td>PO / IM / SubQ / Intranasal</td>
+                                <td>• Requires intrinsic factor (for PO)<br>• Acidic stomach environment</td>
+                                <td>• <strong>Pernicious anemia = IM/SubQ ONLY</strong><br>• Monitor K+ during treatment<br>• Lifelong therapy often needed</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Folic Acid</strong></td>
+                                <td>PO (usually)</td>
+                                <td>• Well absorbed with/without food<br>• Dietary sources helpful</td>
+                                <td>• <strong>Rule out B12 deficiency FIRST!</strong><br>• Can mask B12 deficiency<br>• Critical in pregnancy (neural tube defects)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pearls-section">
+                    <h2>💎 High-Yield NCLEX Pearls</h2>
+                    
+                    <div class="pearl-item pearl-red">
+                        <strong>🚨 RESCUE vs CONTROLLER:</strong> Albuterol (SABA) = RESCUE medication for acute symptoms (works in minutes). Salmeterol (LABA), inhaled steroids, and montelukast = CONTROLLERS for daily prevention - NEVER use for acute symptoms!
+                    </div>
+
+                    <div class="pearl-item pearl-blue">
+                        <strong>⚠️ THEOPHYLLINE TOXICITY:</strong> Narrow therapeutic window (5-15 mcg/mL). Signs of toxicity = nausea, vomiting, tachycardia, dysrhythmias, SEIZURES. Monitor serum levels regularly! Many drug interactions.
+                    </div>
+
+                    <div class="pearl-item pearl-red">
+                        <strong>💊 INHALED CORTICOSTEROIDS:</strong> ALWAYS rinse mouth after use to prevent oral thrush (candidiasis). NOT for acute symptoms - takes days to weeks for full anti-inflammatory effect. Use with spacer device.
+                    </div>
+
+                    <div class="pearl-item pearl-blue">
+                        <strong>🩸 ORAL IRON:</strong> Dark/BLACK stools are completely NORMAL (not GI bleeding). Take with Vitamin C for better absorption. AVOID dairy, antacids, tea/coffee (block absorption). Constipation very common - increase fluids/fiber.
+                    </div>
+
+                    <div class="pearl-item pearl-red">
+                        <strong>⚡ IRON DEXTRAN:</strong> TEST DOSE is MANDATORY before full dose! HIGH anaphylaxis risk. Emergency equipment must be ready (epinephrine, O2, airway). Z-track IM injection to prevent permanent brown skin staining. Monitor 30-60 minutes post-dose.
+                    </div>
+
+                    <div class="pearl-item pearl-blue">
+                        <strong>🧠 MONTELUKAST BLACK BOX WARNING:</strong> Monitor for serious neuropsychiatric effects - depression, suicidal thoughts, mood changes, aggression, sleep disturbances (especially children/adolescents). Discontinue if these occur!
+                    </div>
+
+                    <div class="pearl-item pearl-red">
+                        <strong>💉 B12 vs FOLATE:</strong> Must rule out B12 deficiency BEFORE giving folate! Folate corrects anemia but NOT neurological damage from B12 deficiency - nerve damage continues unseen and becomes irreversible (subacute combined degeneration).
+                    </div>
+
+                    <div class="pearl-item pearl-blue">
+                        <strong>👁️ IPRATROPIUM/TIOTROPIUM:</strong> AVOID spraying in eyes - can cause acute angle-closure glaucoma and vision problems. Monitor for urinary retention (anticholinergic effect) especially in elderly males with BPH.
+                    </div>
+
+                    <div class="pearl-item pearl-red">
+                        <strong>🔬 CROMOLYN:</strong> PURELY PREVENTIVE - completely INEFFECTIVE for acute symptoms. Must be used 15-20 minutes BEFORE exercise or allergen exposure. Takes 2-4 weeks for full therapeutic benefit. Very safe, minimal side effects.
+                    </div>
+
+                    <div class="pearl-item pearl-blue">
+                        <strong>💧 ACETYLCYSTEINE:</strong> Foul odor (rotten eggs) is expected - warn patients! Can trigger bronchospasm in asthmatics - have bronchodilator ready. Also used as antidote for acetaminophen overdose. Increased coughing initially = therapeutic (clearing mucus).
+                    </div>
+
+                    <div class="pearl-item pearl-red">
+                        <strong>🫁 BETA-AGONISTS:</strong> Monitor heart rate and blood pressure - can cause tachycardia, palpitations, tremors. If patient needs rescue inhaler >2 times per week, asthma is NOT well-controlled - notify provider!
+                    </div>
+
+                    <div class="pearl-item pearl-blue">
+                        <strong>🩺 PERNICIOUS ANEMIA:</strong> Requires LIFELONG monthly B12 injections (IM/SubQ) - oral won't work due to lack of intrinsic factor. Check for neurological symptoms (paresthesias, ataxia, cognitive changes). Monitor potassium during initial treatment.
+                    </div>
+                </div>
+            `;
+        }
+
+        // Event listeners
+        document.getElementById('searchBox').addEventListener('input', (e) => {
+            const activeTab = document.querySelector('.tab.active').dataset.category;
+            if (activeTab !== 'comparisons') {
+                renderMedications(activeTab, e.target.value);
+            }
+        });
+
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const category = tab.dataset.category;
+                const searchTerm = document.getElementById('searchBox').value;
+                
+                if (category === 'comparisons') {
+                    showComparisons();
+                } else {
+                    document.getElementById('medContainer').classList.remove('hidden');
+                    document.getElementById('comparisonContainer').classList.add('hidden');
+                    renderMedications(category, searchTerm);
+                }
+            });
+        });
+
+        // Initial render
+        renderMedications();
+    </script>
+</body>
+</html>
