@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🫁 Respiratory Disorders Mastery | Upper & Lower Airway Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%);
+            min-height: 100vh;
+            padding: 20px;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%); }
+            50% { background: linear-gradient(135deg, #48dbfb 0%, #ff6b6b 50%, #feca57 100%); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ee5a6f 0%, #f29263 100%);
+            color: white;
+            padding: 35px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "🫁";
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            top: -30px;
+            right: -30px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        .tabs {
+            display: flex;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-bottom: 4px solid #e17055;
+            overflow-x: auto;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 16px 22px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-size: 15px;
+            font-weight: 700;
+            color: #d63031;
+            transition: all 0.3s;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .tab:hover {
+            background: rgba(255, 107, 107, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: slideIn 0.5s;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .flip-card {
+            perspective: 1000px;
+            height: 380px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.7s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .flip-card-front {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+        }
+
+        .flip-card-back {
+            background: white;
+            color: #333;
+            transform: rotateY(180deg);
+            border: 4px solid #ff6b6b;
+            overflow-y: auto;
+        }
+
+        .card-title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .card-subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            background: rgba(255,255,255,0.25);
+            padding: 10px 18px;
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        .flip-hint {
+            margin-top: 25px;
+            font-size: 1em;
+            opacity: 0.85;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .back-content {
+            text-align: left;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        .back-content strong {
+            color: #ee5a6f;
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 5px;
+            font-size: 1.05em;
+        }
+
+        .back-content ul {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .memory-trick {
+            background: linear-gradient(135deg, #55efc4 0%, #81ecec 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 6px solid #00b894;
+            box-shadow: 0 4px 15px rgba(0,184,148,0.3);
+        }
+
+        .memory-trick h3 {
+            color: #00695c;
+            margin-bottom: 12px;
+            font-size: 1.4em;
+        }
+
+        .alert-box {
+            background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 6px solid #d63031;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255,118,117,0.4);
+        }
+
+        .alert-box h3 {
+            color: white;
+            margin-bottom: 12px;
+            font-size: 1.4em;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            color: white;
+            box-shadow: 0 4px 15px rgba(108,92,231,0.3);
+        }
+
+        .info-box h3 {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .pearls-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(253,203,110,0.4);
+        }
+
+        .pearls-box h3 {
+            color: #d63031;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.8em;
+        }
+
+        .pearl-item {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 12px 0;
+            font-weight: 500;
+            color: #333;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .pearl-item:hover {
+            transform: translateX(10px);
+        }
+
+        .quiz-container {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            border-radius: 20px;
+            padding: 35px;
+            margin-top: 20px;
+            box-shadow: 0 8px 25px rgba(9,132,227,0.4);
+        }
+
+        .quiz-question {
+            background: white;
+            padding: 28px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .quiz-question h3 {
+            color: #0984e3;
+            margin-bottom: 18px;
+            font-size: 1.2em;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quiz-option {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+            font-size: 1.05em;
+        }
+
+        .quiz-option:hover {
+            background: #e9ecef;
+            transform: translateX(8px);
+            border-color: #74b9ff;
+        }
+
+        .quiz-option.correct {
+            background: linear-gradient(135deg, #55efc4 0%, #81ecec 100%);
+            border-color: #00b894;
+            color: #00695c;
+            font-weight: bold;
+        }
+
+        .quiz-option.incorrect {
+            background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
+            border-color: #d63031;
+            color: white;
+        }
+
+        .rationale {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 15px;
+            border-left: 5px solid #fdcb6e;
+            display: none;
+        }
+
+        .rationale.show {
+            display: block;
+            animation: slideDown 0.4s;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; }
+            to { opacity: 1; max-height: 600px; }
+        }
+
+        .score-tracker {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 20px rgba(238,90,111,0.4);
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.3);
+            height: 35px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            background: linear-gradient(135deg, #55efc4 0%, #81ecec 100%);
+            height: 100%;
+            transition: width 0.6s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00695c;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .emergency-box {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(231,76,60,0.4);
+            animation: urgentPulse 2s infinite;
+        }
+
+        @keyframes urgentPulse {
+            0%, 100% { box-shadow: 0 6px 20px rgba(231,76,60,0.4); }
+            50% { box-shadow: 0 6px 30px rgba(231,76,60,0.8); }
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 1.05em;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 2px solid #f8f9fa;
+        }
+
+        tr:hover {
+            background: #fff5f5;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 3px;
+        }
+
+        .badge-emergency { background: #ff7675; color: white; }
+        .badge-warning { background: #fdcb6e; color: #2d3436; }
+        .badge-success { background: #55efc4; color: #00695c; }
+        .badge-info { background: #74b9ff; color: #0c2461; }
+
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .tabs {
+                justify-content: center;
+            }
+        }
+
+        .fun-fact {
+            background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 5px solid #e84393;
+            font-style: italic;
+            box-shadow: 0 4px 12px rgba(253,121,168,0.3);
+        }
+
+        .comparison-box {
+            background: linear-gradient(135deg, #a29bfe 0%, #74b9ff 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🫁 Respiratory Disorders Mastery</h1>
+            <p>Upper & Lower Airway | NCLEX Ready!</p>
+            <p style="font-size: 0.95em; margin-top: 12px;">✨ Click cards to flip! Ace those exams! ✨</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('obstruction')">🚨 Airway Obstruction</button>
+            <button class="tab" onclick="showTab('osa')">😴 OSA</button>
+            <button class="tab" onclick="showTab('trauma')">💥 Trauma & Cancer</button>
+            <button class="tab" onclick="showTab('asthma')">🌬️ Asthma</button>
+            <button class="tab" onclick="showTab('copd')">🫁 COPD</button>
+            <button class="tab" onclick="showTab('cf')">🧬 Cystic Fibrosis</button>
+            <button class="tab" onclick="showTab('quiz')">📝 Quiz Time</button>
+            <button class="tab" onclick="showTab('pearls')">💎 NCLEX Pearls</button>
+        </div>
+
+        <div class="content">
+            <!-- AIRWAY OBSTRUCTION TAB -->
+            <div id="obstruction" class="tab-content active">
+                <h2 style="color: #ee5a6f; margin-bottom: 20px;">🚨 Upper Airway Obstruction</h2>
+                
+                <div class="emergency-box">
+                    <h3>⚡ CRITICAL NURSING PRIORITY ⚡</h3>
+                    <p><strong>AIRWAY COMES BEFORE BREATHING AND CIRCULATION!</strong></p>
+                    <p>Perform and supervise daily oral care to prevent thick secretions → preventable cause of FATAL airway obstruction!</p>
+                </div>
+
+                <div class="memory-trick">
+                    <h3>🧠 Memory Trick: ABC Always!</h3>
+                    <p><strong>"Airway ALWAYS Beats Circulation!"</strong></p>
+                    <p>In any emergency, secure the airway FIRST. No airway = no breathing = no life!</p>
+                </div>
+
+                <h3 style="color: #ee5a6f; margin: 25px 0 15px 0;">🚦 Obstruction Signs & Symptoms</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Partial Obstruction</th>
+                                <th>Severe/Complete Obstruction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    • Diaphoresis, tachycardia<br>
+                                    • Anxiety, ↑ BP<br>
+                                    • Restlessness, air hunger
+                                </td>
+                                <td>
+                                    • <strong>STRIDOR</strong> (emergency!)<br>
+                                    • Cyanosis<br>
+                                    • Sternal retractions<br>
+                                    • Altered LOC<br>
+                                    • Feeling of impending doom
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card-grid">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Common Causes</div>
+                                <div class="card-subtitle">What Blocks Airways?</div>
+                                <div class="flip-hint">💡 Click to see causes!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🎯 Tongue Issues:</strong>
+                                    <ul>
+                                        <li>Edema (surgery, trauma, angioedema)</li>
+                                        <li>Occlusion (↓ LOC, loss of gag reflex)</li>
+                                    </ul>
+                                    
+                                    <strong>🔥 Laryngeal Problems:</strong>
+                                    <ul>
+                                        <li>Edema (smoke, toxins, infection)</li>
+                                        <li>Anaphylaxis</li>
+                                    </ul>
+                                    
+                                    <strong>🦠 Infections:</strong>
+                                    <ul>
+                                        <li>Peritonsillar abscess</li>
+                                        <li>Pharyngeal abscess</li>
+                                    </ul>
+                                    
+                                    <strong>💥 Trauma:</strong>
+                                    <ul>
+                                        <li>Facial/tracheal/laryngeal injuries</li>
+                                        <li>Burns</li>
+                                    </ul>
+                                    
+                                    <strong>🍇 Other:</strong>
+                                    <ul>
+                                        <li>Foreign body aspiration</li>
+                                        <li>Thick secretions</li>
+                                        <li>Head/neck cancer</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Emergency Interventions</div>
+                                <div class="card-subtitle">Take Action NOW!</div>
+                                <div class="flip-hint">💡 Click to see actions!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🔍 Identify Cause:</strong>
+                                    <p>Quick assessment to determine source</p>
+                                    
+                                    <strong>🧍 Positioning:</strong>
+                                    <p>Head-tilt/neck extension if tongue obstruction</p>
+                                    
+                                    <strong>🛠️ Airway Devices:</strong>
+                                    <ul>
+                                        <li>Insert oral or nasal airway</li>
+                                        <li>Suction secretions</li>
+                                    </ul>
+                                    
+                                    <strong>🤜 Foreign Body - Conscious:</strong>
+                                    <p>Abdominal thrusts (Heimlich)</p>
+                                    
+                                    <strong>💔 Foreign Body - Unconscious:</strong>
+                                    <p>Begin CPR with chest compressions</p>
+                                    
+                                    <strong>🏥 Surgical Airways:</strong>
+                                    <ul>
+                                        <li>Cricothyroidotomy (emergency stab)</li>
+                                        <li>Tracheotomy (5-10 min surgical; &lt;2 min emergency)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">High-Risk Patients</div>
+                                <div class="card-subtitle">Who Needs Extra Monitoring?</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>👀 Watch These Patients:</strong>
+                                    <ul>
+                                        <li>Altered mental status</li>
+                                        <li>Dehydration</li>
+                                        <li>Unable to communicate</li>
+                                        <li>Unable to cough effectively</li>
+                                        <li>High aspiration risk</li>
+                                    </ul>
+                                    
+                                    <strong>🩺 Prevention:</strong>
+                                    <p>Daily oral care prevents thick, crusted secretions!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OSA TAB -->
+            <div id="osa" class="tab-content">
+                <h2 style="color: #ee5a6f; margin-bottom: 20px;">😴 Obstructive Sleep Apnea (OSA)</h2>
+
+                <div class="alert-box">
+                    <h3>🚨 Critical Definition</h3>
+                    <p><strong>Recurrent partial or complete upper airway collapse during sleep → apnea ≥10 seconds → intermittent hypoxia & fragmented sleep</strong></p>
+                </div>
+
+                <div class="memory-trick">
+                    <h3>🧠 OSA Key Symptoms: "SNORE"</h3>
+                    <p><strong>S</strong>noring (LOUD!)</p>
+                    <p><strong>N</strong>ighttime gasping/choking</p>
+                    <p><strong>O</strong>bvious daytime sleepiness</p>
+                    <p><strong>R</strong>estless sleep, irritability</p>
+                    <p><strong>E</strong>xcessive morning headaches</p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Risk Factors</div>
+                                <div class="card-subtitle">Who Gets OSA?</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🎯 Major Risk Factors:</strong>
+                                    <ul>
+                                        <li><strong>Obesity</strong> (biggest risk!)</li>
+                                        <li>Male sex</li>
+                                        <li>Age &gt;60</li>
+                                        <li>Enlarged tonsils/adenoids</li>
+                                        <li>Craniofacial structure</li>
+                                        <li>Genetic predisposition</li>
+                                    </ul>
+                                    
+                                    <strong>⚠️ Mechanism:</strong>
+                                    <p>Upper airway obstructed by tongue/soft palate collapse</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Complications</div>
+                                <div class="card-subtitle">Why OSA Is Dangerous</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>❤️ Cardiovascular:</strong>
+                                    <ul>
+                                        <li>Hypertension</li>
+                                        <li>Heart disease</li>
+                                        <li>Stroke</li>
+                                    </ul>
+                                    
+                                    <strong>🧠 Neurological:</strong>
+                                    <ul>
+                                        <li>Cognitive impairment</li>
+                                        <li>Dementia risk</li>
+                                        <li>Memory issues</li>
+                                    </ul>
+                                    
+                                    <strong>🍬 Metabolic:</strong>
+                                    <ul>
+                                        <li>Insulin resistance</li>
+                                        <li>Diabetes risk</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">CPAP Therapy</div>
+                                <div class="card-subtitle">Gold Standard Treatment!</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🎯 How It Works:</strong>
+                                    <p>Continuous positive airway pressure keeps airway open</p>
+                                    
+                                    <strong>✅ Benefits:</strong>
+                                    <ul>
+                                        <li>Improves gas exchange</li>
+                                        <li>Better sleep quality</li>
+                                        <li>Reduces complications</li>
+                                    </ul>
+                                    
+                                    <strong>🩺 Nursing Focus:</strong>
+                                    <ul>
+                                        <li>Requires <strong>tight mask seal</strong></li>
+                                        <li>Adherence: <strong>≥6 hours/night</strong></li>
+                                        <li>Educate on equipment care</li>
+                                        <li>Humidified, quieter newer models</li>
+                                    </ul>
+                                    
+                                    <strong>⚠️ Critical:</strong>
+                                    <p>AVOID sedatives and alcohol!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Diagnostics</div>
+                                <div class="card-subtitle">How We Diagnose OSA</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>📋 Screening Tools:</strong>
+                                    <ul>
+                                        <li>STOP-Bang questionnaire</li>
+                                        <li>Epworth Sleepiness Scale</li>
+                                        <li>Pittsburgh Sleep Quality Index</li>
+                                    </ul>
+                                    
+                                    <strong>🏠 Home Sleep Study:</strong>
+                                    <p>Convenient, less expensive option</p>
+                                    
+                                    <strong>🏥 Polysomnography (PSG):</strong>
+                                    <p>Gold standard - monitors:</p>
+                                    <ul>
+                                        <li>ECG, EEG</li>
+                                        <li>SpO₂, airflow</li>
+                                        <li>EMG, CO₂</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 25px;">
+                    <h3>⚖️ Health Equity Note</h3>
+                    <p><strong>OSA is UNDERDIAGNOSED in Black populations</strong> due to access barriers, symptom overlap, and mistrust of healthcare systems. Always screen thoroughly!</p>
+                </div>
+            </div>
+
+            <!-- TRAUMA & CANCER TAB -->
+            <div id="trauma" class="tab-content">
+                <h2 style="color: #ee5a6f; margin-bottom: 20px;">💥 Facial Trauma & Head/Neck Cancer</h2>
+
+                <div class="emergency-box">
+                    <h3>🚨 NURSING PRIORITY: AIRWAY FIRST!</h3>
+                    <p>Facial trauma is LIFE-THREATENING due to airway obstruction and hemorrhage!</p>
+                </div>
+
+                <div class="memory-trick">
+                    <h3>🧠 Le Fort Fractures: "1-2-3 Going Up!"</h3>
+                    <p><strong>Le Fort I:</strong> Nasoethmoid (lowest)</p>
+                    <p><strong>Le Fort II:</strong> Maxillary + nasoethmoid (middle)</p>
+                    <p><strong>Le Fort III:</strong> I + II + orbital-zygoma = craniofacial disjunction (highest, worst!)</p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Facial Trauma Assessment</div>
+                                <div class="card-subtitle">Recognize Cues</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🚨 Airway Obstruction Signs:</strong>
+                                    <ul>
+                                        <li>Stridor, dyspnea</li>
+                                        <li>Anxiety, restlessness</li>
+                                        <li>Hypoxia, ↓ SpO₂</li>
+                                        <li>Cyanosis, ↓ LOC</li>
+                                    </ul>
+                                    
+                                    <strong>👀 Head & Face:</strong>
+                                    <ul>
+                                        <li>Bleeding, deformities</li>
+                                        <li>Soft tissue edema</li>
+                                        <li>Facial asymmetry</li>
+                                        <li>Malocclusion (teeth don't align)</li>
+                                    </ul>
+                                    
+                                    <strong>🧠 Skull Fracture Signs:</strong>
+                                    <ul>
+                                        <li>CSF leak from nose/ears</li>
+                                        <li>Battle sign (mastoid bruising)</li>
+                                        <li>Vision changes</li>
+                                    </ul>
+                                    
+                                    <strong>🔥 ASSUME SPINAL INJURY until ruled out!</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Mandibular Fractures</div>
+                                <div class="card-subtitle">Jaw Wired Shut!</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🦴 Inner Maxillary Fixation (IMF):</strong>
+                                    <p>Jaw wired shut for <strong>6-10 weeks</strong></p>
+                                    
+                                    <strong>🩺 Nursing Care:</strong>
+                                    <ul>
+                                        <li>Meticulous oral hygiene (Waterpik/Sonicare)</li>
+                                        <li>Dental liquid diet</li>
+                                        <li>Monitor for aspiration</li>
+                                    </ul>
+                                    
+                                    <strong>⚡ ACTION ALERT:</strong>
+                                    <p><strong>Patient MUST ALWAYS carry wire cutters!</strong></p>
+                                    
+                                    <strong>🤮 If Vomiting Occurs:</strong>
+                                    <ol>
+                                        <li>Cut wires IMMEDIATELY</li>
+                                        <li>Protect airway</li>
+                                        <li>Return to surgeon ASAP for rewiring</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Head/Neck Cancer</div>
+                                <div class="card-subtitle">Warning Signs</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>⚠️ Warning Signs:</strong>
+                                    <ul>
+                                        <li><strong>Hoarseness &gt;2 weeks</strong></li>
+                                        <li>Oral sores that don't heal</li>
+                                        <li>Dysphagia</li>
+                                        <li>Neck lump</li>
+                                        <li>Unilateral ear pain</li>
+                                        <li>Weight loss, anorexia</li>
+                                    </ul>
+                                    
+                                    <strong>🎯 Risk Factors:</strong>
+                                    <ul>
+                                        <li>Tobacco use (biggest!)</li>
+                                        <li>Alcohol use</li>
+                                        <li>HPV infection</li>
+                                        <li>Poor oral hygiene</li>
+                                        <li>GERD</li>
+                                    </ul>
+                                    
+                                    <strong>🔥 NCLEX TIP:</strong>
+                                    <p>Hoarseness &gt;2 weeks NEEDS evaluation!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Laryngectomy Care</div>
+                                <div class="card-subtitle">Post-Op Priorities</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>📋 Types:</strong>
+                                    <p><strong>Partial:</strong> Temporary tracheostomy</p>
+                                    <p><strong>Total:</strong> Permanent stoma, no natural voice</p>
+                                    
+                                    <strong>🎯 Post-Op Priorities:</strong>
+                                    <ul>
+                                        <li>Airway patency #1!</li>
+                                        <li>Hemorrhage monitoring</li>
+                                        <li>Gas exchange</li>
+                                    </ul>
+                                    
+                                    <strong>🩺 Wound & Stoma Care:</strong>
+                                    <ul>
+                                        <li>Clean suture line q1-2h initially</li>
+                                        <li>Inspect flaps hourly ×72h</li>
+                                        <li>Humidified O₂ via trach collar</li>
+                                        <li>Blood-tinged secretions 1-2 days = expected</li>
+                                    </ul>
+                                    
+                                    <strong>⚡ CRITICAL RESCUE:</strong>
+                                    <p>Suspected carotid rupture → apply pressure, secure airway, activate RRT, to OR immediately!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ASTHMA TAB -->
+            <div id="asthma" class="tab-content">
+                <h2 style="color: #ee5a6f; margin-bottom: 20px;">🌬️ Asthma - NCLEX Gold!</h2>
+
+                <div class="alert-box">
+                    <h3>🔥 HIGH-YIELD Definition</h3>
+                    <p><strong>Chronic inflammatory disorder with REVERSIBLE airway obstruction</strong></p>
+                    <p>Three mechanisms: (1) Airway inflammation, (2) Bronchial smooth muscle constriction, (3) Thick mucus production</p>
+                </div>
+
+                <div class="memory-trick">
+                    <h3>🧠 Asthma Drug Therapy: "RESCUE vs CONTROL"</h3>
+                    <p><strong>RESCUE = SABA (Albuterol) = Fast-acting, carry at ALL times!</strong></p>
+                    <p><strong>CONTROL = ICS, LABAs, Leukotrienes = Daily use, PREVENT attacks</strong></p>
+                    <p><strong>Remember: "LABAs NEVER alone!" (Black box warning)</strong></p>
+                </div>
+
+                <div class="comparison-box">
+                    <h3>⚖️ Asthma vs COPD Quick Comparison</h3>
+                    <p><strong>Asthma:</strong> REVERSIBLE, younger onset, responds to bronchodilators</p>
+                    <p><strong>COPD:</strong> IRREVERSIBLE, older onset (usually smoking-related), progressive</p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Triggers & Risk Factors</div>
+                                <div class="card-subtitle">What Causes Attacks?</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🌸 Allergens:</strong>
+                                    <p>IgE mediated reactions</p>
+                                    
+                                    <strong>💊 Medications:</strong>
+                                    <p>NSAIDs/aspirin (↑ leukotrienes)</p>
+                                    
+                                    <strong>🏃 Exercise:</strong>
+                                    <p>Exercise-induced bronchoconstriction</p>
+                                    
+                                    <strong>🦠 Infections:</strong>
+                                    <p>Viral respiratory infections</p>
+                                    
+                                    <strong>🌙 GERD:</strong>
+                                    <p>Especially nocturnal symptoms</p>
+                                    
+                                    <strong>🏭 Environmental:</strong>
+                                    <p>Pollutants, irritants, cold air</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Assessment Findings</div>
+                                <div class="card-subtitle">Recognize Cues</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🎵 Key Symptoms:</strong>
+                                    <ul>
+                                        <li><strong>Wheezing</strong> (musical sounds)</li>
+                                        <li>Dyspnea</li>
+                                        <li>Chest tightness</li>
+                                        <li>Nighttime symptoms</li>
+                                        <li>Increased mucus</li>
+                                        <li><strong>Prolonged expiration</strong></li>
+                                    </ul>
+                                    
+                                    <strong>🚨 SEVERE Findings (RED FLAGS):</strong>
+                                    <ul>
+                                        <li>Accessory muscle use</li>
+                                        <li>Can't speak full sentences</li>
+                                        <li>Cyanosis, altered LOC</li>
+                                        <li>Tachycardia, hypoxemia</li>
+                                        <li><strong>SILENT CHEST = IMPENDING FAILURE!</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">SABA - Albuterol</div>
+                                <div class="card-subtitle">Rescue Inhaler</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>💨 Classification:</strong>
+                                    <p>Short-Acting Beta-2 Agonist (SABA)</p>
+                                    
+                                    <strong>🎯 Use:</strong>
+                                    <p>RESCUE/RELIEF medication - fast acting!</p>
+                                    
+                                    <strong>⚠️ Side Effects:</strong>
+                                    <ul>
+                                        <li>Tachycardia</li>
+                                        <li>Tremors</li>
+                                        <li>Nervousness</li>
+                                    </ul>
+                                    
+                                    <strong>🩺 Nursing:</strong>
+                                    <ul>
+                                        <li>Carry at ALL times</li>
+                                        <li>Use BEFORE exercise if needed</li>
+                                        <li>Monitor heart rate</li>
+                                        <li>Teach proper inhaler technique</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">ICS - Controllers</div>
+                                <div class="card-subtitle">Inhaled Corticosteroids</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>💊 Examples:</strong>
+                                    <p>Fluticasone, Budesonide</p>
+                                    
+                                    <strong>🎯 Use:</strong>
+                                    <p>MOST EFFECTIVE anti-inflammatory</p>
+                                    <p><strong>DAILY use ONLY - NOT for rescue!</strong></p>
+                                    
+                                    <strong>⚠️ Side Effects:</strong>
+                                    <ul>
+                                        <li>Oral candidiasis (thrush)</li>
+                                        <li>Hoarseness</li>
+                                        <li>Cough</li>
+                                    </ul>
+                                    
+                                    <strong>🩺 Nursing:</strong>
+                                    <ul>
+                                        <li><strong>RINSE MOUTH after use!</strong> (prevent Candida)</li>
+                                        <li>Daily compliance essential</li>
+                                        <li>Effects take days-weeks</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">LABAs Warning!</div>
+                                <div class="card-subtitle">Black Box Alert</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>💊 Examples:</strong>
+                                    <p>Salmeterol, Formoterol</p>
+                                    
+                                    <strong>⚠️ BLACK BOX WARNING:</strong>
+                                    <p><strong>NEVER USE ALONE!</strong></p>
+                                    <p>Must be combined with ICS</p>
+                                    
+                                    <strong>🎯 Use:</strong>
+                                    <p>PREVENTION only - NOT for acute symptoms!</p>
+                                    <p>Long-acting bronchodilation</p>
+                                    
+                                    <strong>🔥 NCLEX TIP:</strong>
+                                    <p>If you see LABA alone → WRONG answer!</p>
+                                    <p>Always needs ICS combo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Status Asthmaticus</div>
+                                <div class="card-subtitle">MEDICAL EMERGENCY!</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🚨 Definition:</strong>
+                                    <p>Severe, unresponsive bronchospasm</p>
+                                    
+                                    <strong>⚠️ CRITICAL Sign:</strong>
+                                    <p><strong>ABSENT WHEEZING + ↓ SpO₂ = COMPLETE OBSTRUCTION!</strong></p>
+                                    <p>"Silent chest" = air can't move = EMERGENCY!</p>
+                                    
+                                    <strong>💉 Interventions:</strong>
+                                    <ul>
+                                        <li>IV corticosteroids</li>
+                                        <li>Continuous bronchodilators</li>
+                                        <li>Epinephrine if severe</li>
+                                        <li>Oxygen therapy</li>
+                                        <li>Prepare for INTUBATION</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="emergency-box" style="margin-top: 25px;">
+                    <h3>🔥 NCLEX GOLD: ABG Changes in Asthma</h3>
+                    <p><strong>EARLY asthma attack:</strong> ↓ PaCO₂ (hyperventilation)</p>
+                    <p><strong>LATE/SEVERE:</strong> ↑ PaCO₂ = RESPIRATORY FAILURE SIGN!</p>
+                    <p>Rising CO₂ in asthmatic = DANGER! Prepare for intubation!</p>
+                </div>
+            </div>
+
+            <!-- COPD TAB -->
+            <div id="copd" class="tab-content">
+                <h2 style="color: #ee5a6f; margin-bottom: 20px;">🫁 COPD - Irreversible Disease</h2>
+
+                <div class="alert-box">
+                    <h3>🎯 Core Definition</h3>
+                    <p><strong>Progressive, IRREVERSIBLE airflow limitation</strong></p>
+                    <p>Includes: Emphysema + Chronic Bronchitis</p>
+                </div>
+
+                <div class="comparison-box">
+                    <h3>🔍 Emphysema vs Chronic Bronchitis</h3>
+                    <p><strong>Emphysema:</strong> Loss of alveolar elasticity → air trapping → hyperinflation ("Pink Puffer")</p>
+                    <p><strong>Chronic Bronchitis:</strong> Productive cough ≥3 months for 2 years → thick mucus ("Blue Bloater")</p>
+                </div>
+
+                <div class="memory-trick">
+                    <h3>🧠 COPD Oxygen Rule: "88-92 is Great!"</h3>
+                    <p><strong>Target SpO₂ in COPD: 88-92%</strong></p>
+                    <p>NOT 95-100% like other patients!</p>
+                    <p><strong>Give oxygen to hypoxic patients - even CO₂ retainers!</strong></p>
+                    <p>Titrate slowly and monitor ABGs</p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">COPD Assessment</div>
+                                <div class="card-subtitle">Early Cues</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>📋 History:</strong>
+                                    <ul>
+                                        <li>Chronic cough, sputum</li>
+                                        <li>Dyspnea (progressive)</li>
+                                        <li>Smoking/vaping (pack-years)</li>
+                                        <li>Occupational exposures</li>
+                                    </ul>
+                                    
+                                    <strong>👀 Physical Findings:</strong>
+                                    <ul>
+                                        <li><strong>Tripod positioning</strong></li>
+                                        <li><strong>Barrel chest</strong> (AP:lateral = 1:1)</li>
+                                        <li>Accessory muscle use</li>
+                                        <li>↓ Breath sounds, wheezing</li>
+                                        <li>Cyanosis, clubbing (late)</li>
+                                    </ul>
+                                    
+                                    <strong>🚨 SILENT CHEST = EMERGENCY!</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Complications</div>
+                                <div class="card-subtitle">What Kills First?</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>💔 Primary Problem:</strong>
+                                    <p>Impaired gas exchange → systemic effects</p>
+                                    
+                                    <strong>🫀 Cor Pulmonale (RIGHT-sided HF):</strong>
+                                    <ul>
+                                        <li>JVD, dependent edema</li>
+                                        <li>Hepatomegaly</li>
+                                        <li>Cyanosis, bounding pulses</li>
+                                        <li>RV hypertrophy</li>
+                                    </ul>
+                                    
+                                    <strong>🦠 Respiratory Infections:</strong>
+                                    <p>Thick mucus + inflammation = ↑ risk</p>
+                                    
+                                    <strong>💔 Cardiac:</strong>
+                                    <ul>
+                                        <li>Dysrhythmias (hypoxia, acidosis)</li>
+                                        <li>Heart failure</li>
+                                    </ul>
+                                    
+                                    <strong>🚨 Respiratory Failure:</strong>
+                                    <p>Late-stage emergency</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">COPD Diagnostics</div>
+                                <div class="card-subtitle">Exam Favorites</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🩸 ABGs:</strong>
+                                    <ul>
+                                        <li>Hypoxemia + hypercapnia</li>
+                                        <li>Chronic respiratory acidosis</li>
+                                        <li>Metabolic compensation (↑ HCO₃⁻)</li>
+                                    </ul>
+                                    
+                                    <strong>💨 PFTs:</strong>
+                                    <ul>
+                                        <li>↓ FEV₁, ↓ FEV₁/FVC</li>
+                                        <li>↑ Residual volume (air trapping)</li>
+                                    </ul>
+                                    
+                                    <strong>📊 GOLD Classification:</strong>
+                                    <ul>
+                                        <li>GOLD 1: FEV₁ ≥80%</li>
+                                        <li>GOLD 2: 50-79%</li>
+                                        <li>GOLD 3: 30-49%</li>
+                                        <li>GOLD 4: &lt;30% (severe)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Breathing Techniques</div>
+                                <div class="card-subtitle">Improve Dyspnea</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>💋 Pursed-Lip Breathing:</strong>
+                                    <ul>
+                                        <li>Inhale through nose (2 counts)</li>
+                                        <li>Exhale through pursed lips (4 counts)</li>
+                                        <li>Prolongs exhalation</li>
+                                        <li>↓ Air trapping</li>
+                                    </ul>
+                                    
+                                    <strong>🫁 Diaphragmatic Breathing:</strong>
+                                    <ul>
+                                        <li>↓ Work of breathing</li>
+                                        <li>Strengthens diaphragm</li>
+                                        <li>More efficient ventilation</li>
+                                    </ul>
+                                    
+                                    <strong>🪑 Positioning:</strong>
+                                    <ul>
+                                        <li>Upright/tripod position</li>
+                                        <li>Leaning forward</li>
+                                        <li>Arms supported</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Nutrition & Energy</div>
+                                <div class="card-subtitle">Conservation Strategies</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🍽️ Diet:</strong>
+                                    <ul>
+                                        <li>High-calorie, high-protein</li>
+                                        <li>Small frequent meals</li>
+                                        <li>Avoid gas-forming foods</li>
+                                        <li>Fluids between (not with) meals</li>
+                                    </ul>
+                                    
+                                    <strong>💊 Medication Timing:</strong>
+                                    <p>Bronchodilator 30 min BEFORE meals</p>
+                                    
+                                    <strong>⚡ Energy Conservation:</strong>
+                                    <ul>
+                                        <li>Schedule rest between ADLs</li>
+                                        <li>Pace activities</li>
+                                        <li>Use assistive devices</li>
+                                        <li>Sit while doing tasks</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Drug Therapy</div>
+                                <div class="card-subtitle">Controllers > Rescue</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>💊 Controllers:</strong>
+                                    <ul>
+                                        <li>LABAs, LAMAs (long-acting bronchodilators)</li>
+                                        <li>ICS combos</li>
+                                        <li>Triple therapy (Trelegy)</li>
+                                    </ul>
+                                    
+                                    <strong>💧 Mucolytics:</strong>
+                                    <ul>
+                                        <li>Acetylcysteine</li>
+                                        <li>Guaifenesin</li>
+                                        <li>Thin secretions</li>
+                                    </ul>
+                                    
+                                    <strong>🔥 NCLEX Pearl:</strong>
+                                    <p>Inhaler technique = exam favorite!</p>
+                                    <p>Spacers improve delivery</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CYSTIC FIBROSIS TAB -->
+            <div id="cf" class="tab-content">
+                <h2 style="color: #ee5a6f; margin-bottom: 20px;">🧬 Cystic Fibrosis (CF)</h2>
+
+                <div class="alert-box">
+                    <h3>🧬 Pathophysiology</h3>
+                    <p><strong>Autosomal recessive CFTR mutation</strong></p>
+                    <p>Defective chloride transport → thick, sticky mucus</p>
+                    <p><strong>Multisystem disease:</strong> Lungs, pancreas, liver, reproductive system</p>
+                </div>
+
+                <div class="memory-trick">
+                    <h3>🧠 CF = "Thick Mucus Problem"</h3>
+                    <p><strong>Sweat chloride ≥60 mmol/L = CF diagnosis</strong></p>
+                    <p>Remember: CF patients have SALTY sweat! ("Salt-kissing" baby sign)</p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Diagnosis</div>
+                                <div class="card-subtitle">Sweat Test</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🧪 Sweat Chloride Test:</strong>
+                                    <ul>
+                                        <li><strong>≥60 mmol/L = CF</strong></li>
+                                        <li>30-59 mmol/L = Possible CF</li>
+                                        <li>&lt;30 mmol/L = Normal</li>
+                                    </ul>
+                                    
+                                    <strong>🧬 Genetic Testing:</strong>
+                                    <p>Identifies specific CFTR mutations</p>
+                                    <p>Determines severity</p>
+                                    
+                                    <strong>🔥 NCLEX:</strong>
+                                    <p>Sweat test is GOLD STANDARD!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Pulmonary Manifestations</div>
+                                <div class="card-subtitle">Lung Problems</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🫁 Key Features:</strong>
+                                    <ul>
+                                        <li>Chronic infections</li>
+                                        <li>Bronchiectasis</li>
+                                        <li>↓ FEV₁, ↓ FVC</li>
+                                        <li>Hemoptysis</li>
+                                        <li>Progressive dyspnea</li>
+                                    </ul>
+                                    
+                                    <strong>🦠 Common Organisms:</strong>
+                                    <ul>
+                                        <li>Pseudomonas aeruginosa</li>
+                                        <li>Staphylococcus aureus</li>
+                                        <li>Burkholderia cepacia</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">GI Manifestations</div>
+                                <div class="card-subtitle">Digestive Issues</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>💩 Symptoms:</strong>
+                                    <ul>
+                                        <li><strong>Steatorrhea</strong> (fatty stools)</li>
+                                        <li>Malnutrition</li>
+                                        <li>Fat-soluble vitamin deficiency (A, D, E, K)</li>
+                                        <li>Meconium ileus (newborns)</li>
+                                    </ul>
+                                    
+                                    <strong>🍬 CF-Related Diabetes:</strong>
+                                    <p>&gt;50% of adults with CF</p>
+                                    
+                                    <strong>🩺 Management:</strong>
+                                    <ul>
+                                        <li>Pancreatic enzymes with meals</li>
+                                        <li>Fat-soluble vitamin supplements</li>
+                                        <li>High-calorie diet</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">CF Management</div>
+                                <div class="card-subtitle">Daily Priorities</div>
+                                <div class="flip-hint">💡 Click to learn!</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="back-content">
+                                    <strong>🫁 Airway Clearance:</strong>
+                                    <ul>
+                                        <li>CPT (chest physiotherapy)</li>
+                                        <li>HFCWO vest (high-frequency chest wall oscillation)</li>
+                                        <li>Daily routine essential</li>
+                                    </ul>
+                                    
+                                    <strong>🦠 Infection Prevention:</strong>
+                                    <ul>
+                                        <li>Prompt treatment of infections</li>
+                                        <li>Prophylactic antibiotics</li>
+                                        <li>Avoid cross-contamination</li>
+                                    </ul>
+                                    
+                                    <strong>💊 Medications:</strong>
+                                    <ul>
+                                        <li>Pancreatic enzymes</li>
+                                        <li>Bronchodilators</li>
+                                        <li>Mucolytics</li>
+                                        <li>ADEK vitamins</li>
+                                    </ul>
+                                    
+                                    <strong>🍽️ Nutrition:</strong>
+                                    <p>High-calorie, high-protein diet</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUIZ TAB -->
+            <div id="quiz" class="tab-content">
+                <h2 style="color: #ee5a6f; margin-bottom: 20px;">📝 Test Your Knowledge!</h2>
+                
+                <div class="score-tracker">
+                    <div>Your Score: <span id="score">0</span> / <span id="total">0</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar" style="width: 0%">0%</div>
+                    </div>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="quiz-question" data-answer="1">
+                        <h3>Question 1: A patient with a mandibular fracture has their jaw wired shut. What is the MOST important item they must carry at all times?</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-option="1">A. Wire cutters</div>
+                            <div class="quiz-option" data-option="2">B. Extra gauze</div>
+                            <div class="quiz-option" data-option="3">C. Pain medication</div>
+                            <div class="quiz-option" data-option="4">D. Suction equipment</div>
+                        </div>
+                        <div class="rationale">
+                            <strong>✅ Correct Answer: A</strong><br>
+                            <strong>Rationale:</strong> 🔥 HIGH-YIELD! Patients with inner maxillary fixation (jaw wired shut) MUST carry wire cutters at ALL times. If vomiting occurs, cut wires IMMEDIATELY to protect the airway, then return to surgeon ASAP for rewiring. This is a critical safety measure to prevent aspiration and airway obstruction.
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" data-answer="3">
+                        <h3>Question 2: A patient using CPAP for OSA asks why they need to use it every night. What is the BEST response?</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-option="1">A. "You only need it 3-4 nights per week."</div>
+                            <div class="quiz-option" data-option="2">B. "Use it whenever you feel tired."</div>
+                            <div class="quiz-option" data-option="3">C. "You need to use it at least 6 hours every night for it to be effective."</div>
+                            <div class="quiz-option" data-option="4">D. "You can skip nights as long as you avoid alcohol."</div>
+                        </div>
+                        <div class="rationale">
+                            <strong>✅ Correct Answer: C</strong><br>
+                            <strong>Rationale:</strong> CPAP adherence requires ≥6 hours per night to be effective. CPAP is the gold standard treatment for OSA and requires a tight mask seal and consistent use to improve gas exchange, sleep quality, and reduce cardiovascular complications. Also teach patients to avoid sedatives and alcohol, which worsen OSA.
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" data-answer="2">
+                        <h3>Question 3: Which finding indicates that a patient with asthma is experiencing a SEVERE, life-threatening attack?</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-option="1">A. Loud wheezing throughout lung fields</div>
+                            <div class="quiz-option" data-option="2">B. Absent breath sounds with decreased SpO₂</div>
+                            <div class="quiz-option" data-option="3">C. Productive cough with yellow sputum</div>
+                            <div class="quiz-option" data-option="4">D. Respiratory rate of 24</div>
+                        </div>
+                        <div class="rationale">
+                            <strong>✅ Correct Answer: B</strong><br>
+                            <strong>Rationale:</strong> 🔥 CRITICAL! Absent breath sounds (silent chest) + ↓ SpO₂ = COMPLETE AIRWAY OBSTRUCTION = impending respiratory failure! This is MORE dangerous than loud wheezing because NO air is moving. This is status asthmaticus - prepare for intubation, give IV steroids, continuous bronchodilators, and epinephrine.
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" data-answer="4">
+                        <h3>Question 4: A patient with COPD has an SpO₂ of 89%. What should the nurse do?</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-option="1">A. Immediately increase oxygen to get SpO₂ to 95%</div>
+                            <div class="quiz-option" data-option="2">B. Call a rapid response - this is critically low</div>
+                            <div class="quiz-option" data-option="3">C. Document as normal for COPD patients</div>
+                            <div class="quiz-option" data-option="4">D. Assess patient and titrate oxygen to maintain 88-92%</div>
+                        </div>
+                        <div class="rationale">
+                            <strong>✅ Correct Answer: D</strong><br>
+                            <strong>Rationale:</strong> Target SpO₂ for COPD patients is 88-92%, NOT 95-100%! Give oxygen to hypoxic patients (even CO₂ retainers), but titrate SLOWLY and monitor ABGs. Rapid increase in O₂ can suppress hypoxic drive in chronic CO₂ retainers, but you should NEVER withhold oxygen from a hypoxic patient.
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" data-answer="2">
+                        <h3>Question 5: Which medication should NEVER be used alone for asthma treatment?</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-option="1">A. Albuterol (SABA)</div>
+                            <div class="quiz-option" data-option="2">B. Salmeterol (LABA)</div>
+                            <div class="quiz-option" data-option="3">C. Fluticasone (ICS)</div>
+                            <div class="quiz-option" data-option="4">D. Montelukast (Leukotriene modifier)</div>
+                        </div>
+                        <div class="rationale">
+                            <strong>✅ Correct Answer: B</strong><br>
+                            <strong>Rationale:</strong> 🔥 BLACK BOX WARNING! LABAs (like salmeterol) should NEVER be used alone - they must be combined with an inhaled corticosteroid (ICS). LABAs are for PREVENTION only, not acute symptoms. If you see a LABA alone on NCLEX → it's WRONG!
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" data-answer="3">
+                        <h3>Question 6: What is the FIRST priority when caring for a patient with facial trauma?</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-option="1">A. Control bleeding</div>
+                            <div class="quiz-option" data-option="2">B. Assess for vision changes</div>
+                            <div class="quiz-option" data-option="3">C. Establish and maintain airway patency</div>
+                            <div class="quiz-option" data-option="4">D. Immobilize cervical spine</div>
+                        </div>
+                        <div class="rationale">
+                            <strong>✅ Correct Answer: C</strong><br>
+                            <strong>Rationale:</strong> AIRWAY is ALWAYS first! Facial trauma is life-threatening due to airway obstruction and hemorrhage. While C-spine precautions are important (assume spinal injury until ruled out), establishing a patent airway takes priority. ABC: Airway, Breathing, Circulation - in that order!
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" data-answer="1">
+                        <h3>Question 7: A patient has a sweat chloride test result of 65 mmol/L. This indicates:</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-option="1">A. Cystic fibrosis</div>
+                            <div class="quiz-option" data-option="2">B. Normal result</div>
+                            <div class="quiz-option" data-option="3">C. Possible CF, needs repeat testing</div>
+                            <div class="quiz-option" data-option="4">D. COPD</div>
+                        </div>
+                        <div class="rationale">
+                            <strong>✅ Correct Answer: A</strong><br>
+                            <strong>Rationale:</strong> Sweat chloride ≥60 mmol/L = Cystic Fibrosis diagnosis. This is the gold standard diagnostic test. 30-59 = possible CF, <30 = normal. CF is an autosomal recessive CFTR mutation causing thick, sticky mucus affecting multiple organ systems.
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" data-answer="4">
+                        <h3>Question 8: Which ABG finding in an asthma patient indicates impending respiratory failure?</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-option="1">A. pH 7.45, PaCO₂ 32, PaO₂ 88</div>
+                            <div class="quiz-option" data-option="2">B. pH 7.38, PaCO₂ 40, PaO₂ 92</div>
+                            <div class="quiz-option" data-option="3">C. pH 7.42, PaCO₂ 35, PaO₂ 85</div>
+                            <div class="quiz-option" data-option="4">D. pH 7.32, PaCO₂ 52, PaO₂ 68</div>
+                        </div>
+                        <div class="rationale">
+                            <strong>✅ Correct Answer: D</strong><br>
+                            <strong>Rationale:</strong> 🔥 CRITICAL! In early asthma, PaCO₂ is LOW (hyperventilation). When PaCO₂ starts RISING in an asthmatic = RESPIRATORY FAILURE! This patient has acidosis (pH 7.32), high CO₂ (52), and low O₂ (68) = severe respiratory compromise. Prepare for intubation!
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" data-answer="2">
+                        <h3>Question 9: A patient is prescribed an inhaled corticosteroid (ICS) for asthma. What is the MOST important teaching?</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-option="1">A. Use it only during asthma attacks</div>
+                            <div class="quiz-option" data-option="2">B. Rinse your mouth after each use</div>
+                            <div class="quiz-option" data-option="3">C. Take it on an empty stomach</div>
+                            <div class="quiz-option" data-option="4">D. You can stop once symptoms improve</div>
+                        </div>
+                        <div class="rationale">
+                            <strong>✅ Correct Answer: B</strong><br>
+                            <strong>Rationale:</strong> Patients MUST rinse their mouth after using ICS to prevent oral candidiasis (thrush)! ICS are controllers (daily use, NOT for rescue), most effective anti-inflammatory for asthma. Side effects include thrush, hoarseness, and cough - all reduced by mouth rinsing.
+                        </div>
+                    </div>
+
+                    <div class="quiz-question" data-answer="3">
+                        <h3>Question 10: Which finding suggests a patient has developed cor pulmonale from COPD?</h3>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-option="1">A. Crackles in lung bases</div>
+                            <div class="quiz-option" data-option="2">B. Decreased appetite</div>
+                            <div class="quiz-option" data-option="3">C. Jugular venous distention and peripheral edema</div>
+                            <div class="quiz-option" data-option="4">D. Bradycardia</div>
+                        </div>
+                        <div class="rationale">
+                            <strong>✅ Correct Answer: C</strong><br>
+                            <strong>Rationale:</strong> Cor pulmonale = RIGHT-sided heart failure from pulmonary hypertension. Key findings: JVD, dependent edema, hepatomegaly, cyanosis, bounding pulses, RV hypertrophy. This is a complication of COPD due to chronic hypoxia causing pulmonary vasoconstriction.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PEARLS TAB -->
+            <div id="pearls" class="tab-content">
+                <h2 style="color: #ee5a6f; margin-bottom: 20px;">💎 High-Yield NCLEX Pearls</h2>
+
+                <div class="pearls-box">
+                    <h3>🔥 Must-Know Test Facts</h3>
+                    
+                    <div class="pearl-item">
+                        🚨 <strong>AIRWAY is ALWAYS priority!</strong><br>
+                        ABC: Airway → Breathing → Circulation. No airway = no life!
+                    </div>
+
+                    <div class="pearl-item">
+                        ⚡ <strong>STRIDOR = EMERGENCY!</strong><br>
+                        High-pitched sound = upper airway obstruction = prepare for intubation NOW!
+                    </div>
+
+                    <div class="pearl-item">
+                        ✂️ <strong>IMF patients MUST carry wire cutters</strong><br>
+                        If vomiting → cut wires immediately to protect airway!
+                    </div>
+
+                    <div class="pearl-item">
+                        😴 <strong>CPAP adherence = ≥6 hours/night</strong><br>
+                        Gold standard for OSA, requires proper fit + consistent use
+                    </div>
+
+                    <div class="pearl-item">
+                        🤫 <strong>Silent chest + ↓ SpO₂ = Complete obstruction!</strong><br>
+                        Status asthmaticus = impending respiratory failure
+                    </div>
+
+                    <div class="pearl-item">
+                        💊 <strong>LABAs NEVER alone! (Black box warning)</strong><br>
+                        Must be combined with ICS for asthma treatment
+                    </div>
+
+                    <div class="pearl-item">
+                        💋 <strong>ICS = Rinse mouth after use!</strong><br>
+                        Prevents oral candidiasis (thrush)
+                    </div>
+
+                    <div class="pearl-item">
+                        🎯 <strong>COPD target SpO₂ = 88-92%</strong><br>
+                        NOT 95-100%! Give O₂ to hypoxic patients, titrate slowly
+                    </div>
+
+                    <div class="pearl-item">
+                        📈 <strong>Rising CO₂ in asthmatic = DANGER!</strong><br>
+                        Early asthma = ↓ CO₂; Late/severe = ↑ CO₂ = respiratory failure
+                    </div>
+
+                    <div class="pearl-item">
+                        🧬 <strong>Sweat chloride ≥60 = Cystic Fibrosis</strong><br>
+                        Gold standard diagnostic test for CF
+                    </div>
+
+                    <div class="pearl-item">
+                        💔 <strong>Cor pulmonale = RIGHT-sided HF from COPD</strong><br>
+                        Look for: JVD, peripheral edema, hepatomegaly
+                    </div>
+
+                    <div class="pearl-item">
+                        🗣️ <strong>Hoarseness &gt;2 weeks = needs evaluation</strong><br>
+                        Warning sign for head/neck cancer
+                    </div>
+
+                    <div class="pearl-item">
+                        ⚖️ <strong>Asthma = REVERSIBLE; COPD = IRREVERSIBLE</strong><br>
+                        Key distinction for NCLEX questions!
+                    </div>
+
+                    <div class="pearl-item">
+                        🫁 <strong>Pursed-lip breathing improves dyspnea in COPD</strong><br>
+                        Prolongs exhalation, decreases air trapping
+                    </div>
+
+                    <div class="pearl-item">
+                        💀 <strong>OSA complications: HTN, stroke, diabetes, dementia</strong><br>
+                        Serious cardiovascular and metabolic consequences
+                    </div>
+                </div>
+
+                <div class="memory-trick" style="margin-top: 30px;">
+                    <h3>🧠 Super Memory Tricks Summary</h3>
+                    <p><strong>"ABC Always!" = Airway, Breathing, Circulation</strong></p>
+                    <p><strong>"SNORE" = OSA symptoms (Snoring, Nighttime gasping, Obvious sleepiness, Restless sleep, Excessive headaches)</strong></p>
+                    <p><strong>"Le Fort 1-2-3 Going Up!" = Severity increases</strong></p>
+                    <p><strong>"RESCUE vs CONTROL" = SABA vs ICS/LABAs</strong></p>
+                    <p><strong>"LABAs NEVER alone!"</strong></p>
+                    <p><strong>"88-92 is Great!" = COPD SpO₂ target</strong></p>
+                    <p><strong>"Silent chest = NO chest (air movement)" = Emergency!</strong></p>
+                </div>
+
+                <div class="emergency-box" style="margin-top: 20px;">
+                    <h3>⚡ Critical Emergency Actions</h3>
+                    <p><strong>Airway Obstruction:</strong> Head-tilt, oral/nasal airway, suction, prepare for surgical airway</p>
+                    <p><strong>Status Asthmaticus:</strong> IV steroids, continuous bronchodilators, O₂, prepare for intubation</p>
+                    <p><strong>Facial Trauma:</strong> Secure airway FIRST, assume C-spine injury, control hemorrhage</p>
+                    <p><strong>IMF Vomiting:</strong> Cut wires immediately, protect airway, return to surgeon ASAP</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        let score = 0;
+        let totalAnswered = 0;
+
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const question = this.closest('.quiz-question');
+                const correctAnswer = question.dataset.answer;
+                const selectedAnswer = this.dataset.option;
+                const rationale = question.querySelector('.rationale');
+                const allOptions = question.querySelectorAll('.quiz-option');
+
+                if (question.classList.contains('answered')) return;
+                question.classList.add('answered');
+
+                totalAnswered++;
+
+                if (selectedAnswer === correctAnswer) {
+                    this.classList.add('correct');
+                    score++;
+                } else {
+                    this.classList.add('incorrect');
+                    allOptions.forEach(opt => {
+                        if (opt.dataset.option === correctAnswer) {
+                            opt.classList.add('correct');
+                        }
+                    });
+                }
+
+                rationale.classList.add('show');
+                updateScore();
+            });
+        });
+
+        function updateScore() {
+            document.getElementById('score').textContent = score;
+            document.getElementById('total').textContent = totalAnswered;
+            const percentage = totalAnswered > 0 ? Math.round((score / totalAnswered) * 100) : 0;
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+    </script>
+</body>
+</html>
