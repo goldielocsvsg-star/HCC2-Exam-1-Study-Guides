@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCC II Exam 1 - Ultimate Interactive Study Guide 🎯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 30px;
+            border-radius: 20px;
+            color: white;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        /* NEW FEATURE: Study Dashboard */
+        .study-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* NEW FEATURE: Achievement Badges */
+        .achievement-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .badge-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            background: #ddd;
+            opacity: 0.4;
+            transition: all 0.3s;
+            position: relative;
+            cursor: help;
+        }
+
+        .badge.earned {
+            opacity: 1;
+            animation: badgeEarn 0.5s ease;
+            box-shadow: 0 0 20px rgba(255,215,0,0.6);
+        }
+
+        .badge.earned.gold { background: linear-gradient(135deg, #ffd700, #ffed4e); }
+        .badge.earned.silver { background: linear-gradient(135deg, #c0c0c0, #e8e8e8); }
+        .badge.earned.bronze { background: linear-gradient(135deg, #cd7f32, #f4a460); }
+
+        @keyframes badgeEarn {
+            0% { transform: scale(0) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
+
+        .badge-tooltip {
+            position: absolute;
+            bottom: -30px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.4em;
+            white-space: nowrap;
+            display: none;
+            z-index: 10;
+        }
+
+        .badge:hover .badge-tooltip {
+            display: block;
+        }
+
+        /* Study Timer */
+        .timer-section {
+            background: linear-gradient(135deg, #96fbc4 0%, #f9f586 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .timer-display {
+            font-size: 3em;
+            font-weight: bold;
+            color: #333;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .timer-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .timer-btn.start {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: white;
+        }
+
+        .timer-btn.pause {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+        }
+
+        .timer-btn.reset {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            color: #333;
+        }
+
+        .timer-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            box-shadow: 0 5px 15px rgba(240, 147, 251, 0.4);
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Topic Cards */
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .topic-card.high-yield {
+            border-left-color: #f5576c;
+            background: linear-gradient(135deg, #fff 0%, #ffe5e9 100%);
+        }
+
+        .topic-card.medium-yield {
+            border-left-color: #ffa726;
+            background: linear-gradient(135deg, #fff 0%, #fff3e0 100%);
+        }
+
+        .topic-card.standard {
+            border-left-color: #667eea;
+            background: linear-gradient(135deg, #fff 0%, #e8eaf6 100%);
+        }
+
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .topic-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .topic-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: white;
+        }
+
+        .high-yield-badge {
+            background: linear-gradient(135deg, #f5576c, #f093fb);
+        }
+
+        .medium-yield-badge {
+            background: linear-gradient(135deg, #ffa726, #ffcc80);
+        }
+
+        .topic-content {
+            display: none;
+            margin-top: 20px;
+            animation: slideDown 0.3s;
+        }
+
+        .topic-content.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; }
+            to { opacity: 1; max-height: 2000px; }
+        }
+
+        .memory-trick {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .memory-trick-title {
+            font-weight: bold;
+            color: #d63031;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .key-points {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .key-points ul {
+            margin-left: 20px;
+        }
+
+        .key-points li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .test-tip {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #fdcb6e;
+        }
+
+        .test-tip::before {
+            content: "🧠 Test Tip: ";
+            font-weight: bold;
+            color: #d63031;
+        }
+
+        /* NEW FEATURE: Case Scenarios */
+        .scenario-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .scenario-title {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .scenario-text {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            border-left: 4px solid #667eea;
+        }
+
+        .scenario-question {
+            font-weight: bold;
+            color: #f5576c;
+            margin: 20px 0 15px 0;
+            font-size: 1.1em;
+        }
+
+        .scenario-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .scenario-option {
+            padding: 15px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .scenario-option:hover {
+            background: #f0f0f0;
+            border-color: #667eea;
+        }
+
+        .scenario-option.correct {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-color: #11998e;
+            border-width: 3px;
+        }
+
+        .scenario-option.incorrect {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            border-color: #f5576c;
+            opacity: 0.6;
+        }
+
+        .scenario-explanation {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #e8eaf6, #fff);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .scenario-explanation.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+        }
+
+        .question-text {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            padding: 15px 20px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1em;
+        }
+
+        .option:hover {
+            background: #f0f0f0;
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .option.correct {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: white;
+            border-color: #11998e;
+        }
+
+        .option.incorrect {
+            background: linear-gradient(135deg, #f5576c, #f093fb);
+            color: white;
+            border-color: #f5576c;
+        }
+
+        .explanation {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 8px;
+        }
+
+        .explanation.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .submit-quiz {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-quiz:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-radius: 15px;
+            display: none;
+        }
+
+        .score-display.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        /* Flip Cards */
+        .flashcard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .flashcard {
+            height: 250px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .flashcard-back {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            transform: rotateY(180deg);
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: #e0e0e0;
+            border-radius: 20px;
+            height: 30px;
+            margin: 30px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            border-radius: 20px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .priority-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .priority-item {
+            padding: 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            font-size: 1.1em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .priority-1 {
+            background: linear-gradient(135deg, #f5576c, #f093fb);
+        }
+
+        .priority-2 {
+            background: linear-gradient(135deg, #ffa726, #ffcc80);
+        }
+
+        .priority-3 {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            color: white;
+        }
+
+        footer h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .timer-display {
+                font-size: 2em;
+            }
+
+            .topic-grid,
+            .flashcard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 HCC II – Exam 1 Ultimate Study Hub</h1>
+            <p class="subtitle">Interactive • Gamified • Application-Focused</p>
+        </header>
+
+        <!-- NEW: Study Dashboard -->
+        <div class="study-dashboard">
+            <div class="stat-card">
+                <div class="stat-number" id="topicsCompleted">0</div>
+                <div class="stat-label">Topics Mastered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="quizScore">0%</div>
+                <div class="stat-label">Quiz Accuracy</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="studyTime">00:00</div>
+                <div class="stat-label">Study Time Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="cardsFlipped">0</div>
+                <div class="stat-label">Cards Reviewed</div>
+            </div>
+        </div>
+
+        <!-- NEW: Achievement Badges -->
+        <div class="achievement-section">
+            <h2 style="text-align: center; color: #333; margin-bottom: 10px;">🏆 Your Achievements</h2>
+            <div class="badge-container">
+                <div class="badge" id="badge-first-study">🎓<span class="badge-tooltip">First Study Session</span></div>
+                <div class="badge" id="badge-quiz-ace">⭐<span class="badge-tooltip">Ace a Quiz (90%+)</span></div>
+                <div class="badge" id="badge-flip-master">🔄<span class="badge-tooltip">Flip 20 Cards</span></div>
+                <div class="badge" id="badge-scenario-expert">🩺<span class="badge-tooltip">Complete All Scenarios</span></div>
+                <div class="badge" id="badge-speed-demon">⚡<span class="badge-tooltip">Study for 30 Minutes</span></div>
+                <div class="badge" id="badge-perfectionist">💯<span class="badge-tooltip">Perfect Quiz Score</span></div>
+            </div>
+        </div>
+
+        <!-- NEW: Study Timer -->
+        <div class="timer-section">
+            <h2 style="color: #333; margin-bottom: 10px;">⏱️ Study Timer</h2>
+            <div class="timer-display" id="timerDisplay">00:00:00</div>
+            <div class="timer-controls">
+                <button class="timer-btn start" id="startTimer">▶ Start</button>
+                <button class="timer-btn pause" id="pauseTimer">⏸ Pause</button>
+                <button class="timer-btn reset" id="resetTimer">↻ Reset</button>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showSection('content')">📚 Content Review</button>
+            <button class="tab-btn" onclick="showSection('flashcards')">🔄 Flashcards</button>
+            <button class="tab-btn" onclick="showSection('scenarios')">🩺 Case Scenarios (NEW!)</button>
+            <button class="tab-btn" onclick="showSection('quiz')">✅ Practice Quiz</button>
+            <button class="tab-btn" onclick="showSection('strategy')">🧠 Exam Strategy</button>
+        </div>
+
+        <!-- Content Review Section -->
+        <div id="content" class="content-section active">
+            <div class="topic-grid">
+                <!-- Topic 1: Abuse & Neglect -->
+                <div class="topic-card high-yield" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="topic-title">🚨 Abuse & Neglect</div>
+                        <span class="topic-badge high-yield-badge">9 Q's 🔥</span>
+                    </div>
+                    <div class="topic-content">
+                        <div class="memory-trick">
+                            <div class="memory-trick-title">Memory Trick: SAFE</div>
+                            <strong>S</strong>eparate victim from abuser<br>
+                            <strong>A</strong>ssess injuries objectively<br>
+                            <strong>F</strong>ollow mandatory reporting laws<br>
+                            <strong>E</strong>mpower the victim
+                        </div>
+                        <div class="key-points">
+                            <strong>🔴 Red Flags:</strong>
+                            <ul>
+                                <li>Inconsistent stories between patient & caregiver</li>
+                                <li>Delay in seeking care for serious injuries</li>
+                                <li>Fearful, withdrawn, or overly compliant behavior</li>
+                                <li>Poor hygiene or signs of malnutrition</li>
+                                <li>Unexplained injuries in various stages of healing</li>
+                            </ul>
+                        </div>
+                        <div class="key-points">
+                            <strong>🎯 Nursing Priorities:</strong>
+                            <ul>
+                                <li><strong>1. Safety first</strong> - ensure immediate protection</li>
+                                <li><strong>2. Separate</strong> - interview patient privately</li>
+                                <li><strong>3. Document</strong> - objective, factual observations only</li>
+                                <li><strong>4. Report</strong> - mandatory reporting (don't investigate yourself!)</li>
+                            </ul>
+                        </div>
+                        <div class="test-tip">NEVER promise confidentiality or confront the suspected abuser</div>
+                    </div>
+                </div>
+
+                <!-- Topic 2: Health Promotion -->
+                <div class="topic-card medium-yield" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="topic-title">💪 Health Promotion</div>
+                        <span class="topic-badge medium-yield-badge">5 Q's</span>
+                    </div>
+                    <div class="topic-content">
+                        <div class="key-points">
+                            <strong>📋 Assess Before Teaching:</strong>
+                            <ul>
+                                <li>Readiness to learn (emotional state, motivation)</li>
+                                <li>Barriers (language, literacy level, stress)</li>
+                                <li>Learning preferences (visual, auditory, kinesthetic)</li>
+                            </ul>
+                        </div>
+                        <div class="key-points">
+                            <strong>🎓 Teaching Priorities:</strong>
+                            <ul>
+                                <li>Smoking cessation strategies</li>
+                                <li>Nutrition & weight management</li>
+                                <li>Exercise recommendations</li>
+                                <li>Preventive screenings (mammogram, colonoscopy, etc.)</li>
+                            </ul>
+                        </div>
+                        <div class="test-tip">Teaching success = client can explain back or demonstrate behavior change</div>
+                    </div>
+                </div>
+
+                <!-- Topic 3: Medical Emergencies -->
+                <div class="topic-card high-yield" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="topic-title">🚑 Medical Emergencies</div>
+                        <span class="topic-badge high-yield-badge">5 Q's</span>
+                    </div>
+                    <div class="topic-content">
+                        <div class="memory-trick">
+                            <div class="memory-trick-title">Always ABC First!</div>
+                            <strong>A</strong>irway<br>
+                            <strong>B</strong>reathing<br>
+                            <strong>C</strong>irculation
+                        </div>
+                        <div class="key-points">
+                            <strong>⚠️ Respiratory Emergency Signs:</strong>
+                            <ul>
+                                <li><strong>EARLY:</strong> restlessness, anxiety, tachycardia, tachypnea</li>
+                                <li><strong>LATE:</strong> cyanosis (LATE SIGN!), bradycardia, hypotension</li>
+                            </ul>
+                        </div>
+                        <div class="key-points">
+                            <strong>💉 Opioid-Induced Respiratory Failure (OIRF):</strong>
+                            <ul>
+                                <li>High risk: COPD, OSA, obesity, renal disease, elderly</li>
+                                <li><strong>Intervention:</strong> Naloxone (Narcan) + airway support</li>
+                                <li>Monitor closely - may need repeated doses</li>
+                            </ul>
+                        </div>
+                        <div class="test-tip">Cyanosis is a LATE sign - don't wait for it! Act on early signs.</div>
+                    </div>
+                </div>
+
+                <!-- Topic 4: Pharmacology -->
+                <div class="topic-card high-yield" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="topic-title">💊 Pharmacology</div>
+                        <span class="topic-badge high-yield-badge">8 Q's</span>
+                    </div>
+                    <div class="topic-content">
+                        <div class="key-points">
+                            <strong>🫁 Respiratory Medications:</strong>
+                            <ul>
+                                <li><strong>Albuterol (SABA):</strong> RELIEF drug - fast bronchodilation</li>
+                                <li><strong>Ipratropium (anticholinergic):</strong> bronchodilation + ↓ secretions</li>
+                                <li><strong>Corticosteroids:</strong> ↓ inflammation (NOT immediate relief)</li>
+                                <li><strong>Theophylline:</strong> NARROW therapeutic range - toxicity risk!</li>
+                            </ul>
+                        </div>
+                        <div class="key-points">
+                            <strong>🎯 COPD Oxygen Safety:</strong>
+                            <ul>
+                                <li>Titrate oxygen carefully in COPD patients</li>
+                                <li>Goal SpO₂: usually <strong>88-92%</strong> (not 95-100%!)</li>
+                                <li>Too much O₂ can suppress respiratory drive</li>
+                            </ul>
+                        </div>
+                        <div class="test-tip">Suspect adverse reaction? HOLD the med and ASSESS the patient first!</div>
+                    </div>
+                </div>
+
+                <!-- Topic 5: Stress Management -->
+                <div class="topic-card medium-yield" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="topic-title">😌 Stress Management</div>
+                        <span class="topic-badge medium-yield-badge">4 Q's</span>
+                    </div>
+                    <div class="topic-content">
+                        <div class="memory-trick">
+                            <div class="memory-trick-title">Memory Trick: CALM</div>
+                            <strong>C</strong>ontrol environment first<br>
+                            <strong>A</strong>cknowledge patient's feelings<br>
+                            <strong>L</strong>ower stimulation<br>
+                            <strong>M</strong>ind-body techniques
+                        </div>
+                        <div class="key-points">
+                            <strong>👀 Non-Verbal Stress Cues:</strong>
+                            <ul>
+                                <li>Pacing, clenched fists, tremors</li>
+                                <li>Rapid speech, shallow breathing</li>
+                                <li>Avoidance of eye contact, tearfulness</li>
+                            </ul>
+                        </div>
+                        <div class="key-points">
+                            <strong>🛠️ Interventions:</strong>
+                            <ul>
+                                <li>Modify environment BEFORE meds (reduce noise/light, cluster care)</li>
+                                <li>Clear, simple explanations reduce fear</li>
+                                <li>Guided breathing, progressive muscle relaxation</li>
+                                <li>Encourage walking/exercise if appropriate</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic 6: Therapeutic Communication -->
+                <div class="topic-card standard" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="topic-title">💬 Therapeutic Communication</div>
+                        <span class="topic-badge medium-yield-badge">2 Q's</span>
+                    </div>
+                    <div class="topic-content">
+                        <div class="memory-trick">
+                            <div class="memory-trick-title">Memory Trick: V.E.R.B.S.</div>
+                            <strong>V</strong>alidate feelings<br>
+                            <strong>E</strong>mpathize genuinely<br>
+                            <strong>R</strong>eflect back<br>
+                            <strong>B</strong>road openings<br>
+                            <strong>S</strong>ilence (therapeutic tool!)
+                        </div>
+                        <div class="key-points">
+                            <strong>✅ ALWAYS Therapeutic:</strong>
+                            <ul>
+                                <li>Open-ended questions ("Tell me more about...")</li>
+                                <li>Silence (allows processing)</li>
+                                <li>Reflection & clarification</li>
+                                <li>Validation of feelings</li>
+                            </ul>
+                        </div>
+                        <div class="key-points">
+                            <strong>❌ NEVER Therapeutic:</strong>
+                            <ul>
+                                <li>Giving advice ("You should...")</li>
+                                <li>Asking "why" (sounds judgmental)</li>
+                                <li>False reassurance ("Everything will be fine")</li>
+                                <li>Minimizing feelings ("At least...")</li>
+                            </ul>
+                        </div>
+                        <div class="test-tip"><strong>Emotion BEFORE education</strong> - address feelings first, teach second</div>
+                    </div>
+                </div>
+
+                <!-- Topic 7: Diagnostic Testing -->
+                <div class="topic-card medium-yield" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="topic-title">🔬 Diagnostic Testing</div>
+                        <span class="topic-badge medium-yield-badge">4 Q's</span>
+                    </div>
+                    <div class="topic-content">
+                        <div class="key-points">
+                            <strong>🩺 ABG Normal Values (MEMORIZE!):</strong>
+                            <ul>
+                                <li><strong>pH:</strong> 7.35–7.45</li>
+                                <li><strong>PaCO₂:</strong> 35–45 mmHg</li>
+                                <li><strong>HCO₃:</strong> 22–26 mEq/L</li>
+                                <li><strong>PaO₂:</strong> 80–100 mmHg</li>
+                            </ul>
+                        </div>
+                        <div class="key-points">
+                            <strong>🎯 Nursing Role:</strong>
+                            <ul>
+                                <li><strong>Before:</strong> explain test, prep, consent, baseline VS</li>
+                                <li><strong>During:</strong> monitor airway, oxygenation, anxiety</li>
+                                <li><strong>After:</strong> assess for complications</li>
+                            </ul>
+                        </div>
+                        <div class="key-points">
+                            <strong>⚠️ Post-Procedure Monitoring:</strong>
+                            <ul>
+                                <li><strong>Bronchoscopy:</strong> watch for bleeding, airway compromise</li>
+                                <li><strong>Thoracentesis:</strong> monitor breath sounds, pneumothorax signs</li>
+                            </ul>
+                        </div>
+                        <div class="test-tip">ABGs tell you WHY the patient looks the way they do!</div>
+                    </div>
+                </div>
+
+                <!-- Topic 8: Restraints & Safety -->
+                <div class="topic-card standard" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="topic-title">🔒 Restraints & Safety</div>
+                        <span class="topic-badge medium-yield-badge">3 Q's</span>
+                    </div>
+                    <div class="topic-content">
+                        <div class="memory-trick">
+                            <div class="memory-trick-title">Memory: CMS + ABCs</div>
+                            Monitor: <strong>C</strong>irculation, <strong>M</strong>ental status, <strong>S</strong>kin + <strong>ABCs</strong>
+                        </div>
+                        <div class="key-points">
+                            <strong>📋 Order of Use:</strong>
+                            <ul>
+                                <li><strong>1.</strong> Least restrictive interventions FIRST</li>
+                                <li><strong>2.</strong> Restraints ONLY if safety risk remains</li>
+                            </ul>
+                        </div>
+                        <div class="key-points">
+                            <strong>✅ Requirements:</strong>
+                            <ul>
+                                <li>Provider order required</li>
+                                <li>Time-limited</li>
+                                <li>Continuous monitoring</li>
+                                <li>Detailed documentation</li>
+                            </ul>
+                        </div>
+                        <div class="key-points">
+                            <strong>🔍 What to Monitor:</strong>
+                            <ul>
+                                <li>Circulation (pulses, color, temperature)</li>
+                                <li>Skin integrity (pressure areas)</li>
+                                <li>Range of motion (q2h)</li>
+                                <li>Mental status changes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Topic 9: Vital Signs -->
+                <div class="topic-card standard" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="topic-title">🌡️ Vital Signs & Gas Exchange</div>
+                        <span class="topic-badge medium-yield-badge">2 Q's</span>
+                    </div>
+                    <div class="topic-content">
+                        <div class="memory-trick">
+                            <div class="memory-trick-title">Remember: R before S</div>
+                            <strong>R</strong>espirations change BEFORE <strong>S</strong>aturation drops!
+                        </div>
+                        <div class="key-points">
+                            <strong>📊 Normal Respiratory Rates:</strong>
+                            <ul>
+                                <li><strong>Adult:</strong> 12–20/min</li>
+                                <li>Tachypnea = EARLY sign of distress</li>
+                            </ul>
+                        </div>
+                        <div class="key-points">
+                            <strong>🎯 Oxygenation Values:</strong>
+                            <ul>
+                                <li><strong>Normal SpO₂:</strong> 95–100% (lower acceptable in COPD)</li>
+                                <li><strong>PaO₂ < 60:</strong> respiratory failure risk</li>
+                            </ul>
+                        </div>
+                        <div class="test-tip">Look at TRENDS, not single values - one abnormal VS doesn't tell the whole story</div>
+                    </div>
+                </div>
+
+                <!-- Topic 10: Client Rights -->
+                <div class="topic-card standard" onclick="toggleTopic(this)">
+                    <div class="topic-header">
+                        <div class="topic-title">⚖️ Client Rights</div>
+                        <span class="topic-badge medium-yield-badge">2 Q's</span>
+                    </div>
+                    <div class="topic-content">
+                        <div class="key-points">
+                            <strong>🎯 Core Rights:</strong>
+                            <ul>
+                                <li>Right to refuse treatment (unless emergent/legal hold)</li>
+                                <li>Right to informed consent</li>
+                                <li>Right to dignity and respect</li>
+                            </ul>
+                        </div>
+                        <div class="key-points">
+                            <strong>👩‍⚕️ Nurse Role:</strong>
+                            <ul>
+                                <li>Educate about options</li>
+                                <li>Advocate for patient wishes</li>
+                                <li>Protect autonomy</li>
+                            </ul>
+                        </div>
+                        <div class="test-tip">Competent clients can refuse care - even if you disagree with their decision</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flashcards Section -->
+        <div id="flashcards" class="content-section">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea;">🔄 Interactive Flashcards</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: #666;">Click any card to flip and reveal the answer!</p>
+            
+            <div class="flashcard-grid">
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">What does SAFE stand for in abuse assessment?</div>
+                        <div class="flashcard-back">
+                            <strong>S</strong>eparate<br>
+                            <strong>A</strong>ssess<br>
+                            <strong>F</strong>ollow law<br>
+                            <strong>E</strong>mpower
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">What are normal ABG values?</div>
+                        <div class="flashcard-back">
+                            pH: 7.35-7.45<br>
+                            PaCO₂: 35-45<br>
+                            HCO₃: 22-26<br>
+                            PaO₂: 80-100
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">What does V.E.R.B.S. represent in therapeutic communication?</div>
+                        <div class="flashcard-back">
+                            <strong>V</strong>alidate<br>
+                            <strong>E</strong>mpathize<br>
+                            <strong>R</strong>eflect<br>
+                            <strong>B</strong>road openings<br>
+                            <strong>S</strong>ilence
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">What is the antidote for opioid overdose?</div>
+                        <div class="flashcard-back">
+                            Naloxone (Narcan)<br><br>
+                            Plus airway support and close monitoring
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">What is the goal SpO₂ for COPD patients?</div>
+                        <div class="flashcard-back">
+                            88-92%<br><br>
+                            (NOT 95-100% - too much O₂ can suppress respiratory drive!)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">What does CALM represent for stress management?</div>
+                        <div class="flashcard-back">
+                            <strong>C</strong>ontrol environment<br>
+                            <strong>A</strong>cknowledge feelings<br>
+                            <strong>L</strong>ower stimulation<br>
+                            <strong>M</strong>ind-body techniques
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">Is cyanosis an early or late sign of respiratory distress?</div>
+                        <div class="flashcard-back">
+                            LATE SIGN!<br><br>
+                            Don't wait for cyanosis - act on early signs like restlessness and tachypnea
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">What must you monitor with restraints? (CMS + ABCs)</div>
+                        <div class="flashcard-back">
+                            <strong>C</strong>irculation<br>
+                            <strong>M</strong>ental status<br>
+                            <strong>S</strong>kin integrity<br>
+                            + <strong>ABCs</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">What changes first in respiratory distress: RR or SpO₂?</div>
+                        <div class="flashcard-back">
+                            Respiratory Rate (RR)!<br><br>
+                            "R before S" - Respirations change BEFORE Saturation drops
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">Which respiratory med is the "rescue" drug for acute symptoms?</div>
+                        <div class="flashcard-back">
+                            Albuterol (SABA)<br><br>
+                            Short-acting beta agonist for FAST relief
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">Should you address emotion or education first?</div>
+                        <div class="flashcard-back">
+                            EMOTION first!<br><br>
+                            Validate feelings before teaching
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">What are early signs of respiratory distress?</div>
+                        <div class="flashcard-back">
+                            • Restlessness<br>
+                            • Anxiety<br>
+                            • Tachycardia<br>
+                            • Tachypnea
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Case Scenarios Section -->
+        <div id="scenarios" class="content-section">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea;">🩺 Interactive Case Scenarios</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: #666;">Apply your knowledge to realistic clinical situations!</p>
+
+            <div class="scenario-container">
+                <div class="scenario-title">Scenario 1: Suspected Abuse</div>
+                <div class="scenario-text">
+                    You are admitting a 72-year-old woman to the medical unit. During your assessment, you notice multiple bruises in various stages of healing on her arms and torso. When you ask about the bruises, she becomes quiet and looks at her daughter who is in the room. The daughter quickly says, "Mom is so clumsy, she's always falling." You notice the patient seems fearful and won't make eye contact.
+                </div>
+                <div class="scenario-question">What is your PRIORITY nursing action?</div>
+                <div class="scenario-options" id="scenario1-options">
+                    <div class="scenario-option" onclick="checkScenario(1, 'A', false)">
+                        A. Confront the daughter about the inconsistent story
+                    </div>
+                    <div class="scenario-option" onclick="checkScenario(1, 'B', true)">
+                        B. Ask the daughter to step out so you can speak with the patient privately
+                    </div>
+                    <div class="scenario-option" onclick="checkScenario(1, 'C', false)">
+                        C. Document the bruises and continue with the admission
+                    </div>
+                    <div class="scenario-option" onclick="checkScenario(1, 'D', false)">
+                        D. Reassure the patient that everything will be confidential
+                    </div>
+                </div>
+                <div class="scenario-explanation" id="scenario1-explanation">
+                    <strong>✅ Correct: B</strong><br><br>
+                    <strong>Rationale:</strong> The priority is to SEPARATE the patient from the suspected abuser to allow private assessment. Remember SAFE: <strong>S</strong>eparate first! Never confront the abuser (A), never promise confidentiality in abuse cases (D), and while documentation is important (C), safety assessment comes first.
+                </div>
+            </div>
+
+            <div class="scenario-container">
+                <div class="scenario-title">Scenario 2: Respiratory Emergency</div>
+                <div class="scenario-text">
+                    You are caring for a 68-year-old male with COPD who was given morphine 4mg IV for pain 30 minutes ago. You enter the room and find him difficult to arouse. His respiratory rate is 8 breaths/min, and his oxygen saturation is 85% on 2L nasal cannula. His skin is warm and dry.
+                </div>
+                <div class="scenario-question">What is your FIRST action?</div>
+                <div class="scenario-options" id="scenario2-options">
+                    <div class="scenario-option" onclick="checkScenario(2, 'A', false)">
+                        A. Increase oxygen to 6L via nasal cannula
+                    </div>
+                    <div class="scenario-option" onclick="checkScenario(2, 'B', false)">
+                        B. Document findings and notify provider
+                    </div>
+                    <div class="scenario-option" onclick="checkScenario(2, 'C', true)">
+                        C. Stimulate the patient and prepare to administer Naloxone
+                    </div>
+                    <div class="scenario-option" onclick="checkScenario(2, 'D', false)">
+                        D. Check ABG values
+                    </div>
+                </div>
+                <div class="scenario-explanation" id="scenario2-explanation">
+                    <strong>✅ Correct: C</strong><br><br>
+                    <strong>Rationale:</strong> This patient is showing signs of opioid-induced respiratory failure (OIRF) - RR of 8 is dangerously low! The priority is to reverse the opioid with Naloxone while supporting the airway. Don't increase O₂ blindly in COPD (A), and don't delay treatment for documentation (B) or diagnostics (D). Remember: ABCs always come first!
+                </div>
+            </div>
+
+            <div class="scenario-container">
+                <div class="scenario-title">Scenario 3: Therapeutic Communication</div>
+                <div class="scenario-text">
+                    A 45-year-old patient with newly diagnosed diabetes tells you, "I don't understand why this is happening to me. I've tried to eat right. Why should I even bother learning all this? It won't make a difference anyway."
+                </div>
+                <div class="scenario-question">Which response demonstrates therapeutic communication?</div>
+                <div class="scenario-options" id="scenario3-options">
+                    <div class="scenario-option" onclick="checkScenario(3, 'A', false)">
+                        A. "You shouldn't think that way. Diabetes is very manageable if you follow your treatment plan."
+                    </div>
+                    <div class="scenario-option" onclick="checkScenario(3, 'B', true)">
+                        B. "It sounds like you're feeling overwhelmed and discouraged right now."
+                    </div>
+                    <div class="scenario-option" onclick="checkScenario(3, 'C', false)">
+                        C. "Why do you think learning about diabetes won't help you?"
+                    </div>
+                    <div class="scenario-option" onclick="checkScenario(3, 'D', false)">
+                        D. "Everything will be fine once you learn how to manage it."
+                    </div>
+                </div>
+                <div class="scenario-explanation" id="scenario3-explanation">
+                    <strong>✅ Correct: B</strong><br><br>
+                    <strong>Rationale:</strong> This reflects and validates the patient's feelings (V.E.R.B.S. - Validate & Reflect). Option A gives advice, C asks "why" (sounds judgmental), and D gives false reassurance. Remember: <strong>Emotion BEFORE education!</strong> Address feelings first, then teach.
+                </div>
+            </div>
+
+            <div class="scenario-container">
+                <div class="scenario-title">Scenario 4: COPD Oxygen Management</div>
+                <div class="scenario-text">
+                    You are caring for a patient with severe COPD who was admitted with shortness of breath. The current oxygen order is 2L via nasal cannula with a goal SpO₂ of 88-92%. The patient's SpO₂ is currently 85%. The patient's family member asks you to "turn up the oxygen so mom can breathe better."
+                </div>
+                <div class="scenario-question">What is the BEST nursing response?</div>
+                <div class="scenario-options" id="scenario4-options">
+                    <div class="scenario-option" onclick="checkScenario(4, 'A', false)">
+                        A. Increase the oxygen to 4L and reassess in 15 minutes
+                    </div>
+                    <div class="scenario-option" onclick="checkScenario(4, 'B', true)">
+                        B. Assess the patient, contact the provider, and explain that COPD patients require carefully titrated oxygen
+                    </div>
+                    <div class="scenario-option" onclick="checkScenario(4, 'C', false)">
+                        C. Tell the family member that the current oxygen level is appropriate
+                    </div>
+                    <div class="scenario-option" onclick="checkScenario(4, 'D', false)">
+                        D. Apply a non-rebreather mask at 15L
+                    </div>
+                </div>
+                <div class="scenario-explanation" id="scenario4-explanation">
+                    <strong>✅ Correct: B</strong><br><br>
+                    <strong>Rationale:</strong> While 85% is below the goal range of 88-92%, you must assess the patient first and get a provider order before changing oxygen levels in COPD patients. Too much oxygen can suppress their respiratory drive! Never increase O₂ without assessment and orders (A, D), but also don't ignore that the patient is below goal range (C). The best response combines assessment, collaboration, and education.
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz" class="content-section">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea;">✅ NCLEX-Style Practice Quiz</h2>
+            
+            <div class="quiz-container">
+                <div class="question">
+                    <div class="question-text">1. A nurse is caring for a client who reports increased stress related to work deadlines. Which intervention should the nurse implement FIRST?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 1, false)">A. Administer prescribed anti-anxiety medication</div>
+                        <div class="option" onclick="selectOption(this, 1, false)">B. Teach progressive muscle relaxation techniques</div>
+                        <div class="option" onclick="selectOption(this, 1, true)">C. Reduce environmental stimuli and provide a quiet space</div>
+                        <div class="option" onclick="selectOption(this, 1, false)">D. Encourage the client to discuss work problems in detail</div>
+                    </div>
+                    <div class="explanation">
+                        <strong>Correct Answer: C</strong><br>
+                        Rationale: Modify the ENVIRONMENT first before medications or teaching. Remember CALM - Control environment is step 1! Reducing stimuli provides immediate relief and is the least restrictive intervention.
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">2. A nurse suspects a client is experiencing abuse. Which action should the nurse take?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 2, false)">A. Promise the client that all information will remain confidential</div>
+                        <div class="option" onclick="selectOption(this, 2, true)">B. Interview the client privately, away from potential abuser</div>
+                        <div class="option" onclick="selectOption(this, 2, false)">C. Confront the suspected abuser about inconsistencies in the story</div>
+                        <div class="option" onclick="selectOption(this, 2, false)">D. Wait for the client to voluntarily report the abuse</div>
+                    </div>
+                    <div class="explanation">
+                        <strong>Correct Answer: B</strong><br>
+                        Rationale: SAFE - Separate first! Never promise confidentiality in abuse cases (mandatory reporting), never confront the abuser, and never wait passively. The priority is private assessment.
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">3. A client receiving morphine for pain develops respiratory rate of 8 breaths/min. Which medication should the nurse prepare to administer?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 3, false)">A. Flumazenil</div>
+                        <div class="option" onclick="selectOption(this, 3, true)">B. Naloxone</div>
+                        <div class="option" onclick="selectOption(this, 3, false)">C. Epinephrine</div>
+                        <div class="option" onclick="selectOption(this, 3, false)">D. Albuterol</div>
+                    </div>
+                    <div class="explanation">
+                        <strong>Correct Answer: B</strong><br>
+                        Rationale: Naloxone (Narcan) is the opioid reversal agent for opioid-induced respiratory failure. Flumazenil reverses benzodiazepines, epinephrine is for anaphylaxis/cardiac arrest, and albuterol is a bronchodilator.
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">4. Which statement by a client indicates understanding of therapeutic communication principles?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 4, true)">A. "The nurse asked me how I was feeling about my diagnosis."</div>
+                        <div class="option" onclick="selectOption(this, 4, false)">B. "The nurse told me everything would be okay."</div>
+                        <div class="option" onclick="selectOption(this, 4, false)">C. "The nurse asked me why I was feeling sad."</div>
+                        <div class="option" onclick="selectOption(this, 4, false)">D. "The nurse gave me advice about what I should do."</div>
+                    </div>
+                    <div class="explanation">
+                        <strong>Correct Answer: A</strong><br>
+                        Rationale: Open-ended questions that explore feelings are therapeutic. False reassurance (B), asking "why" (C), and giving advice (D) are all non-therapeutic blocks to communication.
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">5. The nurse is reviewing ABG results: pH 7.32, PaCO₂ 48, HCO₃ 24, PaO₂ 75. How should the nurse interpret these findings?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 5, true)">A. Respiratory acidosis</div>
+                        <div class="option" onclick="selectOption(this, 5, false)">B. Metabolic acidosis</div>
+                        <div class="option" onclick="selectOption(this, 5, false)">C. Respiratory alkalosis</div>
+                        <div class="option" onclick="selectOption(this, 5, false)">D. Metabolic alkalosis</div>
+                    </div>
+                    <div class="explanation">
+                        <strong>Correct Answer: A</strong><br>
+                        Rationale: pH is low (acidosis), PaCO₂ is high (respiratory cause), HCO₃ is normal. This indicates uncompensated respiratory acidosis. Remember normals: pH 7.35-7.45, PaCO₂ 35-45, HCO₃ 22-26.
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">6. A client with COPD has an oxygen saturation of 86% on room air. What is the appropriate oxygen goal for this client?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 6, false)">A. 95-100%</div>
+                        <div class="option" onclick="selectOption(this, 6, false)">B. 92-96%</div>
+                        <div class="option" onclick="selectOption(this, 6, true)">C. 88-92%</div>
+                        <div class="option" onclick="selectOption(this, 6, false)">D. 80-85%</div>
+                    </div>
+                    <div class="explanation">
+                        <strong>Correct Answer: C</strong><br>
+                        Rationale: COPD patients typically have lower baseline oxygen levels and their goal SpO₂ is usually 88-92% to avoid suppressing respiratory drive. Higher levels (A, B) can be dangerous in COPD.
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">7. Which finding indicates early respiratory distress in a client?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 7, false)">A. Cyanosis</div>
+                        <div class="option" onclick="selectOption(this, 7, false)">B. Bradycardia</div>
+                        <div class="option" onclick="selectOption(this, 7, true)">C. Restlessness</div>
+                        <div class="option" onclick="selectOption(this, 7, false)">D. Hypotension</div>
+                    </div>
+                    <div class="explanation">
+                        <strong>Correct Answer: C</strong><br>
+                        Rationale: Restlessness is an EARLY sign of hypoxia. Cyanosis (A), bradycardia (B), and hypotension (D) are all LATE signs. Remember: Don't wait for cyanosis - it's too late!
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">8. A client in restraints must be monitored for which complications? (Select priority)</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 8, true)">A. Impaired circulation and skin breakdown</div>
+                        <div class="option" onclick="selectOption(this, 8, false)">B. Anxiety and anger</div>
+                        <div class="option" onclick="selectOption(this, 8, false)">C. Nutritional deficits</div>
+                        <div class="option" onclick="selectOption(this, 8, false)">D. Social isolation</div>
+                    </div>
+                    <div class="explanation">
+                        <strong>Correct Answer: A</strong><br>
+                        Rationale: CMS + ABCs! Monitor Circulation, Mental status, and Skin integrity as priority complications. While emotional effects (B, D) matter, physical safety is the priority.
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">9. Which respiratory medication provides the FASTEST relief for acute bronchospasm?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 9, true)">A. Albuterol (short-acting beta agonist)</div>
+                        <div class="option" onclick="selectOption(this, 9, false)">B. Fluticasone (inhaled corticosteroid)</div>
+                        <div class="option" onclick="selectOption(this, 9, false)">C. Montelukast (leukotriene modifier)</div>
+                        <div class="option" onclick="selectOption(this, 9, false)">D. Theophylline</div>
+                    </div>
+                    <div class="explanation">
+                        <strong>Correct Answer: A</strong><br>
+                        Rationale: Albuterol is the RESCUE medication - it works fast! Corticosteroids (B) reduce inflammation but aren't immediate, montelukast (C) is preventive, and theophylline (D) has a narrow therapeutic range and isn't first-line for acute relief.
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">10. A client says "I'm so frustrated with my treatment. Nothing is working!" What is the nurse's BEST initial response?</div>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 10, false)">A. "You should give the treatment more time to work."</div>
+                        <div class="option" onclick="selectOption(this, 10, false)">B. "Why do you think it's not working?"</div>
+                        <div class="option" onclick="selectOption(this, 10, true)">C. "It sounds like you're feeling really discouraged."</div>
+                        <div class="option" onclick="selectOption(this, 10, false)">D. "Don't worry, I'm sure things will improve."</div>
+                    </div>
+                    <div class="explanation">
+                        <strong>Correct Answer: C</strong><br>
+                        Rationale: V.E.R.B.S. - Validate and Reflect the emotion! Option A gives advice, B asks "why" (judgmental), and D gives false reassurance. Always address EMOTION before EDUCATION.
+                    </div>
+                </div>
+
+                <button class="submit-quiz" onclick="submitQuiz()">Submit Quiz</button>
+                <div class="score-display" id="scoreDisplay"></div>
+            </div>
+        </div>
+
+        <!-- Exam Strategy Section -->
+        <div id="strategy" class="content-section">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea;">🧠 NCLEX-Style Exam Strategy</h2>
+            
+            <div style="background: linear-gradient(135deg, #ffecd2, #fcb69f); padding: 30px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 style="color: #d63031; margin-bottom: 20px;">🎯 Mindset First - This Exam is APPLICATION</h3>
+                <p style="font-size: 1.2em; line-height: 1.8;">
+                    You're not being asked <em>"what is this"</em> — you're being asked <strong>"what would the nurse DO next, assess first, teach, or prioritize?"</strong>
+                    <br><br>
+                    Every question is testing <strong>clinical judgment</strong>.
+                </p>
+            </div>
+
+            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 30px;">
+                <h3 style="color: #667eea; margin-bottom: 20px;">📋 NCLEX-Style Mantra</h3>
+                <div class="priority-matrix">
+                    <div class="priority-item priority-1">1. Safety First</div>
+                    <div class="priority-item priority-1">2. ABCs (Always)</div>
+                    <div class="priority-item priority-2">3. Least Restrictive</div>
+                    <div class="priority-item priority-2">4. Client Rights</div>
+                    <div class="priority-item priority-3">5. Nursing Process (ADPIE)</div>
+                </div>
+            </div>
+
+            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 30px;">
+                <h3 style="color: #667eea; margin-bottom: 20px;">🎓 4-Step Strategy for EVERY Question</h3>
+                <div class="key-points">
+                    <ol style="margin-left: 20px; font-size: 1.1em; line-height: 2;">
+                        <li><strong>Read the LAST line first</strong> - know what they're asking</li>
+                        <li><strong>Identify the priority</strong> - safety, assessment, or intervention?</li>
+                        <li><strong>Eliminate non-nursing answers</strong> - judgmental, advising, or false reassurance</li>
+                        <li><strong>Ask: "What keeps the client safest RIGHT NOW?"</strong></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #a8edea, #fed6e3); padding: 30px; border-radius: 15px; margin-bottom: 30px;">
+                <h3 style="color: #333; margin-bottom: 20px;">⚡ Quick Decision Trees</h3>
+                <div class="key-points">
+                    <strong style="color: #f5576c;">If two answers seem right →</strong>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li>Choose the one that addresses <strong>safety</strong> or <strong>ABCs</strong></li>
+                        <li>Choose the one that <strong>reduces stimuli</strong> or <strong>increases client control</strong></li>
+                        <li>Choose <strong>assessment</strong> over intervention if you don't have enough data</li>
+                        <li>Choose <strong>emotion</strong> over education if the client is distressed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 30px; border-radius: 15px; color: white; text-align: center;">
+                <h2 style="margin-bottom: 15px;">💪 You've Got This!</h2>
+                <p style="font-size: 1.3em; line-height: 1.8;">
+                    This exam is about <strong>thinking like a nurse</strong><br>
+                    — and you already are. 🩺✨
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            <h3>🌟 You're Doing Amazing! 🌟</h3>
+            <p style="margin-top: 10px; font-size: 1.1em;">Keep studying, stay confident, and trust your nursing judgment!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Timer functionality
+        let seconds = 0;
+        let timerInterval = null;
+        let totalStudySeconds = parseInt(localStorage.getItem('totalStudySeconds')) || 0;
+
+        function updateTimer() {
+            seconds++;
+            totalStudySeconds++;
+            localStorage.setItem('totalStudySeconds', totalStudySeconds);
+            
+            const hours = Math.floor(seconds / 3600);
+            const mins = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            
+            document.getElementById('timerDisplay').textContent = 
+                `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            
+            updateStudyTimeDisplay();
+            checkAchievements();
+        }
+
+        function updateStudyTimeDisplay() {
+            const mins = Math.floor(totalStudySeconds / 60);
+            const secs = totalStudySeconds % 60;
+            document.getElementById('studyTime').textContent = `${mins}:${String(secs).padStart(2, '0')}`;
+        }
+
+        document.getElementById('startTimer').addEventListener('click', () => {
+            if (!timerInterval) {
+                timerInterval = setInterval(updateTimer, 1000);
+                earnBadge('badge-first-study', 'bronze');
+            }
+        });
+
+        document.getElementById('pauseTimer').addEventListener('click', () => {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        });
+
+        document.getElementById('resetTimer').addEventListener('click', () => {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            seconds = 0;
+            document.getElementById('timerDisplay').textContent = '00:00:00';
+        });
+
+        // Badge system
+        const badges = {
+            'badge-first-study': false,
+            'badge-quiz-ace': false,
+            'badge-flip-master': false,
+            'badge-scenario-expert': false,
+            'badge-speed-demon': false,
+            'badge-perfectionist': false
+        };
+
+        function loadBadges() {
+            const savedBadges = localStorage.getItem('badges');
+            if (savedBadges) {
+                Object.assign(badges, JSON.parse(savedBadges));
+                for (let badge in badges) {
+                    if (badges[badge]) {
+                        const el = document.getElementById(badge);
+                        if (el) {
+                            const tier = el.dataset.tier || 'gold';
+                            earnBadge(badge, tier, false);
+                        }
+                    }
+                }
+            }
+        }
+
+        function earnBadge(badgeId, tier = 'gold', save = true) {
+            const badge = document.getElementById(badgeId);
+            if (badge && !badges[badgeId]) {
+                badge.classList.add('earned', tier);
+                badge.dataset.tier = tier;
+                badges[badgeId] = true;
+                if (save) {
+                    localStorage.setItem('badges', JSON.stringify(badges));
+                }
+            }
+        }
+
+        function checkAchievements() {
+            if (totalStudySeconds >= 1800) {
+                earnBadge('badge-speed-demon', 'silver');
+            }
+        }
+
+        // Tab navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Topic toggle
+        function toggleTopic(element) {
+            const content = element.querySelector('.topic-content');
+            content.classList.toggle('show');
+            
+            updateTopicsCompleted();
+        }
+
+        function updateTopicsCompleted() {
+            const completed = document.querySelectorAll('.topic-content.show').length;
+            document.getElementById('topicsCompleted').textContent = completed;
+        }
+
+        // Flashcard flip
+        let cardsFlipped = parseInt(localStorage.getItem('cardsFlipped')) || 0;
+
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+            cardsFlipped++;
+            localStorage.setItem('cardsFlipped', cardsFlipped);
+            document.getElementById('cardsFlipped').textContent = cardsFlipped;
+            
+            if (cardsFlipped >= 20) {
+                earnBadge('badge-flip-master', 'gold');
+            }
+        }
+
+        // Scenario handling
+        let scenariosCompleted = 0;
+
+        function checkScenario(scenarioNum, option, isCorrect) {
+            const options = document.getElementById(`scenario${scenarioNum}-options`).children;
+            const explanation = document.getElementById(`scenario${scenarioNum}-explanation`);
+            
+            for (let opt of options) {
+                opt.style.pointerEvents = 'none';
+            }
+            
+            event.target.classList.add(isCorrect ? 'correct' : 'incorrect');
+            explanation.classList.add('show');
+            
+            if (isCorrect) {
+                scenariosCompleted++;
+                if (scenariosCompleted >= 4) {
+                    earnBadge('badge-scenario-expert', 'gold');
+                }
+            }
+        }
+
+        // Quiz handling
+        let selectedAnswers = {};
+        
+        function selectOption(element, questionNum, isCorrect) {
+            const options = element.parentElement.children;
+            for (let option of options) {
+                option.classList.remove('selected');
+            }
+            element.classList.add('selected');
+            
+            selectedAnswers[questionNum] = {
+                element: element,
+                correct: isCorrect
+            };
+        }
+
+        function submitQuiz() {
+            let correctCount = 0;
+            const totalQuestions = 10;
+            
+            for (let i = 1; i <= totalQuestions; i++) {
+                if (selectedAnswers[i]) {
+                    const answer = selectedAnswers[i];
+                    answer.element.classList.add(answer.correct ? 'correct' : 'incorrect');
+                    if (answer.correct) correctCount++;
+                }
+            }
+            
+            document.querySelectorAll('.explanation').forEach(exp => {
+                exp.classList.add('show');
+            });
+            
+            const percentage = Math.round((correctCount / totalQuestions) * 100);
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            scoreDisplay.innerHTML = `
+                <div style="font-size: 1.2em; margin-bottom: 10px;">
+                    Your Score: ${correctCount}/${totalQuestions}
+                </div>
+                <div style="font-size: 2em; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    ${percentage}%
+                </div>
+                <div style="margin-top: 15px; font-size: 1em;">
+                    ${percentage >= 90 ? '🌟 Excellent! You\'re ready!' : 
+                      percentage >= 70 ? '👍 Good job! Review missed topics.' : 
+                      '📚 Keep studying - you\'ve got this!'}
+                </div>
+            `;
+            scoreDisplay.classList.add('show');
+            
+            document.getElementById('quizScore').textContent = percentage + '%';
+            
+            if (percentage >= 90) {
+                earnBadge('badge-quiz-ace', 'gold');
+            }
+            if (percentage === 100) {
+                earnBadge('badge-perfectionist', 'gold');
+            }
+            
+            event.target.style.display = 'none';
+        }
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            loadBadges();
+            updateStudyTimeDisplay();
+            document.getElementById('cardsFlipped').textContent = cardsFlipped;
+            checkAchievements();
+        });
+    </script>
+</body>
+</html>
